@@ -12,11 +12,11 @@ Every player, and the moderator, must follow the rules
 in this file as they stand on `main`.
 
 ### 102 Players
-The players are the people who have taken a seat, as shown on the board. Adding or
+The players are the people who have joined the game, as shown on the board. Adding or
 removing a player takes a passed proposal.
 
 ### 103 Turns
-Players take turns in the order of their seats on the board. On your
+Players take turns in the order they joined. On your
 turn you write one prompt. The moderator reads it and either:
 - drafts it as a **proposal** to change the rules or the site, or
 - carries it out as an **action**, if a rule allows that action.
@@ -33,10 +33,10 @@ exact text before anyone votes, and it rules on what the rules mean. Every
 ruling names the rules it relies on and is written to `rulings/`. Earlier
 rulings count as precedent.
 
-## 200. Seats and turns [majority]
+## 200. Players and turns [majority]
 
-### 201 Seats
-A game seats at most 8 players. [setting: max_players]
+### 201 Game size
+A game has at most 8 players. [setting: max_players]
 
 ### 202 Your turn
 On your turn you may propose one rule change, and you may move
