@@ -50,3 +50,19 @@ starting is skipped for that round.
 **206. Paradox.** If the rules are changed so that further play is impossible,
 the first player who is unable to complete a turn wins. This rule takes
 precedence over every other rule about winning. (Suber's rule 213.)
+
+**207. The Board.** The grid is infinite. A tile is either charted or uncharted, and
+charted tiles are visible to everyone. The game starts with an 8x8 charted island
+centered on the origin. [setting: board.island] Tiles are named row first, like
+"3N 2E": rows count north and south, columns count east and west, and there is no
+zero row or column (1N sits next to 1S, 1E next to 1W). Levels count the same way: the
+ground is 1U, the level above it 2U, the one below 1D. New players start on a random
+unoccupied charted tile at least 2.5 tiles from any uncharted tile. When you move, every tile within two tiles of you is
+charted: a 5x5 square with its four corners cut off. [setting: board.chart_radius]
+
+**208. The Turn.** On your turn you may propose one rule change, and you may move
+your piece one space in any direction, diagonals included. [setting: turn.move_distance]
+You can do both, in either order, and you move at most once per turn. You can only
+move onto a charted tile that no other piece stands on. Rules may add more things to do on a turn.
+
+**209. Players.** A game seats at most 8 players. [setting: max_players]
