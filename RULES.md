@@ -66,3 +66,5 @@ You can do both, in either order, and you move at most once per turn. You can on
 move onto a charted tile that no other piece stands on. Rules may add more things to do on a turn.
 
 **209. Players.** A game seats at most 8 players. [setting: max_players]
+
+**210. AI clients.** A player may connect an AI client to this game and take their own turns through it. [setting: mcp_enabled]
