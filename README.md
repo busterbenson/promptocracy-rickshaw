@@ -1,6 +1,6 @@
 # Rickshaw Game 1
 
-A game of [Promptocracy](https://github.com/busterbenson/promptocracy): nomic with an AI referee, where changing
+A game of [Promptocracy](https://github.com/busterbenson/promptocracy): nomic with an AI moderator, where changing
 the rules is a move.
 
 - `RULES.md` is the rules in effect. Only this file on `main` counts.
