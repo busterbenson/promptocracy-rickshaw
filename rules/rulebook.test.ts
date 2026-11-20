@@ -23,3 +23,12 @@ test("the text still has the rules the modules belong to", () => {
   const nums = parseRulesMd(rulesMd).rules.map((r) => r.number);
   for (const n of [107, 202, 401, 402, 504, 505]) assert.ok(nums.includes(n));
 });
+test("102 says who the host is and who can invite, with no proposal; 203.1 says the host starts day 1 (the site enforces both)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  for (const clause of ["102.1", "102.2", "102.3", "102.4"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(flat.includes("The first player to join is the host. The host's only power is to start the game (203.1)."));
+  assert.ok(flat.includes("Any player can invite people to join while the game isn't full (201), before day 1 and after it."));
+  assert.ok(flat.includes("No proposal is needed. Joining waits while the night is being processed (107.1)."));
+  assert.ok(flat.includes("Day 1 begins when the host presses Start (102.2)"));
+  assert.ok(!/adding or removing a player takes a passed proposal/i.test(flat));
+});
