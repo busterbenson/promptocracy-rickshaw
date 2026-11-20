@@ -30,10 +30,19 @@ on the next day's ballot.
 required by its strictest part, and it passes or fails as a whole, never in part.
 
 ### 104 Voting
-A proposal passes if more than half of all players vote yes
-within 48 hours of the moderator publishing its final text. A proposal that
-changes a core rule (1xx) passes only if every player votes yes. Votes are
-counted by code, not by the moderator.
+**104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
+vote yes. Unanimous: every player votes yes. Not voting counts as no.
+
+**104.2** The players who may vote on a day, and who count for what a vote needs, are the players when the day starts.
+A player who joins during the day votes from the next day.
+
+**104.3** Each day's ballot holds the proposals confirmed the day before. Every player, the proposer included, may vote
+yes or no on each one until midnight or until they end their turn (rule 202.4), and may change their vote until then.
+
+**104.4** Until midnight nobody sees how anyone else voted, or any total. During the day everyone can see who has voted
+on a proposal, and how many have. After midnight every vote is shown.
+
+**104.5** Votes are counted by code, not by the moderator.
 
 ### 105 Votes needed
 **105.1** Every block is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes
@@ -58,6 +67,13 @@ rulings count as precedent.
 move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
 is done.
 
+**107.6** The moderator has until 2:00 am to process the day. When the deadline passes, every passed proposal not yet
+applied is not applied (rule 107.7), and play resumes.
+
+**107.7** A passed proposal is not applied if the deadline passes before it is applied (rule 107.6). It gives no
+points. It goes back to its proposer with the moderator's reason and a suggestion, such as splitting it into smaller
+proposals or simplifying it. The proposer may propose it again on a later day.
+
 ### 108 When rules conflict
 **108.3** A proposal doesn't conflict with the rules it changes. When drafting, the moderator names any other rule the
 proposal would conflict with, so the proposer can change that rule too.
@@ -65,8 +81,8 @@ proposal would conflict with, so the proposer can change that rule too.
 ### 110 What no proposal can change
 **110.1** Some parts of the game are run by the site itself, the same in every game, and no proposal can change them,
 this rule included: signing in, days running midnight to midnight (rule 203.1), one proposal a day (rule 103.2), ending a
-turn (rule 202.4) and the lock (rule 107.1). Their settings can still be changed. A proposal that would change them is
-refused when it is drafted.
+turn (rule 202.4), hidden votes (rule 104.4), votes counted by code (rule 104.5), the lock (rule 107.1) and the deadline
+(rule 107.6). Their settings can still be changed. A proposal that would change them is refused when it is drafted.
 
 ## 200. Players and turns [majority]
 
