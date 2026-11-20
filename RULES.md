@@ -212,3 +212,20 @@ charted: a 5x5 square with its four corners cut off. [setting: board.chart_radiu
 ### 505 New players
 A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.2) is already charted.
+
+## 800. The workshop [majority]
+
+### 801 Commissions
+**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is one of your proposals for the day (103.2).
+
+**801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
+
+**801.3** A commission that names nothing to make is refused, with the reason.
+
+**801.4** A commission has a price in points. You pay it when the commission passes. Points you pay no longer count toward winning (402).
+
+### 803 The queue
+**803.1** A commission that passes joins the workshop's queue, in the order passed.
+
+### 804 Discussion
+**804.1** Anyone in the game can post in a ticket's discussion.

@@ -32,3 +32,20 @@ test("102 says who the host is and who can invite, with no proposal; 203.1 says 
   assert.ok(flat.includes("Day 1 begins when the host presses Start (102.2)"));
   assert.ok(!/adding or removing a player takes a passed proposal/i.test(flat));
 });
+test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
+  const book = parseRulesMd(rulesMd);
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("## 800. The workshop [majority]"));
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 803, 804]);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(flat.includes("A commission is one of your proposals for the day (103.2)."));
+  assert.ok(flat.includes("A commission that names nothing to make is refused, with the reason."));
+  assert.ok(flat.includes("You pay it when the commission passes. Points you pay no longer count toward winning (402)."));
+  assert.ok(flat.includes("A commission that passes joins the workshop's queue, in the order passed."));
+  assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
+});
+test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no building, no limits (802), no creature (805)", () => {
+  const block = rulesMd.slice(rulesMd.indexOf("## 800."));
+  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
+  assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
+});
