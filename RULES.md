@@ -18,6 +18,7 @@ in this file as they stand on `main`.
 
 **102.3** Any player can invite people to join while the game isn't full (201), before day 1 and after it.
 Each player has their own invite link, and the join page says who invited you. No proposal is needed.
+Joining waits while the night is being processed (107.1).
 
 **102.4** If you join after a day has begun, you vote from the next day (104.2).
 
