@@ -40,3 +40,9 @@ test("505: the chart radius sets how far from the edge a piece starts", () => {
 test("505: the same seed gives the same tile", () => {
   assert.deepEqual(spawn({ seed: "x" }), spawn({ seed: "x" }));
 });
+test("505: a piece standing on the same x,y on another level does not block the tile", () => {
+  const players = [] as any[];
+  for (let x = -2; x <= 1; x++) for (let y = -2; y <= 1; y++) if (!(x === 1 && y === 1)) players.push({ ref: `p${x}${y}`, x, y });
+  players.push({ ref: "up", x: 1, y: 1, z: 1 });
+  assert.deepEqual(spawn({ players }), { x: 1, y: 1, z: 0 });
+});

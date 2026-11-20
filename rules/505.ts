@@ -4,6 +4,7 @@ import { SHARED_TILES, chartOffsets, defineRule } from "promptocracy/engine";
 
 export default defineRule({
   rule: 505,
+  /** @rule 505 */
   spawnTile(ctx, candidates) {
     const shape = chartOffsets(ctx.settings["board.chart_radius"]);
     const open = candidates.filter((t) =>
