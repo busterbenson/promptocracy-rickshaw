@@ -1,0 +1,10 @@
+{
+  "max_players": 8,
+  "board.island": {
+    "width": 8,
+    "height": 8
+  },
+  "board.chart_radius": 2,
+  "turn.move_distance": 1,
+  "mcp_enabled": true
+}

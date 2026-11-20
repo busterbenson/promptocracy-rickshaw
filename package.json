@@ -1,0 +1,12 @@
+{
+  "name": "promptocracy-rickshaw",
+  "private": true,
+  "type": "module",
+  "description": "Rickshaw Game 1: the rules of a Promptocracy game, as text and as code.",
+  "scripts": {
+    "test": "node --test \"rules/*.test.ts\""
+  },
+  "devDependencies": {
+    "promptocracy": "github:busterbenson/promptocracy#engine-v1"
+  }
+}
