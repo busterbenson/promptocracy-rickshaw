@@ -25,13 +25,13 @@ Joining waits while the night is being processed (107.1).
 ### 103 Proposals
 **103.1** To propose, a player writes the change in plain words. The moderator drafts it into exact text, shown as a
 change to this file, and the player confirms the draft, changes their words, or cancels. Drafting costs nothing: only a
-confirmed proposal is the player's one proposal for the day.
+confirmed proposal counts toward the day's limit.
 
-**103.2** A player may confirm one proposal a day. Each confirmed proposal gets the next number (P1, P2, ...) and goes
-on the next day's ballot.
+**103.2** You can confirm up to 3 proposals a day. [setting: proposals.per_day] Each confirmed proposal gets the next
+number (P1, P2, ...) and goes on the next day's ballot.
 
 **103.3** The proposer may withdraw a confirmed proposal until it goes on the ballot, unless they have ended their turn
-(rule 202.4). A withdrawn proposal doesn't use up the day's proposal.
+(rule 202.4). A withdrawn proposal doesn't count toward the limit (103.2).
 
 **103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
 required by its strictest part, and it passes or fails as a whole, never in part.
@@ -124,7 +124,7 @@ ruling can be appealed (rule 301).
 
 ### 110 What no proposal can change
 **110.1** Some parts of the game are run by the site itself, the same in every game, and no proposal can change them,
-this rule included: signing in, days running midnight to midnight (rule 203.1), one proposal a day (rule 103.2), ending a
+this rule included: signing in, days running midnight to midnight (rule 203.1), the daily limit on proposals (rule 103.2), ending a
 turn (rule 202.4), hidden votes (rule 104.4), votes counted by code (rule 104.5), the lock (rule 107.1) and the deadline
 (rule 107.6). Their settings can still be changed. A proposal that would change them is refused when it is drafted.
 
@@ -216,7 +216,7 @@ that a move onto it would chart (rule 504.2) is already charted.
 ## 800. The workshop [majority]
 
 ### 801 Commissions
-**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is one of your proposals for the day (103.2).
+**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
 
 **801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
 
