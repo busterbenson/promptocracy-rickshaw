@@ -12,8 +12,14 @@ Every player, and the moderator, must follow the rules
 in this file as they stand on `main`.
 
 ### 102 Players
-The players are the people who have joined the game, as shown on the board. Adding or
-removing a player takes a passed proposal.
+**102.1** The players are the people who have joined the game, as shown on the board.
+
+**102.2** The first player to join is the host. The host's only power is to start the game (203.1).
+
+**102.3** Any player can invite people to join while the game has fewer than 8 players, before day 1 and after it.
+Each player has their own invite link, and the join page says who invited you. No proposal is needed.
+
+**102.4** If you join after a day has begun, you vote from the next day (104.2).
 
 ### 103 Proposals
 **103.1** To propose, a player writes the change in plain words. The moderator drafts it into exact text, shown as a
@@ -143,7 +149,7 @@ the next day, and what they hadn't done is skipped.
 
 ### 203 Days
 **203.1** A day runs from midnight to midnight in the game's time zone. [setting: game.timezone]
-The game's first day is day 1, and days are numbered from there. Day 1 begins when the game starts and ends at the
+The game's first day is day 1, and days are numbered from there. Day 1 begins when the host presses Start (102.2) and ends at the
 next midnight. Before day 1 the game is being set up, and the starter rules can be edited directly. A day always runs
 to midnight, even if every player has ended their turn. If the time zone setting changes, it takes effect at the next
 midnight in the old zone.
