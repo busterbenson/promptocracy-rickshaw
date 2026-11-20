@@ -16,7 +16,7 @@ in this file as they stand on `main`.
 
 **102.2** The first player to join is the host. The host's only power is to start the game (203.1).
 
-**102.3** Any player can invite people to join while the game has fewer than 8 players, before day 1 and after it.
+**102.3** Any player can invite people to join while the game isn't full (201), before day 1 and after it.
 Each player has their own invite link, and the join page says who invited you. No proposal is needed.
 
 **102.4** If you join after a day has begun, you vote from the next day (104.2).
