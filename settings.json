@@ -7,5 +7,7 @@
   "board.chart_radius": 2,
   "turn.move_distance": 1,
   "mcp_enabled": true,
-  "game.timezone": "America/Los_Angeles"
+  "game.timezone": "America/Los_Angeles",
+  "night.apply_minutes": 20,
+  "night.apply_effort": "medium"
 }

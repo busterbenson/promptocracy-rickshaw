@@ -57,26 +57,63 @@ needed to change, add or repeal any rule in the block.
 **105.5** Rules marked unanimous, by their block or by their own mark, are the core rules.
 
 ### 106 The moderator
-The moderator is Chalant, the AI that runs the game. It drafts each prompt into
-exact text before anyone votes, and it rules on what the rules mean. Every
-ruling names the rules it relies on and is written to `rulings/`. Earlier
-rulings count as precedent.
+**106.1** The moderator is Chalant, the AI that runs the game. It drafts each proposal into exact text before anyone
+votes (rule 103.1), and each night it applies the proposals that passed (rule 107).
+
+**106.2** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
+`rulings/`. Earlier rulings count as precedent.
+
+**106.3** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
+the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
+the moderator tells the proposer what differs, so they can propose a fix.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
 move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
 is done.
 
+**107.2** Passed proposals are applied to this file in the order they were proposed. Each one raises the revision of
+the rule it changes by one.
+
+**107.3** If two passed proposals change the same rule, the moderator redrafts the later one onto the new text. If it
+no longer makes sense, it is not applied (rule 107.7).
+
+**107.4** Every rule has code and tests that check it. A change to a rule is made with its code and tests in the same
+step, and all go live together.
+
+**107.5** Each passed proposal has its own budget: the moderator can spend at most 20 minutes
+[setting: night.apply_minutes] applying it, at medium effort [setting: night.apply_effort]. The budget is separate from
+the deadline in rule 107.6. A proposal that runs over its budget is not applied (rule 107.7).
+
 **107.6** The moderator has until 2:00 am to process the day. When the deadline passes, every passed proposal not yet
 applied is not applied (rule 107.7), and play resumes.
 
-**107.7** A passed proposal is not applied if the deadline passes before it is applied (rule 107.6). It gives no
-points. It goes back to its proposer with the moderator's reason and a suggestion, such as splitting it into smaller
-proposals or simplifying it. The proposer may propose it again on a later day.
+**107.7** A passed proposal is not applied if its code and tests can't be made to pass, if it no longer makes sense
+(rule 107.3), if it runs over its budget (rule 107.5), if a rule that prevails over it stands in the way (rule 108.4),
+or if the deadline passes (rule 107.6). It gives no points. It goes back to its proposer with the moderator's reason
+and a suggestion, such as splitting it into smaller proposals or simplifying it. The proposer can propose it again on
+a later day.
+
+**107.8** When a day is processed, the moderator tags the game's files with that day's number, so the rules in effect
+on any day can be read back.
 
 ### 108 When rules conflict
+**108.1** Two rules conflict when they can't both be followed. A core rule prevails over a majority rule. Between two
+rules of the same kind, the older one prevails: the one added first. Amending or moving a rule doesn't make it newer.
+Between rules added at the same time, like the starter rules, the lower number prevails.
+
+**108.2** A rule that says it prevails over another rule, or gives way to one, is followed, but only within its kind: a
+majority rule can't prevail over a core rule.
+
 **108.3** A proposal doesn't conflict with the rules it changes. When drafting, the moderator names any other rule the
 proposal would conflict with, so the proposer can change that rule too.
+
+**108.4** If a passed proposal conflicts with a rule that prevails over it, it is not applied, and the reason names
+that rule (rule 107.7). If the proposal prevails, it is applied, and the rule it overrides gets a note saying where it
+gives way.
+
+**108.5** When rules in effect conflict in a case nobody foresaw, the moderator rules by rule 108.1 (rule 106), and the
+ruling can be appealed (rule 301).
 
 ### 110 What no proposal can change
 **110.1** Some parts of the game are run by the site itself, the same in every game, and no proposal can change them,
@@ -123,18 +160,20 @@ Any player may appeal a ruling within 24 hours
 of it being written. If more than half of all players vote to overturn it, the
 ruling is reversed and the moderator records the reversal.
 
-### 302 The board is part of the game
-A proposal may change the website's
-code as well as this file. If it passes, both changes go live together.
-
 ## 400. Points and winning [majority]
 
 ### 401 Points
-A player whose proposal passes gets 10 points.
+A player whose proposal passes and is applied gets 10 points when it is applied (rule 107).
 
 ### 402 Winning
-The first player to reach 100 points wins. (This rule is
-deliberately dull, after Peter Suber's original. Change it.)
+**402.1** The first player to reach 100 points wins. (This rule is deliberately dull, after Peter Suber's original.
+Change it.)
+
+**402.2** Points are given in the order proposals are applied (rule 107.2). If several players pass 100 on the same
+night, the first one to be given them wins.
+
+**402.3** When a player wins, the game is over. Nothing more can be played; the board, the rules and the history stay
+readable.
 
 ### 403 Paradox
 If the rules are changed so that further play is impossible,
