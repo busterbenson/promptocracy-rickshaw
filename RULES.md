@@ -15,10 +15,19 @@ in this file as they stand on `main`.
 The players are the people who have joined the game, as shown on the board. Adding or
 removing a player takes a passed proposal.
 
-### 103 Prompts
-As part of their turn (rule 202), a player may write one prompt a day. The moderator reads it and either:
-- drafts it as a **proposal** to change the rules or the site, or
-- carries it out as an **action**, if a rule allows that action.
+### 103 Proposals
+**103.1** To propose, a player writes the change in plain words. The moderator drafts it into exact text, shown as a
+change to this file, and the player confirms the draft, changes their words, or cancels. Drafting costs nothing: only a
+confirmed proposal is the player's one proposal for the day.
+
+**103.2** A player may confirm one proposal a day. Each confirmed proposal gets the next number (P1, P2, ...) and goes
+on the next day's ballot.
+
+**103.3** The proposer may withdraw a confirmed proposal until it goes on the ballot, unless they have ended their turn
+(rule 202.4). A withdrawn proposal doesn't use up the day's proposal.
+
+**103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
+required by its strictest part, and it passes or fails as a whole, never in part.
 
 ### 104 Voting
 A proposal passes if more than half of all players vote yes
@@ -26,7 +35,19 @@ within 48 hours of the moderator publishing its final text. A proposal that
 changes a core rule (1xx) passes only if every player votes yes. Votes are
 counted by code, not by the moderator.
 
-### 105 The moderator
+### 105 Votes needed
+**105.1** Every block is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes
+needed to change, add or repeal any rule in the block.
+
+**105.2** A rule can carry its own mark, which overrides its block's.
+
+**105.3** Changing a mark counts as changing that rule or block, so it needs the votes of its current mark.
+
+**105.4** The votes a proposal needs are set when it is confirmed, from the marks in effect then.
+
+**105.5** Rules marked unanimous, by their block or by their own mark, are the core rules.
+
+### 106 The moderator
 The moderator is Chalant, the AI that runs the game. It drafts each prompt into
 exact text before anyone votes, and it rules on what the rules mean. Every
 ruling names the rules it relies on and is written to `rulings/`. Earlier
@@ -36,6 +57,16 @@ rulings count as precedent.
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
 move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
 is done.
+
+### 108 When rules conflict
+**108.3** A proposal doesn't conflict with the rules it changes. When drafting, the moderator names any other rule the
+proposal would conflict with, so the proposer can change that rule too.
+
+### 110 What no proposal can change
+**110.1** Some parts of the game are run by the site itself, the same in every game, and no proposal can change them,
+this rule included: signing in, days running midnight to midnight (rule 203.1), one proposal a day (rule 103.2), ending a
+turn (rule 202.4) and the lock (rule 107.1). Their settings can still be changed. A proposal that would change them is
+refused when it is drafted.
 
 ## 200. Players and turns [majority]
 
