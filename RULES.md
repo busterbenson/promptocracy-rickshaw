@@ -15,9 +15,8 @@ in this file as they stand on `main`.
 The players are the people who have joined the game, as shown on the board. Adding or
 removing a player takes a passed proposal.
 
-### 103 Turns
-Players take turns in the order they joined. On your
-turn you write one prompt. The moderator reads it and either:
+### 103 Prompts
+As part of their turn (rule 202), a player may write one prompt a day. The moderator reads it and either:
 - drafts it as a **proposal** to change the rules or the site, or
 - carries it out as an **action**, if a rule allows that action.
 
@@ -33,21 +32,39 @@ exact text before anyone votes, and it rules on what the rules mean. Every
 ruling names the rules it relies on and is written to `rulings/`. Earlier
 rulings count as precedent.
 
+### 107 The night
+**107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
+move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
+is done.
+
 ## 200. Players and turns [majority]
 
 ### 201 Game size
 A game has at most 8 players. [setting: max_players]
 
 ### 202 Your turn
+**202.1** The game is played one day at a time (rule 203). Each day, every player gets one turn. Everyone plays the
+same day at the same time; there is no order of play.
+
 **202.2** On your turn you may propose one rule change, and you may move
 your piece one space in any direction, diagonals included. [setting: turn.move_distance]
-You can do both, in either order, and you move at most once per turn.
+You can do both, in either order, and you move at most once a day.
+
+**202.3** Every part of a turn is optional, and skipping one has no penalty.
+
+**202.4** A player may end their turn at any time. Ending is final: after it they can't move, propose or vote until
+the next day, and what they hadn't done is skipped.
 
 **202.5** Rules may add more things to do on a turn.
 
-### 203 Time
-A player who has not taken their turn within 24 hours of it
-starting is skipped for that round.
+### 203 Days
+**203.1** A day runs from midnight to midnight in the game's time zone. [setting: game.timezone]
+The game's first day is day 1, and days are numbered from there. Day 1 begins when the game starts and ends at the
+next midnight. Before day 1 the game is being set up, and the starter rules can be edited directly. A day always runs
+to midnight, even if every player has ended their turn. If the time zone setting changes, it takes effect at the next
+midnight in the old zone.
+
+**203.2** At midnight the day that just ended is processed (rule 107), and then the next day begins.
 
 ### 204 AI clients
 A player may connect an AI client to this game and take their own turns through it. [setting: mcp_enabled]
@@ -100,5 +117,5 @@ charted: a 5x5 square with its four corners cut off. [setting: board.chart_radiu
 **504.3** You can only move onto a charted tile that no other piece stands on.
 
 ### 505 New players
-New players start on a random
-unoccupied charted tile at least 2.5 tiles from any uncharted tile.
+A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
+that a move onto it would chart (rule 504.2) is already charted.

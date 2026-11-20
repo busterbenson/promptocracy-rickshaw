@@ -21,4 +21,6 @@ the text names as `[setting: x]`, and `game.json` lists the modules and the engi
 
 The platform builds a game from its latest `day-N` tag: it fetches the tag, lints the modules (they may import only
 `promptocracy/engine`), runs these tests, and bundles the text, settings and modules into the site. Until a `day-N`
-tag exists, nothing here changes how the live game plays.
+tag exists, nothing here changes how the live game plays. While the game is being set up (before day 1), a direct
+edit goes live with the next setup tag, `day-0.1`, `day-0.2` and so on; tags are never moved. From day 1 on, only the
+moderator's `day-N` tags count.
