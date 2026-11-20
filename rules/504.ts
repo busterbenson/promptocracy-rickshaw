@@ -6,7 +6,7 @@ import { SHARED_TILES, chartedAround, defineRule, effects, refuse, withinSteps }
 
 export default defineRule({
   rule: 504,
-  /** @rule 504, 202 */
+  /** @rule 504.3, 202.2 */
   actionAllowed(ctx, actor, action) {
     if (action.kind !== "move" || !action.to) return null;
     const to = action.to;
@@ -23,7 +23,7 @@ export default defineRule({
     }
     return null;
   },
-  /** @rule 504 */
+  /** @rule 504.2 */
   afterAction(ctx, _actor, action) {
     if (action.kind !== "move" || !action.to) return [];
     const { x, y, z } = action.to;

@@ -39,10 +39,11 @@ rulings count as precedent.
 A game has at most 8 players. [setting: max_players]
 
 ### 202 Your turn
-On your turn you may propose one rule change, and you may move
+**202.2** On your turn you may propose one rule change, and you may move
 your piece one space in any direction, diagonals included. [setting: turn.move_distance]
-You can do both, in either order, and you move at most once per turn. You can only
-move onto a charted tile that no other piece stands on. Rules may add more things to do on a turn.
+You can do both, in either order, and you move at most once per turn.
+
+**202.5** Rules may add more things to do on a turn.
 
 ### 203 Time
 A player who has not taken their turn within 24 hours of it
@@ -93,8 +94,10 @@ The game starts with an 8x8 charted island
 centered on the origin. [setting: board.island]
 
 ### 504 Moving and charting
-When you move, every tile within two tiles of you is
+**504.2** When you move, every tile within two tiles of you is
 charted: a 5x5 square with its four corners cut off. [setting: board.chart_radius]
+
+**504.3** You can only move onto a charted tile that no other piece stands on.
 
 ### 505 New players
 New players start on a random
