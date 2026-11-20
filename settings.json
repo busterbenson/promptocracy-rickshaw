@@ -6,5 +6,6 @@
   },
   "board.chart_radius": 2,
   "turn.move_distance": 1,
-  "mcp_enabled": true
+  "mcp_enabled": true,
+  "game.timezone": "America/Los_Angeles"
 }
