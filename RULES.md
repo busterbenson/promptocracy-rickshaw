@@ -76,8 +76,8 @@ the moderator tells the proposer what differs, so they can propose a fix.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
-move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
-is done.
+move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204).
+Play resumes when processing is done.
 
 **107.2** Passed proposals are applied to this file in the order they were proposed. Each one raises the revision of
 the rule it changes by one.
@@ -222,10 +222,12 @@ that a move onto it would chart (rule 504.2) is already charted.
 
 **801.3** A commission that names nothing to make is refused, with the reason.
 
-**801.4** A commission has a price in points. You pay it when the commission passes. Points you pay no longer count toward winning (402).
+**801.4** A commission has a price in points, paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
+
+**801.5** You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2).
 
 ### 803 The queue
-**803.1** A commission that passes joins the workshop's queue, in the order passed.
+**803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
 
 ### 804 Discussion
 **804.1** Anyone in the game can post in a ticket's discussion.
