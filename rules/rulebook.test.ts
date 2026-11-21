@@ -46,20 +46,30 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("## 800. The workshop [majority]"));
-  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 803, 804]);
-  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 802, 803, 804]);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "802.2", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(flat.includes("To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
-  assert.ok(flat.includes("A commission that names nothing to make is refused, with the reason."));
-  assert.ok(flat.includes("paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
+  assert.ok(flat.includes("A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason."));
+  assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
-  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204)."));
+  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
 });
-test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no building, no limits (802), no creature (805)", () => {
+test("Gremlin's rules: 106.3, 106.4 and 106.7, the two settings the site reads (the message cap, the price ceiling), and the limit he can't change (802.2)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801)."));
+  assert.ok(flat.includes("**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission."));
+  assert.ok(flat.includes("**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day]"));
+  assert.ok(flat.includes("up to 25 points [setting: workshop.price_ceiling]"));
+  assert.equal(settings["gremlin.messages_per_day"], 30);
+  assert.equal(settings["workshop.price_ceiling"], 25);
+  assert.ok(flat.includes("**802.2** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game."));
+});
+test("the workshop's text says nothing the site doesn't do yet: no building, no limits (802.1), no creature (805)", () => {
   const block = rulesMd.slice(rulesMd.indexOf("## 800."));
-  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block));
-  assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
+  assert.ok(!/builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace(/\*\*802\.2\*\*[^\n]*/, "")));
+  assert.ok(!/\*\*802\.1\*\*|\*\*805\.|### 805/.test(block));
 });
 test("402 is Eras: 100 points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
