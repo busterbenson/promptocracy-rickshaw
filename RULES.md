@@ -37,14 +37,15 @@ number (P1, P2, ...) and goes on the next day's ballot.
 required by its strictest part, and it passes or fails as a whole, never in part.
 
 **103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action
-types in block 900 exist. You pick the type and fill in its details, the draft shows what it will do, and you confirm it
+types in block 900 exist. You pick the type and fill in its details. The draft shows what it will do, and you confirm it
 like any proposal (103.1). It counts toward your proposals for the day (103.2).
 
-**103.6** An action needs the votes of its own rule (105.2) or of the strictest rule it touches (105.1), whichever is
-stricter. The votes are set when you confirm it (105.4).
+**103.6** An action needs the votes its own rule asks for (105.2) or the votes of the strictest rule it touches, whichever
+is stricter. The votes are set when you confirm it (105.4).
 
-**103.7** A passed action is applied each night with the other proposals, in the same order (107.2). Each one is recorded
-in the history with its type and its details. An action of a type the rules no longer have is not applied (107.7).
+**103.7** A passed action is applied each night after the proposals that change rules, in the order they were proposed
+(107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they
+no longer allow, is not applied (107.7).
 
 ### 104 Voting
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
@@ -249,4 +250,4 @@ that a move onto it would chart (rule 504.2) is already charted.
 
 **901.2** This action touches points (401) and winning (402).
 
-**901.3** The points are given when the action is applied, the same way as points under 401.
+**901.3** The points are given when the action is applied. You also get the 10 points for an applied proposal (401).
