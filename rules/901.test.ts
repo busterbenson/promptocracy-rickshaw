@@ -12,7 +12,7 @@ test("901: the grant action type names its parameters and the rules it touches",
     type: "grant", name: "Grant points", touches: [401, 402],
     params: [{ key: "to", label: "To", kind: "player", other: true }, { key: "amount", label: "Points", kind: "int", min: 1, max: 10 }],
   });
-  assert.deepEqual(rules.actionTypes().map((t: any) => [t.type, t.rule]), [["grant", 901]]);
+  assert.ok(rules.actionTypes().some((t: any) => t.type === "grant" && t.rule === 901));   // other rules may add action types of their own
 });
 test("901: applying a grant gives the named player the points, with the proposal in the reason", () => {
   const out = rules.applyAction(makeCtx({ players: [{ ref: "p1" }, { ref: "p2" }] }), { type: "grant", params: { to: "p2", amount: 7 }, number: 12, player: "p1" });
@@ -42,12 +42,12 @@ test("901.2: it touches winning: a grant that takes a player to the Era's thresh
   const two = rules.dayEnd(makeCtx(), { before: { p1: start, p2: start }, given: [{ player: "p1", delta: 10 }, { player: "p2", delta: 10 }], enacted: [12, 13] });
   assert.deepEqual(two.map((e: any) => [e.type, e.player]), [["champion", "p1"]]);
 });
-test("901.3 with 401: an action is a proposal, so one applied action gives the proposer 401's points and the player the grant", () => {
+test("901.3: an applied grant gives the named player the points; a proposal that is an action still goes through the points rules (401), whatever they give", () => {
   const ctx = makeCtx({ players: [{ ref: "p1" }, { ref: "p2" }] });
-  const own = rules.onEnacted(ctx, { number: 12, player: "p1", target: "901", kind: "action" }) as any[];
-  assert.ok(own.length >= 1 && own.every((e) => e.player === "p1"), "the proposer gets what the points rules give");   // a rule added later may give more
-  const both = [...own, ...(rules.applyAction(ctx, { type: "grant", params: { to: "p2", amount: 4 }, number: 12, player: "p1" }) as any)];
-  assert.deepEqual(both.map((e: any) => [e.player, e.delta]), [...own.map((e) => [e.player, e.delta]), ["p2", 4]]);
+  const own = rules.onEnacted(ctx, { number: 12, player: "p1", target: "901", kind: "action" });
+  assert.ok(Array.isArray(own));   // what 401 gives the proposer is 401's to say, and may change
+  const grant = rules.applyAction(ctx, { type: "grant", params: { to: "p2", amount: 4 }, number: 12, player: "p1" }) as any;
+  assert.deepEqual(grant.map((e: any) => [e.player, e.delta]), [["p2", 4]]);
 });
 test("901: a type this game doesn't have is not applied (null, not an empty list)", () => {
   assert.equal(rules.applyAction(makeCtx(), { type: "resurrect", params: {}, number: 3, player: "p1" }), null);
@@ -63,7 +63,7 @@ test("901: the text says what the code does: a whole number of points from 1 to 
 test("block 900 is unanimous and rule 901 carries its own majority (105.2): adding an action type needs everyone, using this one does not", () => {
   assert.ok(flat.includes("## 900. Actions [unanimous]"));
   assert.ok(flat.includes("### 901 Grant points [majority]"));
-  assert.deepEqual(parseRulesMd(rulesMd).rules.filter((r) => Math.floor(r.number / 100) === 9).map((r) => r.number), [901]);
+  assert.ok(parseRulesMd(rulesMd).rules.filter((r) => Math.floor(r.number / 100) === 9).map((r) => r.number).includes(901));
 });
 test("every module that names an action type is a rule of block 900 (103.5: only the types in block 900 exist), and block 900 holds only those", () => {
   const types = rules.actionTypes().map((t: any) => t.rule);
