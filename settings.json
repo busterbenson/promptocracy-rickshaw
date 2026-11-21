@@ -10,5 +10,7 @@
   "game.timezone": "America/Los_Angeles",
   "night.apply_minutes": 20,
   "night.apply_effort": "medium",
-  "proposals.per_day": 3
+  "proposals.per_day": 3,
+  "gremlin.messages_per_day": 30,
+  "workshop.price_ceiling": 25
 }
