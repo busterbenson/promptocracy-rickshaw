@@ -246,8 +246,8 @@ that a move onto it would chart (rule 504.2) is already charted.
 ## 900. Actions [unanimous]
 
 ### 901 Grant points [majority]
-**901.1** You can propose that another player gets 1 to 10 points.
+**901.1** You can propose that another player gets a whole number of points, from 1 to 10.
 
 **901.2** This action touches points (401) and winning (402).
 
-**901.3** The points are given when the action is applied. You also get the 10 points for an applied proposal (401).
+**901.3** The points are given when the action is applied (103.7).
