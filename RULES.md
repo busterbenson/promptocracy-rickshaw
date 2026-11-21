@@ -22,6 +22,8 @@ Joining waits while the night is being processed (107.1).
 
 **102.4** If you join after a day has begun, you vote from the next day (104.2).
 
+**102.5** You sign in with a link sent to your email address.
+
 ### 103 Proposals
 **103.1** To propose, a player writes the change in plain words. The moderator drafts it into exact text, shown as a
 change to this file, and the player confirms the draft, changes their words, or cancels. Drafting costs nothing: only a
@@ -36,6 +38,11 @@ The Champion's change (402.4) doesn't count toward the limit.
 
 **103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
 required by its strictest part, and it passes or fails as a whole, never in part.
+
+**103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
+votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
+that changes one of them, or conflicts with one, is refused when it is drafted, with the reason "not wired yet". Adding a
+clause or a rule, or changing only a setting, is not refused.
 
 ### 104 Voting
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
@@ -124,18 +131,12 @@ gives way.
 **108.5** When rules in effect conflict in a case nobody foresaw, the moderator rules by rule 108.1 (rule 106), and the
 ruling can be appealed (rule 301).
 
-### 110 What no proposal can change
-**110.1** Some parts of the game are run by the site itself, the same in every game, and no proposal can change them,
-this rule included: signing in, days running midnight to midnight (rule 203.1), the daily limit on proposals (rule 103.2), ending a
-turn (rule 202.4), hidden votes (rule 104.4), votes counted by code (rule 104.5), the lock (rule 107.1) and the deadline
-(rule 107.6). Their settings can still be changed. A proposal that would change them is refused when it is drafted.
-
 ## 200. Players and turns [majority]
 
 ### 201 Game size
 A game has at most 8 players. [setting: max_players]
 
-### 202 Your turn
+### 202 Your turn [unanimous]
 **202.1** The game is played one day at a time (rule 203). Each day, every player gets one turn. Everyone plays the
 same day at the same time; there is no order of play.
 
@@ -150,7 +151,7 @@ the next day, and what they hadn't done is skipped.
 
 **202.5** Rules may add more things to do on a turn.
 
-### 203 Days
+### 203 Days [unanimous]
 **203.1** A day runs from midnight to midnight in the game's time zone. [setting: game.timezone]
 The game's first day is day 1, and days are numbered from there. Day 1 begins when the host presses Start (102.2) and ends at the
 next midnight. Before day 1 the game is being set up, and the starter rules can be edited directly. A day always runs
