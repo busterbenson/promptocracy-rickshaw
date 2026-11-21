@@ -71,11 +71,12 @@ test("the workshop's text says nothing the site doesn't do yet: no building, no 
   assert.ok(!/builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace(/\*\*802\.2\*\*[^\n]*/, "")));
   assert.ok(!/\*\*802\.1\*\*|\*\*805\.|### 805/.test(block));
 });
-test("402 is Eras: 100 points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
+test("402 is Eras: reaching the number of points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("### 402 Eras"));
-  assert.ok(flat.includes("**402.1** The game is played in Eras. The first Era starts on day 1. The first player to reach 100 points wins the Era, and the Era ends that night."));
-  assert.ok(flat.includes("If several players pass 100 on the same night, the first one to be given them wins."));
+  // the number is a proposal's to change (402.1), so the text is pinned without it
+  assert.match(flat, /\*\*402\.1\*\* The game is played in Eras\. The first Era starts on day 1\. The first player to reach \d+ points wins the Era, and the Era ends that night\./);
+  assert.match(flat, /If several players pass \d+ on the same night, the first one to be given them wins\./);
   assert.ok(flat.includes("When an Era ends, everyone's points go back to 0, and the next Era starts the next day."));
   assert.ok(flat.includes("The Champion names the next Era."));
   assert.ok(flat.includes("It takes effect unless every other player votes against it. Not voting doesn't count as against."));

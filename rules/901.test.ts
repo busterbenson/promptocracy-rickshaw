@@ -28,17 +28,27 @@ test("901.1: applying checks the details again (a rule changed tonight may have 
   assert.equal((apply({ to: "p2", amount: 10 }) as any)[0].delta, 10);
   assert.equal((apply({ to: "p2", amount: 1 }) as any)[0].delta, 1);
 });
-test("901.2: it touches winning: 10 points on top of 95 wins the Era (402), and the first player given points past 100 wins it", () => {
+// What a grant touches (901.2) is read from the rules it touches, not written in here: a proposal can change 401's points or 402's threshold,
+// and this test file may not change with it (the moderator only edits the changed rule's own files).
+// The Era's threshold: the smallest score that crowns a Champion when nothing more is given (402 is monotone in the score).
+const crowns = (n: number) => rules.dayEnd(makeCtx(), { before: { p1: 0, p2: n }, given: [{ player: "p2", delta: 0 }], enacted: [12] }).length > 0;
+const threshold = (() => { let lo = 0, hi = 1_000_000; if (crowns(lo)) return lo; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (crowns(mid)) hi = mid; else lo = mid; } return hi; })();
+test("901.2: it touches winning: a grant that takes a player to the Era's threshold wins the Era (402), and the first player given points past it wins it", () => {
+  assert.ok(crowns(threshold) && !crowns(threshold - 1) || threshold === 0, "found 402's threshold");
+  const start = Math.max(0, threshold - 10);
   const given = apply({ to: "p2", amount: 10 }) as any;
-  const end = rules.dayEnd(makeCtx(), { before: { p1: 0, p2: 95 }, given: [{ player: given[0].player, delta: given[0].delta }], enacted: [12] });
+  const end = rules.dayEnd(makeCtx(), { before: { p1: 0, p2: start }, given: [{ player: given[0].player, delta: given[0].delta }], enacted: [12] });
   assert.deepEqual(end.map((e: any) => [e.type, e.player]), [["champion", "p2"]]);
-  const two = rules.dayEnd(makeCtx(), { before: { p1: 95, p2: 95 }, given: [{ player: "p1", delta: 10 }, { player: "p2", delta: 10 }], enacted: [12, 13] });
+  const two = rules.dayEnd(makeCtx(), { before: { p1: start, p2: start }, given: [{ player: "p1", delta: 10 }, { player: "p2", delta: 10 }], enacted: [12, 13] });
   assert.deepEqual(two.map((e: any) => [e.type, e.player]), [["champion", "p1"]]);
 });
-test("901.3 with 401: an action is a proposal, so one applied action gives the proposer 401's 10 and the player the grant", () => {
+test("901.3 with 401: an action is a proposal, so one applied action gives the proposer 401's points and the player the grant", () => {
   const ctx = makeCtx({ players: [{ ref: "p1" }, { ref: "p2" }] });
-  const both = [...rules.onEnacted(ctx, { number: 12, player: "p1", target: "901", kind: "action" }), ...(rules.applyAction(ctx, { type: "grant", params: { to: "p2", amount: 4 }, number: 12, player: "p1" }) as any)];
-  assert.deepEqual(both.map((e: any) => [e.player, e.delta]), [["p1", 10], ["p2", 4]]);
+  const own = rules.onEnacted(ctx, { number: 12, player: "p1", target: "901", kind: "action" }) as any[];
+  assert.equal(own.length, 1);
+  assert.equal(own[0].player, "p1");
+  const both = [...own, ...(rules.applyAction(ctx, { type: "grant", params: { to: "p2", amount: 4 }, number: 12, player: "p1" }) as any)];
+  assert.deepEqual(both.map((e: any) => [e.player, e.delta]), [["p1", own[0].delta], ["p2", 4]]);
 });
 test("901: a type this game doesn't have is not applied (null, not an empty list)", () => {
   assert.equal(rules.applyAction(makeCtx(), { type: "resurrect", params: {}, number: 3, player: "p1" }), null);
