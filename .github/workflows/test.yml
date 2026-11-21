@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node 22.18+ runs the .ts rule modules directly (type stripping); the platform's engine is pinned
+      # by the engine tag in package.json, so this checks the rules against the engine they were written for.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No lockfile is committed (the one dependency is a git tag), so install rather than ci.
+      - run: npm install --no-audit --no-fund
+
+      - run: npm test
