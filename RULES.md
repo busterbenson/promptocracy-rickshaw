@@ -31,6 +31,7 @@ confirmed proposal counts toward the day's limit.
 
 **103.2** You can confirm up to 3 proposals a day. [setting: proposals.per_day] Each confirmed proposal gets the next
 number (P1, P2, ...) and goes on the next day's ballot.
+The Champion's change (402.4) doesn't count toward the limit.
 
 **103.3** The proposer may withdraw a confirmed proposal until it goes on the ballot, unless they have ended their turn
 (rule 202.4). A withdrawn proposal doesn't count toward the limit (103.2).
@@ -38,20 +39,33 @@ number (P1, P2, ...) and goes on the next day's ballot.
 **103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
 required by its strictest part, and it passes or fails as a whole, never in part.
 
+**103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action
+types in block 900 exist. You pick the type and fill in its details. The draft shows what it will do, and you confirm it
+like any proposal (103.1). It counts toward your proposals for the day (103.2).
+
 **103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
 votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
 that changes one of them, or conflicts with one, is refused when it is drafted, with the reason "not wired yet". Adding a
 clause or a rule, or changing only a setting, is not refused.
 
+**103.7** An action needs the votes its own rule asks for (105.2) or the votes of the strictest rule it touches, whichever
+is stricter. The votes are set when you confirm it (105.4).
+
+**103.8** A passed action is applied each night after the proposals that change rules, in the order they were proposed
+(107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they
+no longer allow, is not applied (107.7).
+
+
 ### 104 Voting
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
-vote yes. Unanimous: every player votes yes. Not voting counts as no.
+vote yes. Unanimous: every player votes yes. Not voting counts as no, except on the Champion's change (402.4).
 
 **104.2** The players who may vote on a day, and who count for what a vote needs, are the players when the day starts.
 A player who joins during the day votes from the next day.
 
 **104.3** Each day's ballot holds the proposals confirmed the day before. Every player, the proposer included, may vote
 yes or no on each one until midnight or until they end their turn (rule 202.4), and may change their vote until then.
+The player who makes the Champion's change doesn't vote on it (402.4).
 
 **104.4** Until midnight nobody sees how anyone else voted, or any total. During the day everyone can see who has voted
 on a proposal, and how many have. After midnight every vote is shown.
@@ -60,7 +74,7 @@ on a proposal, and how many have. After midnight every vote is shown.
 
 ### 105 Votes needed
 **105.1** Every block is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes
-needed to change, add or repeal any rule in the block.
+needed to change, add or repeal any rule in the block. The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4.
 
 **105.2** A rule can carry its own mark, which overrides its block's.
 
@@ -70,20 +84,29 @@ needed to change, add or repeal any rule in the block.
 
 **105.5** Rules marked unanimous, by their block or by their own mark, are the core rules.
 
-### 106 The moderator
-**106.1** The moderator is Chalant, the AI that runs the game. It drafts each proposal into exact text before anyone
-votes (rule 103.1), and each night it applies the proposals that passed (rule 107).
+### 106 The moderators
+**106.1** Chalant runs the game. It drafts each proposal other than a commission (106.3) into exact text before anyone
+votes (rule 103.1), each night it applies the proposals that passed (rule 107), and it rules on what the rules mean.
+In these rules, "the moderator" on its own means Chalant.
 
-**106.2** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
+**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801).
+
+**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission.
+
+**106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
 `rulings/`. Earlier rulings count as precedent.
 
-**106.3** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
+**106.6** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
 the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
 the moderator tells the proposer what differs, so they can propose a fix.
 
+**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day] At the limit he tells you,
+and he's back at midnight.
+
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
-move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204).
+move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client
+(rule 204).
 Play resumes when processing is done.
 
 **107.2** Passed proposals are applied to this file in the order they were proposed. Each one raises the revision of
@@ -173,15 +196,21 @@ ruling is reversed and the moderator records the reversal.
 ### 401 Points
 A player whose proposal passes and is applied gets 10 points when it is applied (rule 107).
 
-### 402 Winning
-**402.1** The first player to reach 100 points wins. (This rule is deliberately dull, after Peter Suber's original.
-Change it.)
+### 402 Eras
+**402.1** The game is played in Eras. The first Era starts on day 1. The first player to reach 100 points wins the Era,
+and the Era ends that night.
 
-**402.2** Points are given in the order proposals are applied (rule 107.2). If several players pass 100 on the same
-night, the first one to be given them wins.
+**402.2** Points are given in the order proposals are applied (107.2). If several players pass 100 on the same night,
+the first one to be given them wins.
 
-**402.3** When a player wins, the game is over. Nothing more can be played; the board, the rules and the history stay
-readable.
+**402.3** When an Era ends, everyone's points go back to 0, and the next Era starts the next day. The Era's final scores
+stay in the history. The winner is the Champion until someone else wins an Era. The Champion names the next Era.
+
+**402.4** Once in each Era, the Champion can make one change of their own, on top of their proposals for the day (103.2).
+It can change any rule a proposal can change, one with a unanimous mark included. It goes on the next day's ballot, and
+the player who makes it doesn't vote on it. It takes effect unless every other player votes against it. Not voting
+doesn't count as against. If there are no other players, it takes effect. A change that is withdrawn or not applied (107.7)
+doesn't count.
 
 ### 403 Paradox
 If the rules are changed so that further play is impossible,
@@ -214,21 +243,64 @@ charted: a 5x5 square with its four corners cut off. [setting: board.chart_radiu
 A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.2) is already charted.
 
+## 700. Making things [majority]
+
+### 701 The catalog
+**701.1** Every creature, tile, item, structure and feature is an entry in the catalog: its name, its kind (702), its drawing and its attributes (703).
+
+**701.2** A new entry, or a change to one, comes in by commission (801).
+
+**701.4** An entry appears on the board only when a rule puts it there.
+
+### 702 Kinds
+**702.1** Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board.
+
+### 703 Attributes
+**703.1** An attribute is a value an entry has. An attribute does something only when a rule defines it: what it means and what values it can have.
+
+**703.2** Rules use attributes, not the names of entries.
+
+**703.3** Only one rule can define an attribute.
+
+### 704 What each kind needs
+**704.1** Some kinds need certain attributes. A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles.
+
+**704.2** An attribute a kind needs can have no rule yet. Its value shows on the entry's card and does nothing until a rule defines it (703.1).
+
+**704.3** An entry can go live without an attribute its kind needs. The rule that defines that attribute says what that means for the entry.
+
+### 705 Flavor
+**705.1** An entry can have attributes no rule defines and its kind doesn't need (704.1). They are flavor: they show on its card and do nothing.
+
+**705.2** When a rule defines an attribute that was flavor, it starts to count (703.1).
+
 ## 800. The workshop [majority]
 
 ### 801 Commissions
-**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
+**801.1** To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
 
-**801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
+**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up.
 
-**801.3** A commission that names nothing to make is refused, with the reason.
+**801.3** A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason.
 
-**801.4** A commission has a price in points, paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
+**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
 
 **801.5** You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2).
+
+### 802 Limits
+**802.2** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
 
 ### 803 The queue
 **803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
 
 ### 804 Discussion
 **804.1** Anyone in the game can post in a ticket's discussion.
+
+## 900. Actions [unanimous]
+
+### 901 Grant points [majority]
+**901.1** You can propose that another player gets a whole number of points, from 1 to 10.
+
+**901.2** This action touches points (401) and winning (402).
+
+**901.3** The points are given when the action is applied (103.8).

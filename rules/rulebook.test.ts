@@ -17,11 +17,14 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
   assert.deepEqual(rules.implementers("applyOrder"), [107]);
   assert.deepEqual(rules.implementers("onEnacted"), [401]);
   assert.deepEqual(rules.implementers("dayEnd"), [402]);
+  assert.deepEqual(rules.implementers("championChange"), [402]);
   assert.deepEqual(rules.implementers("actionAllowed"), [202, 504]);
+  assert.deepEqual(rules.implementers("actionType"), [901]);
+  assert.deepEqual(rules.implementers("applyAction"), [901]);
 });
 test("the text still has the rules the modules belong to", () => {
   const nums = parseRulesMd(rulesMd).rules.map((r) => r.number);
-  for (const n of [107, 202, 401, 402, 504, 505]) assert.ok(nums.includes(n));
+  for (const n of [107, 202, 401, 402, 504, 505, 704, 901]) assert.ok(nums.includes(n));
 });
 test("102 says who the host is and who can invite, with no proposal; 203.1 says the host starts day 1 (the site enforces both)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
@@ -43,20 +46,52 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("## 800. The workshop [majority]"));
-  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 803, 804]);
-  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
-  assert.ok(flat.includes("A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
-  assert.ok(flat.includes("A commission that names nothing to make is refused, with the reason."));
-  assert.ok(flat.includes("paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 802, 803, 804]);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "802.2", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(flat.includes("To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
+  assert.ok(flat.includes("A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason."));
+  assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
-  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204)."));
+  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
 });
-test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no building, no limits (802), no creature (805)", () => {
+test("Gremlin's rules: 106.3, 106.4 and 106.7, the two settings the site reads (the message cap, the price ceiling), and the limit he can't change (802.2)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801)."));
+  assert.ok(flat.includes("**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission."));
+  assert.ok(flat.includes("**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day]"));
+  assert.ok(flat.includes("up to 25 points [setting: workshop.price_ceiling]"));
+  assert.equal(settings["gremlin.messages_per_day"], 30);
+  assert.equal(settings["workshop.price_ceiling"], 25);
+  assert.ok(flat.includes("**802.2** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game."));
+});
+test("the workshop's text says nothing the site doesn't do yet: no building, no limits (802.1), no creature (805)", () => {
   const block = rulesMd.slice(rulesMd.indexOf("## 800."));
-  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
-  assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
+  assert.ok(!/builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace(/\*\*802\.2\*\*[^\n]*/, "")));
+  assert.ok(!/\*\*802\.1\*\*|\*\*805\.|### 805/.test(block));
+});
+test("402 is Eras: reaching the number of points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("### 402 Eras"));
+  // the number is a proposal's to change (402.1), so the text is pinned without it
+  assert.match(flat, /\*\*402\.1\*\* The game is played in Eras\. The first Era starts on day 1\. The first player to reach \d+ points wins the Era, and the Era ends that night\./);
+  assert.match(flat, /If several players pass \d+ on the same night, the first one to be given them wins\./);
+  assert.ok(flat.includes("When an Era ends, everyone's points go back to 0, and the next Era starts the next day."));
+  assert.ok(flat.includes("The Champion names the next Era."));
+  assert.ok(flat.includes("It takes effect unless every other player votes against it. Not voting doesn't count as against."));
+  assert.ok(flat.includes("**402.4** Once in each Era, the Champion can make one change of their own, on top of their proposals for the day (103.2)."));
+  assert.ok(flat.includes("It can change any rule a proposal can change, one with a unanimous mark included."));
+  assert.ok(flat.includes("It goes on the next day's ballot, and the player who makes it doesn't vote on it."));
+  assert.ok(flat.includes("If there are no other players, it takes effect. A change that is withdrawn or not applied (107.7) doesn't count."));
+  assert.ok(!/the game is over|deliberately dull/i.test(flat));
+});
+test("103, 104 and 105 name the one exception for the Champion's change (402.4), so 108.1 does not set the core rule against it", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("The Champion's change (402.4) doesn't count toward the limit."));
+  assert.ok(flat.includes("Not voting counts as no, except on the Champion's change (402.4)."));
+  assert.ok(flat.includes("The player who makes the Champion's change doesn't vote on it (402.4)."));
+  assert.ok(flat.includes("The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4."));
 });
 
 // The mark a rule needs: its own, else its block's (105.2). Read from the headings, the way the site reads them.
@@ -97,4 +132,15 @@ test("103.6 states that the parts the site doesn't let a rule control yet are re
   assert.deepEqual([...clause.matchAll(/\((\d{3}\.\d+)\)/g)].map((m) => m[1]), ["102.5", "103.2", "104.4", "104.5", "107.1", "107.6", "202.4", "203.1"]);
   assert.ok(clause.includes("and this rule."));
   assert.equal(marks(rulesMd)["103"], "unanimous");
+});
+test("block 700 is making things: majority, with the clauses the catalog implements (701.3 waits for the code that numbers entries)", () => {
+  const book = parseRulesMd(rulesMd);
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("## 700. Making things [majority]"));
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705]);
+  for (const clause of ["701.1", "701.2", "701.4", "702.1", "703.1", "703.2", "703.3", "704.1", "704.2", "704.3", "705.1", "705.2"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(!flat.includes("**701.3**"));
+  assert.ok(flat.includes("Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board."));
+  assert.ok(flat.includes("A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles."));
+  assert.ok(flat.includes("An entry can go live without an attribute its kind needs."));
 });
