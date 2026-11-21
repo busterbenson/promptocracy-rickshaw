@@ -39,3 +39,22 @@ test("103.2 lets you confirm up to 3 proposals a day, as the setting proposals.p
   assert.ok(flat.includes("A withdrawn proposal doesn't count toward the limit (103.2)."));
   assert.ok(!/one proposal a day|one proposal for the day/i.test(flat));
 });
+test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
+  const book = parseRulesMd(rulesMd);
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("## 800. The workshop [majority]"));
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 803, 804]);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(flat.includes("A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
+  assert.ok(flat.includes("A commission that names nothing to make is refused, with the reason."));
+  assert.ok(flat.includes("paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
+  assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
+  assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
+  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204)."));
+  assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
+});
+test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no building, no limits (802), no creature (805)", () => {
+  const block = rulesMd.slice(rulesMd.indexOf("## 800."));
+  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
+  assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
+});

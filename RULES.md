@@ -76,8 +76,8 @@ the moderator tells the proposer what differs, so they can propose a fix.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
-move, vote, propose or end their turn, on the site or through an AI client (rule 204). Play resumes when processing
-is done.
+move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204).
+Play resumes when processing is done.
 
 **107.2** Passed proposals are applied to this file in the order they were proposed. Each one raises the revision of
 the rule it changes by one.
@@ -212,3 +212,22 @@ charted: a 5x5 square with its four corners cut off. [setting: board.chart_radiu
 ### 505 New players
 A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.2) is already charted.
+
+## 800. The workshop [majority]
+
+### 801 Commissions
+**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
+
+**801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
+
+**801.3** A commission that names nothing to make is refused, with the reason.
+
+**801.4** A commission has a price in points, paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
+
+**801.5** You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2).
+
+### 803 The queue
+**803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
+
+### 804 Discussion
+**804.1** Anyone in the game can post in a ticket's discussion.
