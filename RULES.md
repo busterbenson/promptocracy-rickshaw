@@ -213,10 +213,41 @@ charted: a 5x5 square with its four corners cut off. [setting: board.chart_radiu
 A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.2) is already charted.
 
+## 700. Making things [majority]
+
+### 701 The catalog
+**701.1** Every creature, tile, item, structure and feature is an entry in the catalog: its name, its kind (702), its drawing and its attributes (703).
+
+**701.2** A new entry, or a change to one, comes in by commission (801).
+
+**701.4** An entry appears on the board only when a rule puts it there.
+
+### 702 Kinds
+**702.1** Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board.
+
+### 703 Attributes
+**703.1** An attribute is a value an entry has. An attribute does something only when a rule defines it: what it means and what values it can have.
+
+**703.2** Rules use attributes, not the names of entries.
+
+**703.3** Only one rule can define an attribute.
+
+### 704 What each kind needs
+**704.1** Some kinds need certain attributes. A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles.
+
+**704.2** An attribute a kind needs can have no rule yet. Its value shows on the entry's card and does nothing until a rule defines it (703.1).
+
+**704.3** An entry can go live without an attribute its kind needs. The rule that defines that attribute says what that means for the entry.
+
+### 705 Flavor
+**705.1** An entry can have attributes no rule defines and its kind doesn't need (704.1). They are flavor: they show on its card and do nothing.
+
+**705.2** When a rule defines an attribute that was flavor, it starts to count (703.1).
+
 ## 800. The workshop [majority]
 
 ### 801 Commissions
-**801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
+**801.1** To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
 
 **801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
 

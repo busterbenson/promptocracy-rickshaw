@@ -21,7 +21,7 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
 });
 test("the text still has the rules the modules belong to", () => {
   const nums = parseRulesMd(rulesMd).rules.map((r) => r.number);
-  for (const n of [107, 202, 401, 402, 504, 505]) assert.ok(nums.includes(n));
+  for (const n of [107, 202, 401, 402, 504, 505, 704]) assert.ok(nums.includes(n));
 });
 test("102 says who the host is and who can invite, with no proposal; 203.1 says the host starts day 1 (the site enforces both)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
@@ -45,7 +45,7 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   assert.ok(flat.includes("## 800. The workshop [majority]"));
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 803, 804]);
   for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
-  assert.ok(flat.includes("A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
+  assert.ok(flat.includes("To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
   assert.ok(flat.includes("A commission that names nothing to make is refused, with the reason."));
   assert.ok(flat.includes("paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
@@ -55,6 +55,17 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
 });
 test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no building, no limits (802), no creature (805)", () => {
   const block = rulesMd.slice(rulesMd.indexOf("## 800."));
-  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
+  assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block));
   assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
+});
+test("block 700 is making things: majority, with the clauses the catalog implements (701.3 waits for the code that numbers entries)", () => {
+  const book = parseRulesMd(rulesMd);
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("## 700. Making things [majority]"));
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705]);
+  for (const clause of ["701.1", "701.2", "701.4", "702.1", "703.1", "703.2", "703.3", "704.1", "704.2", "704.3", "705.1", "705.2"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  assert.ok(!flat.includes("**701.3**"));
+  assert.ok(flat.includes("Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board."));
+  assert.ok(flat.includes("A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles."));
+  assert.ok(flat.includes("An entry can go live without an attribute its kind needs."));
 });
