@@ -104,7 +104,7 @@ the draft that was voted on. The draft that was voted on is the one applied. If 
 the moderator tells the proposer what differs, so they can propose a fix.
 
 **106.7** Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
-[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message.
+[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message. They answer from day 1.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
