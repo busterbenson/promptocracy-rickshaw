@@ -33,8 +33,9 @@ test("402.1: points are counted in the order they are given: crossing 100 first 
 test("402.1: a payment given before the points keeps a player under 100", () => {
   assert.deepEqual(end({ a: 85 }, [{ player: "a", delta: -20 }, { player: "a", delta: 10 }]), []);
 });
-test("402.4: the Champion may draft their change (the site counts it and limits it to once an Era)", () => {
-  assert.equal(rule.championChange!(makeCtx(), { ref: "a" } as any), null);
+test("402.3, 402.4: the Champion may name the Era and make their one change (the site counts and limits them)", () => {
+  assert.equal(rule.championChange!(makeCtx(), { ref: "a" } as any, "name"), null);
+  assert.equal(rule.championChange!(makeCtx(), { ref: "a" } as any, "change"), null);
 });
 test("402.1: no points given tonight, no Era ends tonight", () => {
   assert.deepEqual(end({ a: 150 }, []), []);
