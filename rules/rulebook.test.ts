@@ -89,3 +89,12 @@ test("marking 202 and 203 unanimous leaves the rest of block 200 as it was: 201 
   const m = marks(rulesMd);
   assert.deepEqual([m["201"], m["204"], m["301"], m["401"], m["504"]], ["majority", "majority", "majority", "majority", "majority"]);
 });
+test("103.6 states that the parts the site doesn't let a rule control yet are refused at drafting, and lists them: the eight clauses of old rule 110, and this rule", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  const clause = flat.match(/\*\*103\.6\*\* (.*?)(?= \*\*|\s*###|$)/)?.[1] ?? "";
+  assert.ok(clause.includes("A proposal that changes one of them, or conflicts with one, is refused when it is drafted, with the reason \"not wired yet\"."), clause);
+  assert.ok(clause.includes("Adding a clause or a rule, or changing only a setting, is not refused."));
+  assert.deepEqual([...clause.matchAll(/\((\d{3}\.\d+)\)/g)].map((m) => m[1]), ["102.5", "103.2", "104.4", "104.5", "107.1", "107.6", "202.4", "203.1"]);
+  assert.ok(clause.includes("and this rule."));
+  assert.equal(marks(rulesMd)["103"], "unanimous");
+});

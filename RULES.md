@@ -38,6 +38,11 @@ number (P1, P2, ...) and goes on the next day's ballot.
 **103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
 required by its strictest part, and it passes or fails as a whole, never in part.
 
+**103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
+votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
+that changes one of them, or conflicts with one, is refused when it is drafted, with the reason "not wired yet". Adding a
+clause or a rule, or changing only a setting, is not refused.
+
 ### 104 Voting
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
 vote yes. Unanimous: every player votes yes. Not voting counts as no.
