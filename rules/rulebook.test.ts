@@ -58,3 +58,43 @@ test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no b
   assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
   assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
 });
+
+// The mark a rule needs: its own, else its block's (105.2). Read from the headings, the way the site reads them.
+function marks(md: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  let block = "majority";
+  for (const line of md.replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
+    const b = line.match(/^##\s+\d+\..*\[(unanimous|majority)\]\s*$/);
+    if (b) block = b[1];
+    const r = line.match(/^###\s+(\d{3})\s+.*?(?:\[(unanimous|majority)\])?\s*$/);
+    if (r) out[r[1]] = r[2] || block;
+  }
+  return out;
+}
+test("rule 110 is retired: no rule or clause 110, and nothing cites it", () => {
+  const book = parseRulesMd(rulesMd);
+  assert.ok(!book.rules.some((r) => r.number === 110));
+  assert.ok(!/^###\s+110\b|\*\*110\.\d+\*\*|rule 110|\(110(?:\.\d+)?\)|what no proposal can change/im.test(rulesMd));
+});
+test("what rule 110 listed is now ordinary rules, each unanimous: sign-in 102.5, the day 203.1, the proposal limit 103.2, End turn 202.4, hidden votes 104.4, votes counted by code 104.5, the lock 107.1, the deadline 107.6", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  const m = marks(rulesMd);
+  for (const [clause, rule] of [["102.5", "102"], ["203.1", "203"], ["103.2", "103"], ["202.4", "202"], ["104.4", "104"], ["104.5", "104"], ["107.1", "107"], ["107.6", "107"]]) {
+    assert.ok(flat.includes(`**${clause}**`), `${clause} is in the text`);
+    assert.equal(m[rule], "unanimous", `${clause} needs everyone (rule ${rule})`);
+  }
+  assert.ok(flat.includes("**102.5** You sign in with a link sent to your email address."));
+});
+test("marking 202 and 203 unanimous leaves the rest of block 200 as it was: 201 and 204 stay majority", () => {
+  const m = marks(rulesMd);
+  assert.deepEqual([m["201"], m["204"], m["301"], m["401"], m["504"]], ["majority", "majority", "majority", "majority", "majority"]);
+});
+test("103.6 states that the parts the site doesn't let a rule control yet are refused at drafting, and lists them: the eight clauses of old rule 110, and this rule", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  const clause = flat.match(/\*\*103\.6\*\* (.*?)(?= \*\*|\s*###|$)/)?.[1] ?? "";
+  assert.ok(clause.includes("A proposal that changes one of them, or conflicts with one, is refused when it is drafted, with the reason \"not wired yet\"."), clause);
+  assert.ok(clause.includes("Adding a clause or a rule, or changing only a setting, is not refused."));
+  assert.deepEqual([...clause.matchAll(/\((\d{3}\.\d+)\)/g)].map((m) => m[1]), ["102.5", "103.2", "104.4", "104.5", "107.1", "107.6", "202.4", "203.1"]);
+  assert.ok(clause.includes("and this rule."));
+  assert.equal(marks(rulesMd)["103"], "unanimous");
+});
