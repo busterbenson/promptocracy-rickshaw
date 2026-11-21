@@ -40,8 +40,8 @@ The Champion's change (402.4) doesn't count toward the limit.
 required by its strictest part, and it passes or fails as a whole, never in part.
 
 **103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action
-types in block 900 exist. You pick the type and fill in its details. The draft shows what it will do, and you confirm it
-like any proposal (103.1). It counts toward your proposals for the day (103.2).
+types in block 900 exist. You tell Starling what you want, she drafts it (106.2), and you confirm it like any proposal
+(103.1). The draft shows what it will do. It counts toward your proposals for the day (103.2).
 
 **103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
 votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
@@ -88,7 +88,7 @@ needed to change, add or repeal any rule in the block. The Champion's change is 
 **106.1** The game has three moderators. Chalant runs the game: each night it applies the proposals that passed
 (rule 107), and it rules on what the rules mean. In these rules, "the moderator" on its own means Chalant.
 
-**106.2** Starling moderates the rules by day. She drafts your proposals with you (103.1), names any rule they'd
+**106.2** Starling moderates the rules by day. She drafts your proposals and actions with you (103.1, 103.5), names any rule they'd
 conflict with (108.3), and answers questions about the rules by quoting them.
 
 **106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801).
