@@ -39,10 +39,22 @@ The Champion's change (402.4) doesn't count toward the limit.
 **103.4** A proposal may change any number of rules, and the settings and code that carry them out. It needs the votes
 required by its strictest part, and it passes or fails as a whole, never in part.
 
+**103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action
+types in block 900 exist. You pick the type and fill in its details. The draft shows what it will do, and you confirm it
+like any proposal (103.1). It counts toward your proposals for the day (103.2).
+
 **103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
 votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
 that changes one of them, or conflicts with one, is refused when it is drafted, with the reason "not wired yet". Adding a
 clause or a rule, or changing only a setting, is not refused.
+
+**103.7** An action needs the votes its own rule asks for (105.2) or the votes of the strictest rule it touches, whichever
+is stricter. The votes are set when you confirm it (105.4).
+
+**103.8** A passed action is applied each night after the proposals that change rules, in the order they were proposed
+(107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they
+no longer allow, is not applied (107.7).
+
 
 ### 104 Voting
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
@@ -240,3 +252,12 @@ that a move onto it would chart (rule 504.2) is already charted.
 
 ### 804 Discussion
 **804.1** Anyone in the game can post in a ticket's discussion.
+
+## 900. Actions [unanimous]
+
+### 901 Grant points [majority]
+**901.1** You can propose that another player gets a whole number of points, from 1 to 10.
+
+**901.2** This action touches points (401) and winning (402).
+
+**901.3** The points are given when the action is applied (103.8).

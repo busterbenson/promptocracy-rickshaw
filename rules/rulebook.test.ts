@@ -19,10 +19,12 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
   assert.deepEqual(rules.implementers("dayEnd"), [402]);
   assert.deepEqual(rules.implementers("championChange"), [402]);
   assert.deepEqual(rules.implementers("actionAllowed"), [202, 504]);
+  assert.deepEqual(rules.implementers("actionType"), [901]);
+  assert.deepEqual(rules.implementers("applyAction"), [901]);
 });
 test("the text still has the rules the modules belong to", () => {
   const nums = parseRulesMd(rulesMd).rules.map((r) => r.number);
-  for (const n of [107, 202, 401, 402, 504, 505]) assert.ok(nums.includes(n));
+  for (const n of [107, 202, 401, 402, 504, 505, 901]) assert.ok(nums.includes(n));
 });
 test("102 says who the host is and who can invite, with no proposal; 203.1 says the host starts day 1 (the site enforces both)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
