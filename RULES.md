@@ -103,8 +103,9 @@ anything they can't settle to Chalant.
 the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
 the moderator tells the proposer what differs, so they can propose a fix.
 
-**106.7** Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
-[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message. They answer from day 1.
+**106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1).
+Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
+[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
