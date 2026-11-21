@@ -63,20 +63,29 @@ needed to change, add or repeal any rule in the block.
 
 **105.5** Rules marked unanimous, by their block or by their own mark, are the core rules.
 
-### 106 The moderator
-**106.1** The moderator is Chalant, the AI that runs the game. It drafts each proposal into exact text before anyone
-votes (rule 103.1), and each night it applies the proposals that passed (rule 107).
+### 106 The moderators
+**106.1** Chalant runs the game. It drafts each proposal other than a commission (106.3) into exact text before anyone
+votes (rule 103.1), each night it applies the proposals that passed (rule 107), and it rules on what the rules mean.
+In these rules, "the moderator" on its own means Chalant.
 
-**106.2** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
+**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801).
+
+**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission.
+
+**106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
 `rulings/`. Earlier rulings count as precedent.
 
-**106.3** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
+**106.6** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
 the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
 the moderator tells the proposer what differs, so they can propose a fix.
 
+**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day] At the limit he tells you,
+and he's back at midnight.
+
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
-move, vote, propose, post in a ticket's discussion or end their turn, on the site or through an AI client (rule 204).
+move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client
+(rule 204).
 Play resumes when processing is done.
 
 **107.2** Passed proposals are applied to this file in the order they were proposed. Each one raises the revision of
@@ -218,13 +227,16 @@ that a move onto it would chart (rule 504.2) is already charted.
 ### 801 Commissions
 **801.1** To add something new to the game (a creature, a tile, an item, or a feature like a forum), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
 
-**801.2** A commission opens a ticket that says what it is, what it makes, how many nights it will take, what it costs to run, and the tasks that make it up.
+**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up.
 
-**801.3** A commission that names nothing to make is refused, with the reason.
+**801.3** A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason.
 
-**801.4** A commission has a price in points, paid in full when it passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
+**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
 
 **801.5** You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2).
+
+### 802 Limits
+**802.2** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
 
 ### 803 The queue
 **803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
