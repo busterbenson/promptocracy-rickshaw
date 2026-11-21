@@ -126,9 +126,8 @@ step, and all go live together.
 [setting: night.apply_minutes] applying it, at medium effort [setting: night.apply_effort]. The budget is separate from
 the deadline in rule 107.6. A proposal that runs over its budget is not applied (rule 107.7).
 
-**107.6** The moderator has until 3:00 am to process the day, and the changes it made must be live by 4:00 am. When a
-deadline passes, every passed proposal not yet applied, or applied but not yet live, is not applied (rule 107.7), and
-play resumes.
+**107.6** The moderator has until 3:00 am to process the day; a passed proposal not applied by then is not applied
+(rule 107.7). The changes it made must be live by 4:00 am; a change not live by then is not applied either.
 
 **107.7** A passed proposal is not applied if its code and tests can't be made to pass, if it no longer makes sense
 (rule 107.3), if it runs over its budget (rule 107.5), if a rule that prevails over it stands in the way (rule 108.4),
