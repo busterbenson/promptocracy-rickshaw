@@ -104,7 +104,7 @@ the draft that was voted on. The draft that was voted on is the one applied. If 
 the moderator tells the proposer what differs, so they can propose a fix.
 
 **106.7** Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
-[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight.
+[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
@@ -282,7 +282,7 @@ that a move onto it would chart (rule 504.2) is already charted.
 ### 801 Commissions
 **801.1** To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2).
 
-**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up.
+**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up. He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows.
 
 **801.3** A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason.
 
