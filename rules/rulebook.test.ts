@@ -58,3 +58,20 @@ test("the workshop's text says nothing the site doesn't do yet: no Gremlin, no b
   assert.ok(!/gremlin|builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace("(a creature, a tile, an item, or a feature like a forum)", "")));
   assert.ok(!/\*\*80[25]\.|### 80[25]/.test(block));
 });
+test("402 is Eras: 100 points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("### 402 Eras"));
+  assert.ok(flat.includes("**402.1** The game is played in Eras. The first Era starts on day 1. The first player to reach 100 points wins the Era, and the Era ends that night."));
+  assert.ok(flat.includes("If several players pass 100 on the same night, the first one to be given them wins."));
+  assert.ok(flat.includes("When an Era ends, everyone's points go back to 0, and the next Era starts the next day."));
+  assert.ok(flat.includes("The Champion names the next Era."));
+  assert.ok(flat.includes("It takes effect unless every other player votes against it. Not voting doesn't count as against."));
+  assert.ok(flat.includes("It can change any rule, one with a unanimous mark included."));
+  assert.ok(!/the game is over|deliberately dull/i.test(flat));
+});
+test("104 and 105 name the one exception for the Champion's change (402.4), so 108.1 does not set the core rule against it", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("Not voting counts as no, except on the Champion's change (402.4)."));
+  assert.ok(flat.includes("The Champion doesn't vote on their own change (402.4)."));
+  assert.ok(flat.includes("The Champion's change needs no votes (402.4)."));
+});
