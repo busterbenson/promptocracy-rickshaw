@@ -11,7 +11,7 @@ test("402.1: reaching 100 points wins the Era", () => {
 test("402.1: 99 points does not win it", () => {
   assert.deepEqual(end({ a: 89 }, [{ player: "a", delta: 10 }]), []);
 });
-test("402.1: points from earlier nights count", () => {
+test("402.1: points from earlier nights count toward the 100", () => {
   assert.equal(end({ a: 95 }, [{ player: "a", delta: 10 }])[0].player, "a");
 });
 test("402.2: two players pass 100 the same night: the first one given points wins", () => {
@@ -19,10 +19,18 @@ test("402.2: two players pass 100 the same night: the first one given points win
   assert.equal(out.length, 1);
   assert.equal(out[0].player, "b");
 });
-test("402.2: a player already over 100 earlier in the night's order wins before a later one", () => {
+test("402.2: the first to cross 100 wins, even when another player ends the night with more points", () => {
+  const out = end({ a: 99, b: 50 }, [{ player: "a", delta: 2 }, { player: "b", delta: 60 }]);
+  assert.deepEqual(out.map((e: any) => e.player), ["a"]);
+});
+test("402.2: the points a player is given after someone has crossed 100 do not change who won", () => {
   const out = end({ a: 99, b: 99 }, [{ player: "a", delta: 1 }, { player: "b", delta: 10 }, { player: "a", delta: 10 }]);
   assert.deepEqual(out.map((e: any) => e.player), ["a"]);
 });
-test("402.3: no points given, no Era ends", () => {
+test("402.1: points paid out (a negative delta) can keep a player under 100", () => {
+  assert.deepEqual(end({ a: 95 }, [{ player: "a", delta: 10 }, { player: "a", delta: -20 }]).map((e: any) => e.player), ["a"], "crossing 100 at the first step wins, as 402.2 orders the points");
+  assert.deepEqual(end({ a: 85 }, [{ player: "a", delta: -20 }, { player: "a", delta: 10 }]), []);
+});
+test("402.1: no points given tonight, no Era ends tonight", () => {
   assert.deepEqual(end({ a: 150 }, []), []);
 });

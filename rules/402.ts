@@ -1,6 +1,7 @@
 // Rule 402, Eras: the first player to reach 100 points wins the Era (402.1). Points are given in the order proposals are
 // applied, so on a night when several players pass 100, the first one given them wins (402.2). The engine ends the Era
-// on that win: it resets everyone's points, keeps the final scores, and crowns the winner Champion (402.3, 402.4).
+// on that win: it resets everyone's points, keeps the final scores and crowns the winner Champion (402.3). The Champion's
+// own change (402.4) is counted by the site, not by a hook.
 import { defineRule, effects } from "promptocracy/engine";
 
 export default defineRule({
