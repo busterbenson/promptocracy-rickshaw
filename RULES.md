@@ -91,7 +91,7 @@ In these rules, "the moderator" on its own means Chalant.
 
 **106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801).
 
-**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission.
+**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission. He passes anything he can't settle to Chalant.
 
 **106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
 `rulings/`. Earlier rulings count as precedent.
@@ -294,7 +294,7 @@ that a move onto it would chart (rule 504.2) is already charted.
 **803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
 
 ### 804 Discussion
-**804.1** Anyone in the game can post in a ticket's discussion.
+**804.1** Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]; he hands questions he can't answer to the moderator.
 
 ## 900. Actions [unanimous]
 
