@@ -153,3 +153,4 @@ test("block 700 is making things: majority, with the clauses the catalog impleme
   assert.ok(flat.includes("A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles."));
   assert.ok(flat.includes("An entry can go live without an attribute its kind needs."));
 });
+// planted for the CI check: process
