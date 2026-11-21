@@ -99,7 +99,7 @@ anything they can't settle to Chalant.
 **106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
 `rulings/`. The moderator makes rulings at night, after applying the day's proposals, and answers where the question was asked.
 A ruling doesn't change any rule. Earlier rulings are precedent: they bind the moderator until a passed proposal changes
-the ruling or a rule it relies on.
+the ruling or a rule it relies on, or an appeal succeeds (301).
 
 **106.6** Each night the moderator reads the proposer's own words of each passed proposal again and compares them with
 the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
