@@ -25,9 +25,9 @@ Joining waits while the night is being processed (107.1).
 **102.5** You sign in with a link sent to your email address.
 
 ### 103 Proposals
-**103.1** To propose, a player writes the change in plain words. The moderator drafts it into exact text, shown as a
-change to this file, and the player confirms the draft, changes their words, or cancels. Drafting costs nothing: only a
-confirmed proposal counts toward the day's limit.
+**103.1** To propose, you talk the change through with Starling. When she has it worded as an exact change to this file,
+she asks you to lock it in. Locking it in confirms it; you can unlock it until it goes on the ballot (103.3). Drafting
+costs nothing: only a locked-in proposal counts toward the day's limit.
 
 **103.2** You can confirm up to 3 proposals a day. [setting: proposals.per_day] Each confirmed proposal gets the next
 number (P1, P2, ...) and goes on the next day's ballot.
@@ -85,13 +85,16 @@ needed to change, add or repeal any rule in the block. The Champion's change is 
 **105.5** Rules marked unanimous, by their block or by their own mark, are the core rules.
 
 ### 106 The moderators
-**106.1** Chalant runs the game. It drafts each proposal other than a commission (106.3) into exact text before anyone
-votes (rule 103.1), each night it applies the proposals that passed (rule 107), and it rules on what the rules mean.
-In these rules, "the moderator" on its own means Chalant.
+**106.1** The game has three moderators. Chalant runs the game: each night it applies the proposals that passed
+(rule 107), and it rules on what the rules mean. In these rules, "the moderator" on its own means Chalant.
+
+**106.2** Starling moderates the rules by day. She drafts your proposals with you (103.1), names any rule they'd
+conflict with (108.3), and answers questions about the rules by quoting them.
 
 **106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801).
 
-**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission. He passes anything he can't settle to Chalant.
+**106.4** Starling and Gremlin can't change a rule, rule on what one means, or change an approved commission. They pass
+anything they can't settle to Chalant.
 
 **106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to
 `rulings/`. Earlier rulings count as precedent.
@@ -100,12 +103,12 @@ In these rules, "the moderator" on its own means Chalant.
 the draft that was voted on. The draft that was voted on is the one applied. If the two differ in a way that matters,
 the moderator tells the proposer what differs, so they can propose a fix.
 
-**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day] At the limit he tells you,
-and he's back at midnight.
+**106.7** Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
+[setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight.
 
 ### 107 The night
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
-move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client
+move, vote, propose, post in a ticket's discussion, talk to Starling or Gremlin or end their turn, on the site or through an AI client
 (rule 204).
 Play resumes when processing is done.
 
@@ -142,7 +145,7 @@ Between rules added at the same time, like the starter rules, the lower number p
 **108.2** A rule that says it prevails over another rule, or gives way to one, is followed, but only within its kind: a
 majority rule can't prevail over a core rule.
 
-**108.3** A proposal doesn't conflict with the rules it changes. When drafting, the moderator names any other rule the
+**108.3** A proposal doesn't conflict with the rules it changes. When drafting, Starling names any other rule the
 proposal would conflict with, so the proposer can change that rule too.
 
 **108.4** If a passed proposal conflicts with a rule that prevails over it, it is not applied, and the reason names

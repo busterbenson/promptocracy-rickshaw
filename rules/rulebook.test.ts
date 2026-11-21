@@ -53,14 +53,18 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
-  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client (rule 204)."));
+  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Starling or Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
 });
-test("Gremlin's rules: 106.3, 106.4 and 106.7, the two settings the site reads (the message cap, the price ceiling), and the limit he can't change (802.2)", () => {
+test("Starling's and Gremlin's rules: 106.2 to 106.4 and 106.7, the settings the site reads (the message caps, the thread-reply cap, the price ceiling), and the limit the workshop can't pass (802.2)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801)."));
-  assert.ok(flat.includes("**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission."));
-  assert.ok(flat.includes("**106.7** Gremlin answers up to 30 of your messages a day. [setting: gremlin.messages_per_day]"));
+  assert.ok(flat.includes("**106.2** Starling moderates the rules by day. She drafts your proposals with you (103.1), names any rule they'd conflict with (108.3), and answers questions about the rules by quoting them."));
+  assert.ok(flat.includes("**106.4** Starling and Gremlin can't change a rule, rule on what one means, or change an approved commission. They pass anything they can't settle to Chalant."));
+  assert.ok(flat.includes("**106.7** Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight."));
+  assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]; he hands questions he can't answer to the moderator."));
+  assert.equal(settings["starling.messages_per_day"], 60);
+  assert.equal(settings["gremlin.thread_replies_per_day"], 20);
   assert.ok(flat.includes("up to 25 points [setting: workshop.price_ceiling]"));
   assert.equal(settings["gremlin.messages_per_day"], 30);
   assert.equal(settings["workshop.price_ceiling"], 25);

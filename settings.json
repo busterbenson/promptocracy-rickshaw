@@ -13,5 +13,6 @@
   "proposals.per_day": 3,
   "gremlin.messages_per_day": 30,
   "workshop.price_ceiling": 25,
-  "gremlin.thread_replies_per_day": 20
+  "gremlin.thread_replies_per_day": 20,
+  "starling.messages_per_day": 60
 }
