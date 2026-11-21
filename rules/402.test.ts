@@ -27,9 +27,14 @@ test("402.2: the points a player is given after someone has crossed 100 do not c
   const out = end({ a: 99, b: 99 }, [{ player: "a", delta: 1 }, { player: "b", delta: 10 }, { player: "a", delta: 10 }]);
   assert.deepEqual(out.map((e: any) => e.player), ["a"]);
 });
-test("402.1: points paid out (a negative delta) can keep a player under 100", () => {
-  assert.deepEqual(end({ a: 95 }, [{ player: "a", delta: 10 }, { player: "a", delta: -20 }]).map((e: any) => e.player), ["a"], "crossing 100 at the first step wins, as 402.2 orders the points");
+test("402.1: points are counted in the order they are given: crossing 100 first wins even if a payment follows", () => {
+  assert.deepEqual(end({ a: 95 }, [{ player: "a", delta: 10 }, { player: "a", delta: -20 }]).map((e: any) => e.player), ["a"]);
+});
+test("402.1: a payment given before the points keeps a player under 100", () => {
   assert.deepEqual(end({ a: 85 }, [{ player: "a", delta: -20 }, { player: "a", delta: 10 }]), []);
+});
+test("402.4: the Champion may draft their change (the site counts it and limits it to once an Era)", () => {
+  assert.equal(rule.championChange!(makeCtx(), { ref: "a" } as any), null);
 });
 test("402.1: no points given tonight, no Era ends tonight", () => {
   assert.deepEqual(end({ a: 150 }, []), []);

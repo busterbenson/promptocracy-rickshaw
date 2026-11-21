@@ -55,7 +55,7 @@ on a proposal, and how many have. After midnight every vote is shown.
 
 ### 105 Votes needed
 **105.1** Every block is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes
-needed to change, add or repeal any rule in the block. The Champion's change is counted by 402.4 instead.
+needed to change, add or repeal any rule in the block. The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4.
 
 **105.2** A rule can carry its own mark, which overrides its block's.
 
@@ -187,8 +187,8 @@ stay in the history. The winner is the Champion until someone else wins an Era. 
 **402.4** Once in each Era, the Champion can make one change of their own, on top of their proposals for the day (103.2).
 It can change any rule a proposal can change, one with a unanimous mark included. It goes on the next day's ballot, and
 the player who makes it doesn't vote on it. It takes effect unless every other player votes against it. Not voting
-doesn't count as against. If there are no other players, it takes effect. A change that is not applied (107.7) doesn't
-count.
+doesn't count as against. If there are no other players, it takes effect. A change that is withdrawn or not applied (107.7)
+doesn't count.
 
 ### 403 Paradox
 If the rules are changed so that further play is impossible,
