@@ -29,3 +29,30 @@ jobs:
       - run: npm install --no-audit --no-fund
 
       - run: npm test
+
+  # The production build (busterbenson/promptocracy scripts/bundle-games.mjs) refuses a game whose tree fails checkTree:
+  # the lint (no Node globals such as the process object anywhere in game code, tests included), @rule claims, the module
+  # list, the game's own tests in the sandbox. day-0.15 passed `npm test` above and still failed the production build, so
+  # this runs the same check on the same files the build fetches (git archive = the tracked tree).
+  bundle-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: game
+      - uses: actions/checkout@v4
+        with:
+          repository: busterbenson/promptocracy
+          path: platform
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+        working-directory: platform
+      - name: the platform build's checkTree on this game
+        working-directory: platform
+        run: |
+          T="$(mktemp -d)"
+          git -C ../game archive HEAD | tar -x -C "$T"
+          node -e 'import("./scripts/bundle-games.mjs").then((m) => { m.checkTree(process.argv[1], "this game"); console.log("checkTree: ok"); })' "$T"
