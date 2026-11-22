@@ -30,14 +30,14 @@ test("102 says who the host is and who can invite, with no proposal; 203.1 says 
   const flat = rulesMd.replace(/\s+/g, " ");
   for (const clause of ["102.1", "102.2", "102.3", "102.4"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(flat.includes("The first player to join is the host. The host's only power is to start the game (203.1)."));
-  assert.ok(flat.includes("Any player can invite people to join while the game isn't full (201), before day 1 and after it."));
+  assert.ok(flat.includes("Any player can invite people to join while the game isn't full (201.1), before day 1 and after it."));
   assert.ok(flat.includes("No proposal is needed. Joining waits while the night is being processed (107.1)."));
-  assert.ok(flat.includes("Day 1 begins when the host presses Start (102.2)"));
+  assert.ok(flat.includes("Day 1 begins when the game is started (102.2)"));
   assert.ok(!/adding or removing a player takes a passed proposal/i.test(flat));
 });
 test("103.2 lets you confirm up to 3 proposals a day, as the setting proposals.per_day; withdrawing frees a slot (103.3)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("**103.2** You can confirm up to 3 proposals a day. [setting: proposals.per_day] Each confirmed proposal gets the next number (P1, P2, ...) and goes on the next day's ballot."));
+  assert.ok(flat.includes("**103.2** You can confirm up to 3 proposals a day. [setting: proposals.per_day] Each confirmed proposal gets the next number (P1, P2, ...) and goes on the ballot (104.3). The Champion's change (402.4) doesn't count toward the limit."));
   assert.equal(settings["proposals.per_day"], 3);
   assert.ok(flat.includes("A withdrawn proposal doesn't count toward the limit (103.2)."));
   assert.ok(!/one proposal a day|one proposal for the day/i.test(flat));
@@ -45,28 +45,29 @@ test("103.2 lets you confirm up to 3 proposals a day, as the setting proposals.p
 test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("## 800. The workshop [majority]"));
+  assert.ok(flat.includes("## 800. The workshop"));
+  for (const n of ["801", "802", "803", "804"]) assert.equal(marks(rulesMd)[n], "majority", n);
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 802, 803, 804]);
   for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "802.1", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
-  assert.ok(flat.includes("To add something new to the game (a new catalog entry of any kind, 702, or a rule that makes one do something), you commission it. A commission is a proposal like any other: it counts toward your proposals for the day (103.2)."));
+  assert.ok(flat.includes("A commission is a proposal like any other (103): the way a catalog entry comes in or changes (701.2), or a new rule that makes an entry do something."));
   assert.ok(flat.includes("He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows."));
-  assert.ok(flat.includes("A commission that names nothing to make, or that would do something 802.1 rules out, is refused when it's drafted, with the reason."));
-  assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402)."));
-  assert.ok(flat.includes("You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2)."));
+  assert.ok(flat.includes("A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason."));
+  assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2)."));
+  assert.ok(flat.includes("You can reopen a refused or failed commission as a draft and confirm it again (103.1)."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
   assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Starling or Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
 });
 test("Starling's and Gremlin's rules: 106.2 to 106.4 and 106.7, the settings the site reads (the message caps, the thread-reply cap, the price ceiling), and the limit the workshop can't pass (802.1)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day. He drafts your commissions with you and sets their price (801)."));
-  assert.ok(flat.includes("**106.2** Starling moderates the rules by day. She drafts your proposals and actions with you (103.1, 103.5), names any rule they'd conflict with (108.3), and answers questions about the rules by quoting them."));
+  assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day (801, 804)."));
+  assert.ok(flat.includes("**106.2** Starling moderates the rules by day (103.1, 103.5, 108.3). She answers questions about the rules by quoting them."));
   assert.ok(flat.includes("**106.4** Starling and Gremlin can't change a rule, rule on what one means, or change an approved commission. They pass anything they can't settle to Chalant."));
   // 107.6, checked in two pieces: the bundler's lint refuses the word for Node's global object anywhere in game code, strings included
   assert.ok(flat.includes("**107.6** The moderator has until 3:00 am to"));
   assert.ok(flat.includes("the day; a passed proposal not applied by then is not applied (rule 107.7). The changes it made must be live by 4:00 am; a change not live by then is not applied either."));
   assert.ok(flat.includes("**106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1). Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message."));
-  assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]; he hands questions he can't answer to the moderator."));
+  assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]."));
   assert.ok(flat.includes("**106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to `rulings/`. The moderator makes rulings at night, after applying the day's proposals, and answers where the question was asked. A ruling doesn't change any rule. Earlier rulings are precedent: they bind the moderator until a passed proposal changes the ruling or a rule it relies on, or an appeal succeeds (301)."));
   assert.equal(settings["starling.messages_per_day"], 60);
   assert.equal(settings["gremlin.thread_replies_per_day"], 20);
@@ -83,15 +84,16 @@ test("the workshop's text says nothing the site doesn't do yet: no building, no 
 test("402 is Eras: reaching the number of points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("### 402 Eras"));
-  // the number is a proposal's to change (402.1), so the text is pinned without it
-  assert.match(flat, /\*\*402\.1\*\* The game is played in Eras\. The first Era starts on day 1\. The first player to reach \d+ points wins the Era, and the Era ends that night\./);
-  assert.match(flat, /If several players pass \d+ on the same night, the first one to be given them wins\./);
-  assert.ok(flat.includes("When an Era ends, everyone's points go back to 0, and the next Era starts the next day."));
+  // the number is the setting eras.points_to_win, a proposal's to change, so the text is pinned without it
+  assert.match(flat, /\*\*402\.1\*\* The game is played in Eras\. The first Era starts on day 1\./);
+  assert.match(flat, /\*\*402\.2\*\* The first player to reach \d+ points wins the Era\. \[setting: eras\.points_to_win\] If several players reach it on the same night, the first one given the points wins \(401\.1, 107\.2\)\./);
+  assert.match(flat, /\*\*402\.3\*\* When a player wins the Era \(402\.2\), the Era ends that night\. Everyone's points go back to 0, and the next Era starts the next day\./);
+  assert.equal(typeof settings["eras.points_to_win"], "number");   // its value is a proposal's to change
   assert.ok(flat.includes("The Champion names the next Era."));
   assert.ok(flat.includes("It takes effect unless every other player votes against it. Not voting doesn't count as against."));
-  assert.ok(flat.includes("**402.4** Once in each Era, the Champion can make one change of their own, on top of their proposals for the day (103.2)."));
+  assert.ok(flat.includes("**402.4** Once in each Era, the Champion can make one change of their own."));
   assert.ok(flat.includes("It can change any rule a proposal can change, one with a unanimous mark included."));
-  assert.ok(flat.includes("It goes on the next day's ballot, and the player who makes it doesn't vote on it."));
+  assert.ok(flat.includes("It goes on the ballot like any proposal (104.3), except as 103.2 and 104.3 say."));
   assert.ok(flat.includes("If there are no other players, it takes effect. A change that is withdrawn or not applied (107.7) doesn't count."));
   assert.ok(!/the game is over|deliberately dull/i.test(flat));
 });
@@ -103,15 +105,12 @@ test("103, 104 and 105 name the one exception for the Champion's change (402.4),
   assert.ok(flat.includes("The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4."));
 });
 
-// The mark a rule needs: its own, else its block's (105.2). Read from the headings, the way the site reads them.
+// The mark a rule has: its own, [u] or [m] after its title (105.1). Read from the headings, the way the site reads them.
 function marks(md: string): Record<string, string> {
   const out: Record<string, string> = {};
-  let block = "majority";
   for (const line of md.replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
-    const b = line.match(/^##\s+\d+\..*\[(unanimous|majority)\]\s*$/);
-    if (b) block = b[1];
-    const r = line.match(/^###\s+(\d{3})\s+.*?(?:\[(unanimous|majority)\])?\s*$/);
-    if (r) out[r[1]] = r[2] || block;
+    const r = line.match(/^###\s+(\d{3})\s+.*?\[(unanimous|majority|u|m)\]\s*$/);
+    if (r) out[r[1]] = r[2][0] === "u" ? "unanimous" : "majority";
   }
   return out;
 }
@@ -145,7 +144,8 @@ test("103.6 states that the parts the site doesn't let a rule control yet are re
 test("block 700 is making things: majority, with the clauses the catalog implements (nothing promises entry numbering yet)", () => {
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("## 700. Making things [majority]"));
+  assert.ok(flat.includes("## 700. Making things"));
+  for (const n of ["701", "702", "703", "704", "705"]) assert.equal(marks(rulesMd)[n], "majority", n);
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705]);
   for (const clause of ["701.1", "701.2", "701.3", "702.1", "703.1", "703.2", "703.3", "704.1", "704.2", "704.3", "705.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(!flat.includes("**705.2**"));
@@ -156,8 +156,8 @@ test("block 700 is making things: majority, with the clauses the catalog impleme
 });
 test("109: the rulebook has three levels, a rule is its title and its clauses, and a value tagged as a setting is kept in the settings file", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("### 109 Numbers and settings **109.1** The rulebook has three levels."));
-  assert.ok(flat.includes("A rule, such as 804, is its title and its clauses: it has no text of its own."));
+  assert.ok(flat.includes("### 109 Numbers and settings [u] **109.1** The rulebook has three levels."));
+  assert.ok(flat.includes("A rule, such as 804, is its title, its mark (105.1) and its clauses: it has no text of its own."));
   assert.ok(flat.includes("Citing a block cites all its rules, and citing a rule cites all its clauses."));
   assert.ok(flat.includes("Before day 1 they have no gaps. Once the game has started, a repealed clause leaves its number empty."));
   assert.ok(flat.includes("**109.2** A value the text tags as a setting is kept in the game's settings file, and the text and the file always agree."));
@@ -184,7 +184,49 @@ test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 and 50
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(!flat.includes("you vote from the next day (104.2)"));
   for (const gone of ["**102.5**", "**504.3**", "**701.4**", "**705.2**", "**802.2**"]) assert.ok(!flat.includes(gone), gone);
-  assert.ok(flat.includes("**504.1** When you move, every tile within two tiles of you is charted"));
+  assert.ok(flat.includes("**504.1** When you move, every tile within 2 tiles of you is charted [setting: board.chart_radius], except the 4 corners of that square."));
   assert.ok(flat.includes("**504.2** You can only move onto a charted tile that no other piece stands on."));
   assert.ok(flat.includes("every tile that a move onto it would chart (rule 504.1) is already charted."));
+});
+
+// Rule 105.1: a mark is on each rule, not on a block; an unmarked rule would be majority (105.2), but every rule here says its own.
+test("105: every rule carries its own mark ([u] or [m]) and no block does", () => {
+  const text = rulesMd.replace(/<!--[\s\S]*?-->/g, "");
+  const heads = text.split("\n").filter((l) => /^##/.test(l));
+  assert.deepEqual(heads.filter((l) => /^## \d+\./.test(l) && /\[(unanimous|majority|u|m)\]\s*$/.test(l)), []);
+  const rules = heads.filter((l) => /^### \d{3} /.test(l));
+  assert.deepEqual(rules.filter((l) => !/ \[(u|m)\]\s*$/.test(l) && !/\[Moved to \d+\]\s*$/.test(l)), []);
+});
+test("105 says what a mark does and how a new rule gets one: every rule is marked, a new rule is majority unless the proposal marks it unanimous, a mark change needs the current mark's votes", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**105.1** Every rule is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes needed to change or repeal that rule."));
+  assert.ok(flat.includes("**105.2** A proposal that adds a rule makes it majority unless the proposal marks it unanimous. Adding a rule marked unanimous needs a unanimous vote."));
+  assert.ok(flat.includes("**105.3** Changing a mark counts as changing that rule, so it needs the votes of its current mark."));
+  assert.ok(flat.includes("**105.4** The votes a proposal needs are set when it is confirmed, from the marks in effect then."));
+  assert.ok(flat.includes("**105.5** Rules marked unanimous are the core rules."));
+  assert.ok(!/by their block|its block's|carries their mark/.test(flat));
+});
+test("each fact is stated in one clause: the known facts match only in the clause that owns them (the audit's table, as a regression test)", () => {
+  const text = rulesMd.replace(/<!--[\s\S]*?-->/g, "");
+  const clauses: Record<string, string> = {};
+  for (const m of text.matchAll(/\*\*(\d{3}\.\d+)\*\*([\s\S]*?)(?=\n\*\*\d{3}\.\d+\*\*|\n#|$)/g)) clauses[m[1]] = m[2].replace(/\s+/g, " ");
+  const owners: [RegExp, string | null][] = [
+    [/\b\d+ points wins\b/, "402.2"],
+    [/next day's ballot|ballot holds/, "104.3"],
+    [/more than half/, "104.1"],
+    [/up to \d+ proposals/, "103.2"],
+    [/does something only when/, "703.1"],
+    [/joins the (workshop's )?queue/, "803.1"],
+    [/rules on what the rules mean/, "106.5"],
+    [/names any (other )?rule/, "108.3"],
+    [/propose one|one proposal a day/, null],
+  ];
+  for (const [pattern, owner] of owners) {
+    const where = Object.keys(clauses).filter((n) => pattern.test(clauses[n]));
+    assert.deepEqual(where, owner ? [owner] : [], String(pattern));
+  }
+});
+test("106.2 and 106.3 only point at the rules that own the jobs; they describe none", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(!/drafts your|sets their price|names any rule they'd/.test(flat));
 });
