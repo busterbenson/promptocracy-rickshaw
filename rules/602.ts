@@ -52,11 +52,16 @@ export default defineRule({
       out.push(effects.step(c.id, to));
       c.x = to.x; c.y = to.y; c.z = to.z;
     }
-    // 602.5: bite every living player next to it, then rest the next night
+    // 602.5: bite every living player next to it, then rest the next night. Hearts and deaths are tracked as the bites go, so a player an earlier creature
+    // just killed is not bitten again, and a creature that bit nobody does not rest.
+    const left = new Map(living.map((p) => [p.ref, p.hearts]));
     for (const c of mobile()) {
-      const next = living.filter((p) => p.z === c.z && dist(p, c) <= 1);
+      const next = living.filter((p) => (left.get(p.ref) ?? 0) > 0 && p.z === c.z && dist(p, c) <= 1);
       if (!next.length) continue;
-      for (const p of next) out.push(effects.bite({ player: p.ref }, ctx.settings["creatures.bite"]));
+      for (const p of next) {
+        out.push(effects.bite({ player: p.ref }, ctx.settings["creatures.bite"]));
+        left.set(p.ref, (left.get(p.ref) ?? 0) - ctx.settings["creatures.bite"]);
+      }
       out.push(effects.rest(c.id));
     }
     return out;

@@ -61,3 +61,8 @@ test("602: neutral creatures never move or bite", () => {
 test("602: a new creature can't bite on its first night at the default setting", () => {
   for (const seed of ["a", "b", "c", "d", "e"]) assert.equal(night({ players: [at("a", 0, 0)], seed }).filter((x) => x.type === "bite").length, 0);
 });
+test("602: two creatures next to a one-heart player: the second bites nobody and doesn't rest", () => {
+  const cs = [{ id: 1, entry: "C1", x: 1, y: 1, z: 0, hearts: 3, resting: false }, { id: 2, entry: "C1", x: 1, y: 2, z: 0, hearts: 3, resting: false }];
+  const e = night({ players: [at("a", 0, 1)].map((p) => ({ ...p, hearts: 1 })), creatures: cs }, [1]);
+  assert.deepEqual(e.map((x) => x.type + (x.creature ?? "")), ["bite", "rest1"]);
+});
