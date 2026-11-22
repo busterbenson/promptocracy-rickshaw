@@ -1,23 +1,13 @@
 [
   {
     "id": "C1",
-    "name": "Snail-knight",
+    "name": "Blob",
     "kind": "creature",
     "attrs": {
       "hearts": 3
     },
     "flavor": {
-      "temper": "hostile",
-      "speed": "slow",
-      "origin": "Drawn in the margins of medieval manuscripts, where knights fight snails."
-    },
-    "art": {
-      "saved": [
-        {
-          "key": "8f0f9a87b2e16a93ce90a1ed300b99ccba55f61e50f15aeb6d2b294e753b01cf"
-        }
-      ],
-      "default": "8f0f9a87b2e16a93ce90a1ed300b99ccba55f61e50f15aeb6d2b294e753b01cf"
+      "temper": "hostile"
     }
   }
 ]
