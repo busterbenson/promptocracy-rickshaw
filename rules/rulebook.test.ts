@@ -163,14 +163,14 @@ test("109: the rulebook has three levels, a rule is its title and its clauses, a
   assert.ok(flat.includes("**109.2** A value the text tags as a setting is kept in the game's settings file, and the text and the file always agree."));
   assert.ok(!flat.includes("**109.3**"));
 });
-test("no rule has text of its own: the first line under each title is its clause N.1", () => {
+test("no rule has text of its own: the first line under each title is one of its clauses (N.1 before day 1; after a repeal it can be a later number, 109.1)", () => {
   const lines = rulesMd.replace(/<!--[\s\S]*?-->/g, "").split("\n");
   const bad: string[] = [];
   lines.forEach((l, i) => {
     const m = /^###\s+(\d{3})\s/.exec(l);
     if (!m) return;
     const next = lines.slice(i + 1).find((x) => x.trim() !== "") ?? "";
-    if (!next.startsWith(`**${m[1]}.1**`)) bad.push(m[1]);
+    if (!new RegExp(`^\\*\\*${m[1]}\\.\\d+\\*\\*`).test(next) && !/^\[(Repealed|Moved to \d+)\]/.test(next)) bad.push(m[1]);
   });
   assert.deepEqual(bad, []);
 });
