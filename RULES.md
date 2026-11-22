@@ -8,7 +8,7 @@ is the history of the game.
 ## 100. Core rules [unanimous]
 
 ### 101 Follow the rules
-Every player, and the moderator, must follow the rules
+**101.1** Every player, and the moderator, must follow the rules
 in this file as they stand on `main`.
 
 ### 102 Players
@@ -20,9 +20,7 @@ in this file as they stand on `main`.
 Each player has their own invite link, and the join page says who invited you. No proposal is needed.
 Joining waits while the night is being processed (107.1).
 
-**102.4** If you join after a day has begun, you vote from the next day (104.2).
-
-**102.5** You sign in with a link sent to your email address.
+**102.4** You sign in with a link sent to your email address.
 
 ### 103 Proposals
 **103.1** To propose, you talk the change through with Starling. When she has it worded as an exact change to this file,
@@ -43,8 +41,8 @@ required by its strictest part, and it passes or fails as a whole, never in part
 types in block 900 exist. You tell Starling what you want, she drafts it (106.2), and you confirm it like any proposal
 (103.1). The draft shows what it will do. It counts toward your proposals for the day (103.2).
 
-**103.6** These parts of the game aren't wired yet: sign-in (102.5), the proposal limit (103.2), hidden votes (104.4),
-votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this rule. A proposal
+**103.6** These parts of the game aren't wired yet: sign-in (102.4), the proposal limit (103.2), hidden votes (104.4),
+votes counted by code (104.5), the lock (107.1), the deadline (107.6), End turn (202.4), the day (203.1) and this clause. A proposal
 that changes one of them, or conflicts with one, is refused when it is drafted, with the reason "not wired yet". Adding a
 clause or a rule, or changing only a setting, is not refused.
 
@@ -158,10 +156,15 @@ gives way.
 **108.5** When rules in effect conflict in a case nobody foresaw, the moderator rules by rule 108.1 (rule 106), and the
 ruling can be appealed (rule 301).
 
+### 109 Numbers and settings
+**109.1** The rulebook has three levels. A block, such as 800, holds rules and carries their mark (105.1). A rule, such as 804, is its title and its clauses: it has no text of its own. A clause, such as 804.1, holds the text. Citing a block cites all its rules, and citing a rule cites all its clauses. A rule's clauses are numbered from 1. Before day 1 they have no gaps. Once the game has started, a repealed clause leaves its number empty.
+
+**109.2** A value the text tags as a setting is kept in the game's settings file, and the text and the file always agree.
+
 ## 200. Players and turns [majority]
 
 ### 201 Game size
-A game has at most 8 players. [setting: max_players]
+**201.1** A game has at most 8 players. [setting: max_players]
 
 ### 202 Your turn [unanimous]
 **202.1** The game is played one day at a time (rule 203). Each day, every player gets one turn. Everyone plays the
@@ -188,19 +191,19 @@ midnight in the old zone.
 **203.2** At midnight the day that just ended is processed (rule 107), and then the next day begins.
 
 ### 204 AI clients
-A player may connect an AI client to this game and take their own turns through it. [setting: mcp_enabled]
+**204.1** A player may connect an AI client to this game and take their own turns through it. [setting: mcp_enabled]
 
 ## 300. Proposals and rulings [majority]
 
 ### 301 Overruling the moderator
-Any player may appeal a ruling within 24 hours
+**301.1** Any player may appeal a ruling within 24 hours
 of it being written. If more than half of all players vote to overturn it, the
 ruling is reversed and the moderator records the reversal.
 
 ## 400. Points and winning [majority]
 
 ### 401 Points
-A player whose proposal passes and is applied gets 10 points when it is applied (rule 107).
+**401.1** A player whose proposal passes and is applied gets 10 points when it is applied (rule 107).
 
 ### 402 Eras
 **402.1** The game is played in Eras. The first Era starts on day 1. The first player to reach 100 points wins the Era,
@@ -219,35 +222,35 @@ doesn't count as against. If there are no other players, it takes effect. A chan
 doesn't count.
 
 ### 403 Paradox
-If the rules are changed so that further play is impossible,
+**403.1** If the rules are changed so that further play is impossible,
 the first player who is unable to complete a turn wins. This rule takes
 precedence over every other rule about winning. (Suber's rule 213.)
 
 ## 500. The board [majority]
 
 ### 501 The grid
-The grid is infinite. A tile is either charted or uncharted, and
+**501.1** The grid is infinite. A tile is either charted or uncharted, and
 charted tiles are visible to everyone.
 
 ### 502 Coordinates
-Tiles are named row first, like
+**502.1** Tiles are named row first, like
 "3N 2E": rows count north and south, columns count east and west, and there is no
 zero row or column (1N sits next to 1S, 1E next to 1W). Levels count the same way: the
 ground is 1U, the level above it 2U, the one below 1D.
 
 ### 503 The island
-The game starts with an 8x8 charted island
+**503.1** The game starts with an 8x8 charted island
 centered on the origin. [setting: board.island]
 
 ### 504 Moving and charting
-**504.2** When you move, every tile within two tiles of you is
+**504.1** When you move, every tile within two tiles of you is
 charted: a 5x5 square with its four corners cut off. [setting: board.chart_radius]
 
-**504.3** You can only move onto a charted tile that no other piece stands on.
+**504.2** You can only move onto a charted tile that no other piece stands on.
 
 ### 505 New players
-A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
-that a move onto it would chart (rule 504.2) is already charted.
+**505.1** A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
+that a move onto it would chart (rule 504.1) is already charted.
 
 ## 700. Making things [majority]
 
@@ -256,7 +259,7 @@ that a move onto it would chart (rule 504.2) is already charted.
 
 **701.2** A new entry, or a change to one, comes in by commission (801).
 
-**701.4** An entry appears on the board only when a rule puts it there.
+**701.3** An entry appears on the board only when a rule puts it there.
 
 ### 702 Kinds
 **702.1** Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board.
@@ -278,8 +281,6 @@ that a move onto it would chart (rule 504.2) is already charted.
 ### 705 Flavor
 **705.1** An entry can have attributes no rule defines and its kind doesn't need (704.1). They are flavor: they show on its card and do nothing.
 
-**705.2** When a rule defines an attribute that was flavor, it starts to count (703.1).
-
 ## 800. The workshop [majority]
 
 ### 801 Commissions
@@ -287,14 +288,14 @@ that a move onto it would chart (rule 504.2) is already charted.
 
 **801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up. He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows.
 
-**801.3** A commission that names nothing to make, or that would do something 802.2 rules out, is refused when it's drafted, with the reason.
+**801.3** A commission that names nothing to make, or that would do something 802.1 rules out, is refused when it's drafted, with the reason.
 
 **801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can; it joins the queue then (803.1). Points you pay no longer count toward winning (402).
 
 **801.5** You can reopen a refused or failed commission as a draft; confirming it again counts toward that day's proposals (103.2).
 
 ### 802 Limits
-**802.2** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
+**802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
 
 ### 803 The queue
 **803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
