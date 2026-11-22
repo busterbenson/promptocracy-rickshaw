@@ -14,5 +14,6 @@
   "gremlin.messages_per_day": 30,
   "workshop.price_ceiling": 25,
   "gremlin.thread_replies_per_day": 20,
-  "starling.messages_per_day": 60
+  "starling.messages_per_day": 60,
+  "eras.points_to_win": 100
 }

@@ -60,9 +60,9 @@ test("901: the text says what the code does: a whole number of points from 1 to 
   assert.equal(d.params[1].max, 10);
   assert.equal(d.params[0].other, true);
 });
-test("block 900 is unanimous and rule 901 carries its own majority (105.2): adding an action type needs everyone, using this one does not", () => {
-  assert.ok(flat.includes("## 900. Actions [unanimous]"));
-  assert.ok(flat.includes("### 901 Grant points [majority]"));
+test("rule 901 is marked majority (105.1): using this action needs a majority, and a new action type is a new rule, majority unless its proposal marks it unanimous (105.2)", () => {
+  assert.ok(flat.includes("## 900. Actions"));
+  assert.ok(flat.includes("### 901 Grant points [m]"));
   assert.ok(parseRulesMd(rulesMd).rules.filter((r) => Math.floor(r.number / 100) === 9).map((r) => r.number).includes(901));
 });
 test("every module that names an action type is a rule of block 900 (103.5: only the types in block 900 exist), and block 900 holds only those", () => {
@@ -72,11 +72,11 @@ test("every module that names an action type is a rule of block 900 (103.5: only
 });
 test("103.5, 103.7, 103.8: the core text for actions", () => {
   assert.ok(flat.includes("**103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action types in block 900 exist."));
-  assert.ok(flat.includes("You tell Starling what you want, she drafts it (106.2), and you confirm it like any proposal (103.1). The draft shows what it will do. It counts toward your proposals for the day (103.2)."));
+  assert.ok(flat.includes("You tell Starling what you want, she drafts it (106.2), and you confirm it like any proposal (103.1). The draft shows what it will do."));
   assert.ok(!flat.includes("You pick the type"));
-  assert.ok(flat.includes("**106.2** Starling moderates the rules by day. She drafts your proposals and actions with you (103.1, 103.5), names any rule they'd conflict with (108.3)"));
+  assert.ok(flat.includes("**106.2** Starling moderates the rules by day (103.1, 103.5, 108.3)."));
   assert.ok(flat.includes("**901.3** The points are given when the action is applied (103.8)."));
-  assert.ok(flat.includes("**103.7** An action needs the votes its own rule asks for (105.2) or the votes of the strictest rule it touches, whichever is stricter."));
-  assert.ok(flat.includes("**103.8** A passed action is applied each night after the proposals that change rules, in the order they were proposed (107.2)."));
+  assert.ok(flat.includes("**103.7** An action needs the votes its own rule asks for (105.1) or the votes of the strictest rule it touches, whichever is stricter."));
+  assert.ok(flat.includes("**103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2)."));
   assert.ok(flat.includes("An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7)."));
 });
