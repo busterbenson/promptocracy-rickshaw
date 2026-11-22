@@ -8,11 +8,10 @@ const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => Math.
 
 export default defineRule({
   rule: 603,
-  /** The checks for giving a heart (603.4); the site does the giving. @rule 603.4 */
-  actionAllowed(ctx, actor, action) {
-    if (action.kind !== "give_heart") return null;
-    const me = ctx.players.find((p) => p.ref === actor.ref);
-    const them = ctx.players.find((p) => p.ref === action.target);
+  /** Giving a heart (603.4): this module is what lets a player give one; the site does the giving. @rule 603.4 */
+  giveHeart(ctx, giver, target) {
+    const me = ctx.players.find((p) => p.ref === giver.ref);
+    const them = ctx.players.find((p) => p.ref === target);
     if (!me || me.state !== "living") return refuse("Only a living player can give a heart (603.4).", 403);
     if (!them) return refuse("Say whose piece.", 400);
     if (them.state === "ghost") return refuse("They have risen as a Ghost (603.3).", 409);

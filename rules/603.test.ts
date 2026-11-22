@@ -17,7 +17,7 @@ test("603: follows the setting death.ghost_days", () => {
   assert.deepEqual(rule.night!(makeCtx({ day: 5, settings: { "death.ghost_days": 2 }, players: [dead(4)] }), { applied: [] }), []);
 });
 
-const give = (me: any, them: any, turn: any = {}) => rule.actionAllowed!(makeCtx({ players: [{ ref: "m", x: 0, y: 0, hearts: 3, ...me }, { ref: "t", x: 1, y: 1, state: "dead", deadDay: 1, hearts: 0, ...them }], turn }), { ref: "m" }, { kind: "give_heart", target: "t" });
+const give = (me: any, them: any, turn: any = {}) => rule.giveHeart!(makeCtx({ players: [{ ref: "m", x: 0, y: 0, hearts: 3, ...me }, { ref: "t", x: 1, y: 1, state: "dead", deadDay: 1, hearts: 0, ...them }], turn }), { ref: "m" }, "t");
 test("603.4: a living player next to a dead player's piece may give a heart", () => {
   assert.equal(give({}, {}), null);
   assert.equal(give({ x: 1, y: 0 }, {}), null); // diagonals and orthogonals alike
@@ -30,6 +30,6 @@ test("603.4: refused when not next to them, when the giver has 1 heart, when the
   assert.match(give({}, {}, { gave: true })!.error, /already gave a heart today/);
   assert.match(give({ state: "dead", deadDay: 1 }, {})!.error, /Only a living player/);
 });
-test("603.4: other actions are left alone", () => {
-  assert.equal(rule.actionAllowed!(makeCtx({ players: [{ ref: "m", x: 0, y: 0 }] }), { ref: "m" }, { kind: "move" }), null);
+test("603.4: no other turn action is ruled here", () => {
+  assert.equal(rule.actionAllowed, undefined);
 });

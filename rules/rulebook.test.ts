@@ -18,7 +18,8 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
   assert.deepEqual(rules.implementers("onEnacted"), [401]);
   assert.deepEqual(rules.implementers("dayEnd"), [402]);
   assert.deepEqual(rules.implementers("championChange"), [402]);
-  assert.deepEqual(rules.implementers("actionAllowed"), [202, 504, 603, 604]);
+  assert.deepEqual(rules.implementers("actionAllowed"), [202, 504, 604]);
+  assert.deepEqual(rules.implementers("giveHeart"), [603]);
   assert.deepEqual(rules.implementers("night"), [602, 603]);
   assert.deepEqual(rules.implementers("ending"), [404]);
   assert.deepEqual(rules.implementers("actionType"), [901]);
@@ -191,12 +192,12 @@ test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 and 50
   assert.ok(flat.includes("every tile that a move onto it would chart (rule 504.1) is already charted."));
 });
 
-test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the three endings, with the core edits for the dead (603.1, 604.1)", () => {
+test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the three endings, with the core edits for the dead (603.1, 202.5)", () => {
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 6).map((r) => r.number), [601, 602, 603, 604]);
   assert.ok(book.rules.some((r) => r.number === 404));
-  for (const c of ["601.1", "601.2", "601.3", "602.1", "602.2", "602.3", "602.4", "602.5", "603.1", "603.2", "603.3", "603.4", "604.1", "604.2", "404.1", "404.2", "404.3", "404.4"]) assert.ok(flat.includes(`**${c}**`), c);
+  for (const c of ["601.1", "601.2", "601.3", "602.1", "602.2", "602.3", "602.4", "602.5", "603.1", "603.2", "603.3", "603.4", "604.1", "604.2", "202.5", "404.1", "404.2", "404.3", "404.4"]) assert.ok(flat.includes(`**${c}**`), c);
   for (const [k, v] of [["hearts.start", 3], ["creatures.appear_steps", 3], ["creatures.bite", 1], ["death.ghost_days", 3]] as const) {
     assert.equal(settings[k], v);
     assert.ok(flat.includes(`[setting: ${k}]`), k);
@@ -207,5 +208,7 @@ test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the t
   assert.ok(flat.includes("Each day, every living player (603.1) and every Ghost (604.1) gets one turn."));
   assert.ok(flat.includes("the first living player (603.1) who is unable to complete a turn wins."));
   assert.ok(flat.includes("**404.3** Last one standing: when a night's deaths leave one living player (603.1), the game ends badly. Nobody wins, and that player becomes the King of Ghosts."));
-  assert.ok(flat.includes("**604.1** A Ghost has a turn each day (202.1). On it, a Ghost can move (202.2) and end its turn (202.4). It can't make proposals or vote."));
+  assert.ok(flat.includes("**202.5** Only living players (603.1) can vote or make proposals. A dead player can't move, but a Ghost can (604.1)."));
+  assert.ok(flat.includes("**604.1** A Ghost has a turn each day (202.1). Its moves chart tiles like anyone's (504.1)."));
+  assert.ok(!flat.includes("Rules may add more things to do on a turn."));
 });

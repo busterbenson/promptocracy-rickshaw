@@ -22,7 +22,7 @@ test("202: a dead player can't move, propose or end their turn (603.1, 403)", ()
     assert.deepEqual(rule.actionAllowed!(ctx, { ref: "a" }, { kind }), { error: "You're dead (603.1).", status: 403 });
   }
 });
-test("202: a Ghost has its turn (604.1): moving is allowed", () => {
+test("202: a Ghost has its turn (604.1) and can move (202.5)", () => {
   const ctx = makeCtx({ players: [{ ref: "a", x: 0, y: 0, state: "ghost", deadDay: 1 }] });
   assert.equal(rule.actionAllowed!(ctx, { ref: "a" }, { kind: "move" }), null);
 });

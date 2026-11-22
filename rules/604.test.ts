@@ -6,8 +6,8 @@ import r202 from "./202.ts";
 
 const ghost = { ref: "g", x: 0, y: 0, state: "ghost", deadDay: 1 };
 const ctx = makeCtx({ players: [ghost, { ref: "l", x: 3, y: 3 }] });
-test("604: a Ghost can't propose, with the 604.1 reason", () => {
-  assert.deepEqual(rule.actionAllowed!(ctx, { ref: "g" }, { kind: "propose" }), { error: "A Ghost can't propose (604.1).", status: 403 });
+test("a Ghost can't propose, with the 202.5 reason", () => {
+  assert.deepEqual(rule.actionAllowed!(ctx, { ref: "g" }, { kind: "propose" }), { error: "A Ghost can't propose (202.5).", status: 403 });
 });
 test("604: a Ghost can move and end its turn (module 202 lets it too)", () => {
   for (const kind of ["move", "end_turn"] as const) {

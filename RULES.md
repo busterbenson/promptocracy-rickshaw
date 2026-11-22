@@ -149,7 +149,7 @@ same day at the same time; there is no order of play.
 
 **202.4** A player may end their turn at any time. Ending is final: after it they can't move, propose, withdraw a proposal or vote until the next day, and what they hadn't done is skipped.
 
-**202.5** Rules may add more things to do on a turn.
+**202.5** Only living players (603.1) can vote or make proposals. A dead player can't move, but a Ghost can (604.1).
 
 ### 203 Days [u]
 **203.1** A day runs from midnight to midnight in the game's time zone. [setting: game.timezone]
@@ -251,7 +251,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 **603.4** A living player next to a dead player's piece (602.2) can give that player 1 of their own hearts before the dead player rises as a Ghost (603.3). The giver must keep at least 1 heart. The dead player is living again, with 1 heart, where their piece stands. Giving a heart doesn't use your move, and you can do it once a day.
 
 ### 604 Ghosts [m]
-**604.1** A Ghost has a turn each day (202.1). On it, a Ghost can move (202.2) and end its turn (202.4). It can't make proposals or vote. Its moves chart tiles like anyone's (504.1).
+**604.1** A Ghost has a turn each day (202.1). Its moves chart tiles like anyone's (504.1).
 
 **604.2** A Ghost's piece replaces the player's piece, and the player can't change it.
 

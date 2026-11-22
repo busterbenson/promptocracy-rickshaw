@@ -4,7 +4,7 @@ import { defineRule } from "promptocracy/engine";
 
 /** The attribute this rule defines (703.1): a creature's hearts. A creature with none can't lose any (601.2). */
 export const attributes = [
-  { key: "hearts", type: "number", kinds: ["creature"], missing: "Can't be hurt", meaning: "How many hearts the creature has. At 0 it dies (601.3)." },
+  { key: "hearts", type: "number", whole: true, min: 0, kinds: ["creature"], missing: "Can't be hurt", meaning: "How many hearts the creature has. At 0 it dies (601.3)." },
 ];
 
 export default defineRule({ rule: 601 });

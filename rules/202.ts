@@ -5,9 +5,10 @@ import { defineRule, refuse } from "promptocracy/engine";
 
 export default defineRule({
   rule: 202,
-  /** @rule 202.1, 202.2, 603.1 */
+  /** @rule 202.1, 202.2, 202.5, 603.1 */
   actionAllowed(ctx, _actor, action) {
-    // 603.1: the dead have no turn. A Ghost does (604.1), so only a dead player who hasn't risen is refused here.
+    // The dead have no turn (202.1) and can't move (202.5). A Ghost has a turn and can move (604.1, 202.5), so only a dead player who hasn't risen
+    // is refused here; a Ghost's proposal is refused in module 604.
     const me = ctx.players.find((p) => p.ref === _actor.ref);
     if (me?.state === "dead") return refuse("You're dead (603.1).", 403);
     if (action.kind === "move" && ctx.turn.moved) return refuse("You already moved today.", 409);
