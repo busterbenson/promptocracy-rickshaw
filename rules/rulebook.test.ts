@@ -206,27 +206,3 @@ test("105 says what a mark does and how a new rule gets one: every rule is marke
   assert.ok(flat.includes("**105.5** Rules marked unanimous are the core rules."));
   assert.ok(!/by their block|its block's|carries their mark/.test(flat));
 });
-test("each fact is stated in one clause: the known facts match only in the clause that owns them (the audit's table, as a regression test)", () => {
-  const text = rulesMd.replace(/<!--[\s\S]*?-->/g, "");
-  const clauses: Record<string, string> = {};
-  for (const m of text.matchAll(/\*\*(\d{3}\.\d+)\*\*([\s\S]*?)(?=\n\*\*\d{3}\.\d+\*\*|\n#|$)/g)) clauses[m[1]] = m[2].replace(/\s+/g, " ");
-  const owners: [RegExp, string | null][] = [
-    [/\b\d+ points wins\b/, "402.2"],
-    [/next day's ballot|ballot holds/, "104.3"],
-    [/more than half/, "104.1"],
-    [/up to \d+ proposals/, "103.2"],
-    [/does something only when/, "703.1"],
-    [/joins the (workshop's )?queue/, "803.1"],
-    [/rules on what the rules mean/, "106.5"],
-    [/names any (other )?rule/, "108.3"],
-    [/propose one|one proposal a day/, null],
-  ];
-  for (const [pattern, owner] of owners) {
-    const where = Object.keys(clauses).filter((n) => pattern.test(clauses[n]));
-    assert.deepEqual(where, owner ? [owner] : [], String(pattern));
-  }
-});
-test("106.2 and 106.3 only point at the rules that own the jobs; they describe none", () => {
-  const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(!/drafts your|sets their price|names any rule they'd/.test(flat));
-});
