@@ -6,7 +6,7 @@ import { SHARED_TILES, chartedAround, defineRule, effects, refuse, withinSteps }
 
 export default defineRule({
   rule: 504,
-  /** @rule 504.2, 202.2 */
+  /** @rule 504.2, 602.2, 202.2 */
   actionAllowed(ctx, actor, action) {
     if (action.kind !== "move" || !action.to) return null;
     const to = action.to;
@@ -18,7 +18,7 @@ export default defineRule({
       return refuse(`That is not within ${distance} step${distance === 1 ? "" : "s"} of you.`, 400);
     }
     if (!ctx.tiles.has(to.x, to.y, to.z)) return refuse("That tile is not charted yet, so you cannot move there.", 400);
-    if (!SHARED_TILES && ctx.players.some((o) => o.ref !== actor.ref && o.x === to.x && o.y === to.y && o.z === to.z)) {
+    if (!SHARED_TILES && (ctx.players.some((o) => o.ref !== actor.ref && o.x === to.x && o.y === to.y && o.z === to.z) || ctx.creatures.some((c) => c.x === to.x && c.y === to.y && c.z === to.z))) {
       return refuse("Another piece is standing there.", 409);
     }
     return null;
