@@ -15,5 +15,9 @@
   "workshop.price_ceiling": 25,
   "gremlin.thread_replies_per_day": 20,
   "starling.messages_per_day": 60,
-  "eras.points_to_win": 100
+  "eras.points_to_win": 100,
+  "hearts.start": 3,
+  "creatures.appear_steps": 3,
+  "creatures.bite": 1,
+  "death.ghost_days": 3
 }

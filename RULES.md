@@ -40,12 +40,12 @@ clause or a rule, or changing only a setting, is not refused.
 **103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
 
 ### 104 Voting [u]
-**104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of all players
-vote yes. Unanimous: every player votes yes. Not voting counts as no, except on the Champion's change (402.4).
+**104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of the players who may
+vote (104.2) vote yes. Unanimous: every one of them votes yes. Not voting counts as no, except on the Champion's change (402.4).
 
-**104.2** The players who may vote on a day, and who count for what a vote needs, are the players when the day starts.
+**104.2** The players who may vote on a day, and who count for what a vote needs, are the living players (603.1) when the day starts.
 
-**104.3** Each day's ballot holds the proposals confirmed the day before. Every player, the proposer included, may vote yes or no on each one until midnight, and may change their vote until then. The player who makes the Champion's change doesn't vote on it (402.4).
+**104.3** Each day's ballot holds the proposals confirmed the day before. Every player who may vote (104.2), the proposer included, may vote yes or no on each one until midnight, and may change their vote until then. The player who makes the Champion's change doesn't vote on it (402.4).
 
 **104.4** Until midnight nobody sees how anyone else voted, or any total. During the day everyone can see who has voted
 on a proposal, and how many have. After midnight every vote is shown.
@@ -140,7 +140,7 @@ gives way.
 **201.1** A game has at most 8 players. [setting: max_players]
 
 ### 202 Your turn [u]
-**202.1** The game is played one day at a time (rule 203). Each day, every player gets one turn. Everyone plays the
+**202.1** The game is played one day at a time (rule 203). Each day, every living player (603.1) and every Ghost (604.1) gets one turn. Everyone plays the
 same day at the same time; there is no order of play.
 
 **202.2** On your turn you can move your piece 1 space in any direction, diagonals included [setting: turn.move_distance], and make proposals (103.2). You can do both, in either order, and you move at most once a day.
@@ -149,7 +149,7 @@ same day at the same time; there is no order of play.
 
 **202.4** A player may end their turn at any time. Ending is final: after it they can't move, propose, withdraw a proposal or vote until the next day, and what they hadn't done is skipped.
 
-**202.5** Rules may add more things to do on a turn.
+**202.5** Only living players (603.1) can vote or make proposals. A dead player can't move, but a Ghost can (604.1).
 
 ### 203 Days [u]
 **203.1** A day runs from midnight to midnight in the game's time zone. [setting: game.timezone]
@@ -180,12 +180,21 @@ midnight in the old zone.
 
 **402.3** When a player wins the Era (402.2), the Era ends that night. Everyone's points go back to 0, and the next Era starts the next day. The Era's final scores stay in the history. The winner is the Champion until someone else wins an Era. The Champion names the next Era.
 
-**402.4** Once in each Era, the Champion can make one change of their own. It can change any rule a proposal can change, one with a unanimous mark included. It goes on the ballot like any proposal (104.3), except as 103.2 and 104.3 say. It takes effect unless every other player votes against it. Not voting doesn't count as against. If there are no other players, it takes effect. A change that is withdrawn or not applied (107.7) doesn't count.
+**402.4** Once in each Era, the Champion can make one change of their own. It can change any rule a proposal can change, one with a unanimous mark included. It goes on the ballot like any proposal (104.3), except as 103.2 and 104.3 say. It takes effect unless every other player who may vote (104.2) votes against it. Not voting doesn't count as against. If there is no such player, it takes effect. A change that is withdrawn or not applied (107.7) doesn't count.
 
 ### 403 Paradox [m]
 **403.1** If the rules are changed so that further play is impossible,
-the first player who is unable to complete a turn wins. This rule takes
+the first living player (603.1) who is unable to complete a turn wins. This rule takes
 precedence over every other rule about winning. (Suber's rule 213.)
+
+### 404 How the game ends [m]
+**404.1** The game ends in one of the ways in this rule. Once it has ended, nobody can play: there are no more turns, votes, proposals or nights.
+
+**404.2** Paradox: when play becomes impossible, the game ends, and the player 403.1 names wins.
+
+**404.3** Last one standing: when a night's deaths leave one living player (603.1), the game ends badly. Nobody wins, and that player becomes the King of Ghosts.
+
+**404.4** Everyone dead: when a night's deaths leave no living player, the game ends and nobody wins.
 
 ## 500. The board
 
@@ -211,6 +220,40 @@ centered on the origin. [setting: board.island]
 ### 505 New players [m]
 **505.1** A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.1) is already charted.
+
+## 600. Hearts and creatures
+
+### 601 Hearts [m]
+**601.1** You start with 3 hearts. [setting: hearts.start] You can't have more hearts than you started with.
+
+**601.2** A creature has the hearts its catalog entry gives it. A creature with no hearts in the catalog can't lose any.
+
+**601.3** A player or creature that reaches 0 hearts dies (603).
+
+### 602 Hostile creatures [m]
+**602.1** A creature's temper is hostile or neutral. A creature with no temper in the catalog is neutral. Only hostile creatures move and bite.
+
+**602.2** A creature on the board is a piece (504.2). A step is 1 tile in any direction, diagonals included. Next to means 1 step away.
+
+**602.3** At the end of a day on which no proposal was applied, one hostile creature from the catalog, picked at random, appears on a random unoccupied charted tile at least 3 steps from every living player. [setting: creatures.appear_steps] If no tile qualifies, none appears.
+
+**602.4** Each night, after 602.3, each hostile creature that isn't resting takes 1 step toward the nearest living player, onto an unoccupied charted tile that brings it closer. Creatures move one at a time, in the order they appeared. A creature already next to a living player, or with no such tile, stays where it is. Ties are broken at random.
+
+**602.5** Then each hostile creature that isn't resting bites every living player next to it, taking 1 heart from each. [setting: creatures.bite] Creatures bite in the order they appeared. A creature that bites rests the next night: it doesn't move or bite.
+
+### 603 Death [m]
+**603.1** A player who dies is dead. They stay on the player list with their points, and their piece stays where they died. Every player who isn't dead is living.
+
+**603.2** A creature that dies leaves the board.
+
+**603.3** At the end of the third day after a player died, they rise as a Ghost in their colour, where their piece lies. [setting: death.ghost_days] A Ghost is still dead.
+
+**603.4** A living player next to a dead player's piece (602.2) can give that player 1 of their own hearts before the dead player rises as a Ghost (603.3). The giver must keep at least 1 heart. The dead player is living again, with 1 heart, where their piece stands. Giving a heart doesn't use your move, and you can do it once a day.
+
+### 604 Ghosts [m]
+**604.1** A Ghost has a turn each day (202.1). Its moves chart tiles like anyone's (504.1).
+
+**604.2** A Ghost's piece replaces the player's piece, and the player can't change it.
 
 ## 700. Making things
 

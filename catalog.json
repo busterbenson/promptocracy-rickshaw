@@ -4,9 +4,7 @@
     "name": "Blob",
     "kind": "creature",
     "attrs": {
-      "hearts": 3
-    },
-    "flavor": {
+      "hearts": 3,
       "temper": "hostile"
     }
   }

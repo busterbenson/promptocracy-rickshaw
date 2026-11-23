@@ -4,11 +4,11 @@ import { SHARED_TILES, chartOffsets, defineRule } from "promptocracy/engine";
 
 export default defineRule({
   rule: 505,
-  /** @rule 505 */
+  /** @rule 505, 602.2 */
   spawnTile(ctx, candidates) {
     const shape = chartOffsets(ctx.settings["board.chart_radius"]);
     const open = candidates.filter((t) =>
-      (SHARED_TILES || !ctx.players.some((p) => p.x === t.x && p.y === t.y && p.z === t.z)) &&
+      (SHARED_TILES || !(ctx.players.some((p) => p.x === t.x && p.y === t.y && p.z === t.z) || ctx.creatures.some((c) => c.x === t.x && c.y === t.y && c.z === t.z))) &&
       shape.every(([dx, dy]) => ctx.tiles.has(t.x + dx, t.y + dy, t.z)));
     if (!open.length) return null;
     return open[Math.floor(ctx.rng() * open.length)];
