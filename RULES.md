@@ -293,9 +293,11 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.3** A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason.
 
-**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2).
+**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. A commission that makes no rule and adds no new attribute costs 0 points. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2).
 
 **801.5** You can reopen a refused or failed commission as a draft and confirm it again (103.1).
+
+**801.6** Each ticket has its own conversation with Gremlin. He knows only what was said on that ticket, and you see only that ticket's conversation while you draft it. Your messages to him still count together toward the day's limit (106.7).
 
 ### 802 Limits [m]
 **802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
