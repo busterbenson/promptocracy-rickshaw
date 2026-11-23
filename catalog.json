@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "C1",
+    "name": "Blob",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "hostile"
+    }
+  }
+]
