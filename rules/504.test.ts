@@ -74,3 +74,16 @@ test("504: the platform constants the text relies on: diagonals count as a step,
   assert.equal(DIAGONAL_MOVES, true);
   assert.equal(SHARED_TILES, false);
 });
+
+test("504: nobody moves onto a creature, a dead piece or a Ghost", () => {
+  const me = { ref: "a", x: 0, y: 0 };
+  const players = [me, { ref: "d", x: 1, y: 0, state: "dead", deadDay: 1 }, { ref: "g", x: 0, y: 1, state: "ghost", deadDay: 1 }];
+  const ctx = makeCtx({ players, creatures: [{ id: 1, entry: "C1", x: 1, y: 1, z: 0, hearts: 3, resting: false }] });
+  for (const [x, y] of [[1, 0], [0, 1], [1, 1]]) assert.equal(rule.actionAllowed!(ctx, { ref: "a" }, { kind: "move", to: { x, y, z: 0 } })?.status, 409, `${x},${y}`);
+  assert.equal(rule.actionAllowed!(ctx, { ref: "a" }, { kind: "move", to: { x: -1, y: 0, z: 0 } }), null);
+});
+test("504: a Ghost's move charts tiles like anyone's (504.1)", () => {
+  const ctx = makeCtx({ players: [{ ref: "g", x: 0, y: 0, state: "ghost", deadDay: 1 }] });
+  const fx = rule.afterAction!(ctx, { ref: "g" }, { kind: "move", to: { x: 1, y: 0, z: 0 } });
+  assert.equal(fx[0].type, "chart");
+});
