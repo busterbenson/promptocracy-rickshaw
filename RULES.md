@@ -293,7 +293,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.3** A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason.
 
-**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. A commission with nothing to build costs 0 points. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2).
+**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. A commission that makes no rule and adds no new attribute costs 0 points. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2).
 
 **801.5** You can reopen a refused or failed commission as a draft and confirm it again (103.1).
 
