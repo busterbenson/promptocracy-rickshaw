@@ -312,6 +312,8 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 804 Discussion [m]
 **804.1** Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day].
 
+**804.2** A ticket's discussion opens once it's confirmed. While it's a draft, you talk it through with Gremlin (801.6).
+
 ## 900. Actions
 
 ### 901 Grant points [m]
