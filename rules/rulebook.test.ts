@@ -51,12 +51,14 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   assert.ok(flat.includes("## 800. The workshop"));
   for (const n of ["801", "802", "803", "804"]) assert.equal(marks(rulesMd)[n], "majority", n);
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 802, 803, 804]);
-  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "802.1", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "801.7", "801.8", "802.1", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(flat.includes("A commission is a proposal like any other (103): the way a catalog entry comes in or changes (701.2), or a new rule that makes an entry do something."));
   assert.ok(flat.includes("He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows."));
   assert.ok(flat.includes("A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason."));
   assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft and confirm it again (103.1)."));
+  assert.ok(flat.includes("**801.7** Gremlin sets a commission's nights, price, running cost, tasks and the rules it makes, and you change them by talking to him. You can lock it in once he has drafted it (103.1)."));
+  assert.ok(flat.includes("**801.8** You can discard your commission while it's still a draft."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
   assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Starling or Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));

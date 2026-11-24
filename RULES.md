@@ -299,6 +299,10 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.6** Each ticket has its own conversation with Gremlin. He knows only what was said on that ticket, and you see only that ticket's conversation while you draft it. Your messages to him still count together toward the day's limit (106.7).
 
+**801.7** Gremlin sets a commission's nights, price, running cost, tasks and the rules it makes, and you change them by talking to him. You can lock it in once he has drafted it (103.1).
+
+**801.8** You can discard your commission while it's still a draft.
+
 ### 802 Limits [m]
 **802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
 
