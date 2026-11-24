@@ -83,7 +83,7 @@ the draft that was voted on. The draft that was voted on is the one applied. If 
 the moderator tells the proposer what differs, so they can propose a fix.
 
 **106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1).
-Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60
+Gremlin answers up to 100 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 100
 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message.
 
 ### 107 The night [u]
