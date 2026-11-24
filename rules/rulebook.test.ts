@@ -69,13 +69,13 @@ test("Starling's and Gremlin's rules: 106.2 to 106.4 and 106.7, the settings the
   // 107.6, checked in two pieces: the bundler's lint refuses the word for Node's global object anywhere in game code, strings included
   assert.ok(flat.includes("**107.6** The moderator has until 3:00 am to"));
   assert.ok(flat.includes("the day; a passed proposal not applied by then is not applied (rule 107.7). The changes it made must be live by 4:00 am; a change not live by then is not applied either."));
-  assert.ok(flat.includes("**106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1). Gremlin answers up to 30 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 60 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message."));
+  assert.ok(flat.includes("**106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1). Gremlin answers up to 100 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 100 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]."));
   assert.ok(flat.includes("**106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to `rulings/`. The moderator makes rulings at night, after applying the day's proposals, and answers where the question was asked. A ruling doesn't change any rule. Earlier rulings are precedent: they bind the moderator until a passed proposal changes the ruling or a rule it relies on, or an appeal succeeds (301)."));
-  assert.equal(settings["starling.messages_per_day"], 60);
+  assert.equal(settings["starling.messages_per_day"], 100);
   assert.equal(settings["gremlin.thread_replies_per_day"], 20);
   assert.ok(flat.includes("up to 25 points [setting: workshop.price_ceiling]"));
-  assert.equal(settings["gremlin.messages_per_day"], 30);
+  assert.equal(settings["gremlin.messages_per_day"], 100);
   assert.equal(settings["workshop.price_ceiling"], 25);
   assert.ok(flat.includes("**802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game."));
 });
