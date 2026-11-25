@@ -72,9 +72,9 @@ test("every module that names an action type is a rule of block 900 (103.5: only
 });
 test("103.5, 103.7, 103.8: the core text for actions", () => {
   assert.ok(flat.includes("**103.5** An action is a proposal that does one thing the game's rules already allow, and changes no rule. Only the action types in block 900 exist."));
-  assert.ok(flat.includes("You tell Starling what you want, she drafts it (106.2), and you confirm it like any proposal (103.1). The draft shows what it will do."));
+  assert.ok(flat.includes("You tell Gremlin what you want, he drafts it (106.2), and you confirm it like any proposal (103.1). The draft shows what it will do."));
   assert.ok(!flat.includes("You pick the type"));
-  assert.ok(flat.includes("**106.2** Starling moderates the rules by day (103.1, 103.5, 108.3)."));
+  assert.ok(flat.includes("**106.2** Gremlin moderates the rules by day (103.1, 103.5, 108.3)."));
   assert.ok(flat.includes("**901.3** The points are given when the action is applied (103.8)."));
   assert.ok(flat.includes("**103.7** An action needs the votes its own rule asks for (105.1) or the votes of the strictest rule it touches, whichever is stricter."));
   assert.ok(flat.includes("**103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2)."));
