@@ -58,23 +58,25 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   assert.ok(flat.includes("It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2)."));
   assert.ok(flat.includes("You can reopen a refused or failed commission as a draft and confirm it again (103.1)."));
   assert.ok(flat.includes("**801.7** Gremlin sets a commission's nights, price, running cost, tasks and the rules it makes, and you change them by talking to him. You can lock it in once he has drafted it (103.1)."));
+  assert.ok(flat.includes("**801.6** Each ticket has its own conversation with Gremlin, and what you say to him outside any ticket is one more."));
   assert.ok(flat.includes("**801.8** You can discard your commission while it's still a draft."));
   assert.ok(flat.includes("A commission joins the workshop's queue when it is paid for, in the order paid."));
-  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Starling or Gremlin or end their turn, on the site or through an AI client (rule 204)."));
+  assert.ok(flat.includes("nobody can move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client (rule 204)."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion."));
 });
-test("Starling's and Gremlin's rules: 106.2 to 106.4 and 106.7, the settings the site reads (the message caps, the thread-reply cap, the price ceiling), and the limit the workshop can't pass (802.1)", () => {
+test("Gremlin's rules: 106.1 to 106.4 and 106.7, the settings the site reads (the message caps, the thread-reply cap, the price ceiling), and the limit the workshop can't pass (802.1)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("**106.3** Gremlin moderates the workshop by day (801, 804)."));
-  assert.ok(flat.includes("**106.2** Starling moderates the rules by day (103.1, 103.5, 108.3). She answers questions about the rules by quoting them."));
-  assert.ok(flat.includes("**106.4** Starling and Gremlin can't change a rule, rule on what one means, or change an approved commission. They pass anything they can't settle to Chalant."));
+  assert.ok(flat.includes("**106.1** The game has two moderators: Chalant and Gremlin (106.2, 106.3). Chalant runs the game (107, 106.5). In these rules, \"the moderator\" on its own means Chalant."));
+  assert.ok(flat.includes("**106.2** Gremlin moderates the rules by day (103.1, 103.5, 108.3). He answers questions about the rules by quoting them."));
+  assert.ok(flat.includes("**106.4** Gremlin can't change a rule, rule on what one means, or change an approved commission. He passes anything he can't settle to Chalant."));
   // 107.6, checked in two pieces: the bundler's lint refuses the word for Node's global object anywhere in game code, strings included
   assert.ok(flat.includes("**107.6** The moderator has until 3:00 am to"));
   assert.ok(flat.includes("the day; a passed proposal not applied by then is not applied (rule 107.7). The changes it made must be live by 4:00 am; a change not live by then is not applied either."));
-  assert.ok(flat.includes("**106.7** Starling and Gremlin talk only with players, and only once the game has started (day 1, rule 203.1). Gremlin answers up to 100 of your messages a day [setting: gremlin.messages_per_day], and Starling up to 100 [setting: starling.messages_per_day]. At the limit they tell you, and they're back at midnight. Each redraw counts as a message."));
+  assert.ok(flat.includes("**106.7** Gremlin talks only with players, and only once the game has started (day 1, rule 203.1). He answers up to 100 of your messages a day [setting: gremlin.messages_per_day]. At the limit he tells you, and he's back at midnight. Each redraw counts as a message."));
   assert.ok(flat.includes("Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day]."));
   assert.ok(flat.includes("**106.5** The moderator rules on what the rules mean. Every ruling names the rules it relies on and is written to `rulings/`. The moderator makes rulings at night, after applying the day's proposals, and answers where the question was asked. A ruling doesn't change any rule. Earlier rulings are precedent: they bind the moderator until a passed proposal changes the ruling or a rule it relies on, or an appeal succeeds (301)."));
-  assert.equal(settings["starling.messages_per_day"], 100);
+  assert.equal(settings["starling.messages_per_day"], undefined);
   assert.equal(settings["gremlin.thread_replies_per_day"], 20);
   assert.ok(flat.includes("up to 25 points [setting: workshop.price_ceiling]"));
   assert.equal(settings["gremlin.messages_per_day"], 100);
