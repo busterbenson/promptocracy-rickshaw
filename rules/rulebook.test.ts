@@ -105,7 +105,7 @@ test("402 is Eras: reaching the number of points wins an Era, ties by night orde
 test("103, 104 and 105 name the one exception for the Champion's change (402.4), so 108.1 does not set the core rule against it", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("The Champion's change (402.4) doesn't count toward the limit."));
-  assert.ok(flat.includes("Not voting counts as no, except on the Champion's change (402.4)."));
+  assert.ok(flat.includes("Not voting counts neither for nor against, and the Champion's change is counted by 402.4."));
   assert.ok(flat.includes("The player who makes the Champion's change doesn't vote on it (402.4)."));
   assert.ok(flat.includes("The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4."));
 });
@@ -204,7 +204,8 @@ test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the t
     assert.equal(settings[k], v);
     assert.ok(flat.includes(`[setting: ${k}]`), k);
   }
-  assert.ok(flat.includes("Majority: more than half of the players who may vote (104.2) vote yes. Unanimous: every one of them votes yes."));
+  assert.ok(flat.includes("counted among the players who voted on it. Majority: more than half of them vote yes. Unanimous: every one of them votes yes. A proposal nobody votes on fails."));
+  assert.ok(flat.includes("**105.4** A proposal's mark is set when it is confirmed, from the marks in effect then."));
   assert.ok(flat.includes("are the living players (603.1) when the day starts."));
   assert.ok(flat.includes("Every player who may vote (104.2), the proposer included, may vote"));
   assert.ok(flat.includes("Each day, every living player (603.1) and every Ghost (604.1) gets one turn."));

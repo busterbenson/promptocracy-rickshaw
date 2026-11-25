@@ -40,10 +40,11 @@ clause or a rule, or changing only a setting, is not refused.
 **103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
 
 ### 104 Voting [u]
-**104.1** A proposal passes if it gets the votes its mark asks for (rule 105). Majority: more than half of the players who may
-vote (104.2) vote yes. Unanimous: every one of them votes yes. Not voting counts as no, except on the Champion's change (402.4).
+**104.1** A proposal passes if it gets the votes its mark asks for (rule 105), counted among the players who voted on it.
+Majority: more than half of them vote yes. Unanimous: every one of them votes yes. A proposal nobody votes on fails. Not voting
+counts neither for nor against, and the Champion's change is counted by 402.4.
 
-**104.2** The players who may vote on a day, and who count for what a vote needs, are the living players (603.1) when the day starts.
+**104.2** The players who may vote on a day are the living players (603.1) when the day starts.
 
 **104.3** Each day's ballot holds the proposals confirmed the day before. Every player who may vote (104.2), the proposer included, may vote yes or no on each one until midnight, and may change their vote until then. The player who makes the Champion's change doesn't vote on it (402.4).
 
@@ -59,7 +60,7 @@ on a proposal, and how many have. After midnight every vote is shown.
 
 **105.3** Changing a mark counts as changing that rule, so it needs the votes of its current mark.
 
-**105.4** The votes a proposal needs are set when it is confirmed, from the marks in effect then.
+**105.4** A proposal's mark is set when it is confirmed, from the marks in effect then.
 
 **105.5** Rules marked unanimous are the core rules.
 
