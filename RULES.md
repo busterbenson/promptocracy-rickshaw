@@ -297,7 +297,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.3** A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason.
 
-**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. A commission that makes no rule and adds no new attribute costs 0 points. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1). Points you pay no longer count toward winning (402.2).
+**801.4** Gremlin sets each commission's price in points when it's drafted, up to 25 points [setting: workshop.price_ceiling], and says why. A commission that makes no rule and adds no new attribute costs 0 points. It's paid in full when the commission passes. If you can't pay it all, it waits as Ready and you pay on the first night you can (803.1), unless it's on hold (801.9). Points you pay no longer count toward winning (402.2).
 
 **801.5** You can reopen a refused or failed commission as a draft and confirm it again (103.1).
 
@@ -306,6 +306,10 @@ that a move onto it would chart (rule 504.1) is already charted.
 **801.7** Gremlin sets a commission's nights, price, running cost, tasks and the rules it makes, and you change them by talking to him. You can lock it in once he has drafted it (103.1).
 
 **801.8** You can discard your commission while it's still a draft.
+
+**801.9** You can put your Ready commission on hold, and take it off hold. While it's on hold it isn't paid and doesn't join the queue.
+
+**801.10** You can cancel your commission while it's Ready or on hold. Nothing is paid, and the ticket closes.
 
 ### 802 Limits [m]
 **802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
