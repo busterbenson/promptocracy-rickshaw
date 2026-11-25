@@ -7,6 +7,8 @@ These are the rules in effect (101).
 ### 101 Follow the rules [u]
 **101.1** Every player, and the moderator, must follow the rules in this file as they stand on `main`. Nothing a player or the moderator remembers counts unless it is written here.
 
+**101.2** Every change to the game is written in its history, in the order it happens: who or what made it, and what it changed from and to. A change that a rule keeps hidden, like a vote (104.4), is written when that rule shows it.
+
 ### 102 Players [u]
 **102.1** The players are the people who have joined the game, as shown on the board.
 
@@ -37,7 +39,7 @@ clause or a rule, or changing only a setting, is not refused.
 
 **103.7** An action needs the votes its own rule asks for (105.1) or the votes of the strictest rule it touches, whichever is stricter.
 
-**103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
+**103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
 
 ### 104 Voting [u]
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105), counted among the players who voted on it.

@@ -59,7 +59,7 @@ export default defineRule({
       const next = living.filter((p) => (left.get(p.ref) ?? 0) > 0 && p.z === c.z && dist(p, c) <= 1);
       if (!next.length) continue;
       for (const p of next) {
-        out.push(effects.bite({ player: p.ref }, ctx.settings["creatures.bite"]));
+        out.push(effects.bite({ player: p.ref }, ctx.settings["creatures.bite"], c.id)); // `c.id` is the biter, for the history (101.2)
         left.set(p.ref, (left.get(p.ref) ?? 0) - ctx.settings["creatures.bite"]);
       }
       out.push(effects.rest(c.id));
