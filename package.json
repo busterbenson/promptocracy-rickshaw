@@ -7,6 +7,6 @@
     "test": "node --test \"rules/*.test.ts\""
   },
   "devDependencies": {
-    "promptocracy": "github:busterbenson/promptocracy#9123e4ea84fa1d28bf0345deee5fad83f256cf8b"
+    "promptocracy": "github:busterbenson/promptocracy#4648eb4ed976d9401d727a04fe79d7b4ba7f1472"
   }
 }
