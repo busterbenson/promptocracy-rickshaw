@@ -181,9 +181,17 @@ test("no rule has text of its own: the first line under each title is one of its
 });
 test("the rules that had text under their title now state it as clause 1, word for word", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
-  for (const [n, start] of [["101", "Every player, and the moderator, must follow the rules"], ["201", "A game has at most 8 players."], ["204", "A player may connect an AI client"], ["301", "Any player may appeal a ruling within 24 hours"], ["401", "A player whose proposal passes and is applied gets 10 points when it is applied (rule 107)."], ["403", "If the rules are changed so that further play is impossible,"], ["501", "The grid is infinite."], ["502", "Tiles are named row first"], ["503", "The game starts with an 8x8 charted island"], ["505", "A new player's piece starts on a random unoccupied charted tile"]]) {
-    assert.ok(flat.includes(`**${n}.1** ${start}`), n);
-  }
+  // One line per rule, so a passed proposal that rewords one of them can update only its own line (the moderator's night may change a line that names the rule it changes).
+  assert.ok(flat.includes("**101.1** Every player, and the moderator, must follow the rules"), "101");
+  assert.ok(flat.includes("**201.1** A game has at most 8 players."), "201");
+  assert.ok(flat.includes("**204.1** A player may connect an AI client"), "204");
+  assert.ok(flat.includes("**301.1** Any player may appeal a ruling within 24 hours"), "301");
+  assert.ok(flat.includes("**401.1** A player whose proposal passes and is applied gets 10 points when it is applied (rule 107)."), "401");
+  assert.ok(flat.includes("**403.1** If the rules are changed so that further play is impossible,"), "403");
+  assert.ok(flat.includes("**501.1** The grid is infinite."), "501");
+  assert.ok(flat.includes("**502.1** Tiles are named row first"), "502");
+  assert.ok(flat.includes("**503.1** The game starts with an 8x8 charted island"), "503");
+  assert.ok(flat.includes("**505.1** A new player's piece starts on a random unoccupied charted tile"), "505");
 });
 test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 and 504.2, 802 has 802.1, 705 has only 705.1", () => {
   const flat = rulesMd.replace(/\s+/g, " ");

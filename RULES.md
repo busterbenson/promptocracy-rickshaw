@@ -113,6 +113,8 @@ the deadline in rule 107.6. A proposal that runs over its budget is not applied 
 **107.8** When a day is processed, the moderator tags the game's files with that day's number, so the rules in effect
 on any day can be read back.
 
+**107.9** If a passed proposal can't be applied as written because of how Starling or Gremlin wrote it (formatting, numbering, a missing setting tag or rule citation), the moderator makes that repair and applies it. A repair never changes what the proposal says. Each repair is listed in the night's report and can be appealed (301).
+
 ### 108 When rules conflict [u]
 **108.1** Two rules conflict when they can't both be followed. A core rule prevails over a majority rule. Between two
 rules of the same kind, the older one prevails: the one added first. Amending or moving a rule doesn't make it newer.
