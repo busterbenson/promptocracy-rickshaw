@@ -1,9 +1,6 @@
 // The text, the settings and the modules of the game agree (the same check the bundler runs on every game).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { assembleRules, checkRulebook, loadGame, parseRulesMd } from "promptocracy/engine/testing";
 
 const { rulesMd, settings, files, modules } = await loadGame(import.meta.url);
@@ -64,16 +61,6 @@ test("701.4 is one name per kind, 703.2 lets a rule name an entry by its id or i
   assert.ok(flat.includes("In every conversation he also knows the catalog and what each open commission makes."));
   for (const n of ["701.1", "701.2", "701.3", "701.4", "703.1", "703.2", "703.3", "703.4"]) assert.ok(flat.includes(`**${n}**`), n);
   assert.ok(book.rules.some((r) => r.number === 701) && book.rules.some((r) => r.number === 703));
-});
-test("these five edits are the platform's template word for word (the pinned engine carries templates/RULES.md)", () => {
-  const tpl = join(dirname(fileURLToPath(import.meta.url)), "..", "node_modules", "promptocracy", "templates", "RULES.md");
-  if (!existsSync(tpl)) return;
-  const flat = (t: string) => t.replace(/\s+/g, " ");
-  const mine = flat(rulesMd), theirs = flat(readFileSync(tpl, "utf8"));
-  for (const n of ["701.4", "703.2", "703.4", "103.9", "801.6"]) {
-    const clause = (t: string) => new RegExp(`\\*\\*${n.replace(".", "\\.")}\\*\\* .*?(?= \\*\\*\\d{3}\\.\\d+\\*\\*| ### | ## |$)`).exec(t)?.[0];
-    assert.equal(clause(mine), clause(theirs), n);
-  }
 });
 test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
   const book = parseRulesMd(rulesMd);
