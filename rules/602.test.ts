@@ -53,6 +53,7 @@ test("602: bites every adjacent living player by creatures.bite, then rests; the
   const e = night({ players: [at("a", 1, 2), at("b", 2, 1), at("d", 0, 1, "dead"), at("g", 0, 0, "ghost")], creatures: [c], settings: { "creatures.bite": 2 } }, [1]);
   assert.deepEqual(e.map((x) => x.type), ["bite", "bite", "rest"]);
   assert.deepEqual(e.filter((x) => x.type === "bite").map((x) => [x.target.player, x.hearts]), [["a", 2], ["b", 2]]);
+  assert.ok(e.filter((x) => x.type === "bite").every((x) => x.by === c.id), "each bite names the creature that bit (101.2)");
   assert.deepEqual(night({ players: [at("a", 1, 2)], creatures: [{ ...c, resting: true }] }, [1]), []);
 });
 test("602: neutral creatures never move or bite", () => {
