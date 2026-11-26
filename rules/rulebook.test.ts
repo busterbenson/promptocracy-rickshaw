@@ -45,6 +45,13 @@ test("103.2 lets you confirm up to 3 proposals a day, as the setting proposals.p
   assert.ok(flat.includes("A withdrawn proposal doesn't count toward the limit (103.2)."));
   assert.ok(!/one proposal a day|one proposal for the day/i.test(flat));
 });
+test("103.9 is the rule check before lock-in, 107.7 offers up to three fixes and says a redraft is a new proposal, 108.3 says which rule prevails (the site checks, offers and says exactly this)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it."));
+  assert.ok(flat.indexOf("**103.8**") < flat.indexOf("**103.9**") && flat.indexOf("**103.9**") < flat.indexOf("### 104"));
+  assert.ok(flat.includes("with the moderator's reason and up to three changes that would fix it, or, when there are none, a suggestion such as splitting it into smaller proposals or simplifying it. The proposer can propose it again on a later day, as it was or with one of those changes (103.1). It is a new proposal (103.2)."));
+  assert.ok(flat.includes("When drafting, Gremlin names any other rule the proposal would conflict with, and which one would prevail (108.1), so the proposer can change that rule too."));
+});
 test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");

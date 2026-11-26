@@ -39,6 +39,8 @@ clause or a rule, or changing only a setting, is not refused.
 
 **103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
 
+**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it.
+
 ### 104 Voting [u]
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105), counted among the players who voted on it.
 Majority: more than half of them vote yes. Unanimous: every one of them votes yes. A proposal nobody votes on fails. Not voting
@@ -107,7 +109,7 @@ the deadline in rule 107.6. A proposal that runs over its budget is not applied 
 **107.6** The moderator has until 3:00 am to process the day; a passed proposal not applied by then is not applied
 (rule 107.7). The changes it made must be live by 4:00 am; a change not live by then is not applied either.
 
-**107.7** When a passed proposal is not applied, it goes back to its proposer with the moderator's reason and a suggestion, such as splitting it into smaller proposals or simplifying it. The proposer can propose it again on a later day.
+**107.7** When a passed proposal is not applied, it goes back to its proposer with the moderator's reason and up to three changes that would fix it, or, when there are none, a suggestion such as splitting it into smaller proposals or simplifying it. The proposer can propose it again on a later day, as it was or with one of those changes (103.1). It is a new proposal (103.2).
 
 **107.8** When a day is processed, the moderator tags the game's files with that day's number, so the rules in effect
 on any day can be read back.
@@ -123,7 +125,7 @@ Between rules added at the same time, like the starter rules, the lower number p
 majority rule can't prevail over a core rule.
 
 **108.3** A proposal doesn't conflict with the rules it changes. When drafting, Gremlin names any other rule the
-proposal would conflict with, so the proposer can change that rule too.
+proposal would conflict with, and which one would prevail (108.1), so the proposer can change that rule too.
 
 **108.4** If a passed proposal conflicts with a rule that prevails over it, it is not applied, and the reason names
 that rule (rule 107.7). If the proposal prevails, it is applied, and the rule it overrides gets a note saying where it
