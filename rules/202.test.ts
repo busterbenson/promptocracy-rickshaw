@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { makeCtx } from "promptocracy/engine/testing";
 import rule from "./202.ts";
+import r504 from "./504.ts";
 
 const me = { ref: "a", x: 0, y: 0 };
 
@@ -14,6 +15,14 @@ test("202: a second move the same day is refused with a 409", () => {
 });
 test("202: having moved does not stop a proposal", () => {
   assert.equal(rule.actionAllowed!(makeCtx({ players: [me], turn: { moved: true } }), { ref: "a" }, { kind: "propose" }), null);
+});
+
+test("202.2: with the move distance at 2 you can move 2 spaces, diagonals included, but not 3", () => {
+  const ask = (to: any) => r504.actionAllowed!(makeCtx({ players: [me], settings: { "turn.move_distance": 2 } }), { ref: "a" }, { kind: "move", to });
+  assert.equal(ask({ x: 0, y: 2, z: 0 }), null);
+  assert.equal(ask({ x: 2, y: 2, z: 0 }), null);
+  assert.equal(ask({ x: -2, y: -1, z: 0 }), null);
+  assert.match(ask({ x: 3, y: 0, z: 0 })!.error, /not within 2 steps of you/);
 });
 
 test("202: a dead player can't move, propose or end their turn (603.1, 403)", () => {

@@ -145,7 +145,7 @@ gives way.
 **202.1** The game is played one day at a time (rule 203). Each day, every living player (603.1) and every Ghost (604.1) gets one turn. Everyone plays the
 same day at the same time; there is no order of play.
 
-**202.2** On your turn you can move your piece 1 space in any direction, diagonals included [setting: turn.move_distance], and make proposals (103.2). You can do both, in either order, and you move at most once a day.
+**202.2** On your turn you can move your piece 2 spaces in any direction, diagonals included [setting: turn.move_distance], and make proposals (103.2). You can do both, in either order, and you move at most once a day.
 
 **202.3** Every part of a turn is optional, and skipping one has no penalty.
 
