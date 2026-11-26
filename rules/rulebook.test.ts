@@ -47,10 +47,20 @@ test("103.2 lets you confirm up to 3 proposals a day, as the setting proposals.p
 });
 test("103.9 is the rule check before lock-in, 107.7 offers up to three fixes and says a redraft is a new proposal, 108.3 says which rule prevails (the site checks, offers and says exactly this)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.ok(flat.includes("**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it."));
+  assert.ok(flat.includes("**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1), entry an open commission makes (703.4) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it."));
   assert.ok(flat.indexOf("**103.8**") < flat.indexOf("**103.9**") && flat.indexOf("**103.9**") < flat.indexOf("### 104"));
   assert.ok(flat.includes("with the moderator's reason and up to three changes that would fix it, or, when there are none, a suggestion such as splitting it into smaller proposals or simplifying it. The proposer can propose it again on a later day, as it was or with one of those changes (103.1). It is a new proposal (103.2)."));
   assert.ok(flat.includes("When drafting, Gremlin names any other rule the proposal would conflict with, and which one would prevail (108.1), so the proposer can change that rule too."));
+});
+test("701.4 is one name per kind, 703.2 lets a rule name an entry by its id or its commission, 703.4 lets it name one that isn't built yet, 801.6 says he knows the catalog and the open commissions (the site reads exactly this)", () => {
+  const book = parseRulesMd(rulesMd);
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**701.4** No two entries of one kind share a name. A commission can't make an entry with the name of one in the catalog, or of one an open commission makes (801). It can use that one instead."));
+  assert.ok(flat.includes("**703.2** Rules use attributes, or name an entry by its id or by the commission that makes it (703.4)."));
+  assert.ok(flat.includes("**703.4** A rule can name an entry an open commission makes (801) before it is built, by that commission: \"the Flower (W4)\". Until the entry is in the catalog, the rule has nothing to act on."));
+  assert.ok(flat.includes("In every conversation he also knows the catalog and what each open commission makes."));
+  for (const n of ["701.1", "701.2", "701.3", "701.4", "703.1", "703.2", "703.3", "703.4"]) assert.ok(flat.includes(`**${n}**`), n);
+  assert.ok(book.rules.some((r) => r.number === 701) && book.rules.some((r) => r.number === 703));
 });
 test("block 800 is the workshop: majority, with exactly the clauses the platform's tickets implement", () => {
   const book = parseRulesMd(rulesMd);
@@ -164,7 +174,7 @@ test("block 700 is making things: majority, with the clauses the catalog impleme
   assert.ok(flat.includes("## 700. Making things"));
   for (const n of ["701", "702", "703", "704", "705"]) assert.equal(marks(rulesMd)[n], "majority", n);
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705]);
-  for (const clause of ["701.1", "701.2", "701.3", "702.1", "703.1", "703.2", "703.3", "704.1", "704.2", "704.3", "705.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  for (const clause of ["701.1", "701.2", "701.3", "701.4", "702.1", "703.1", "703.2", "703.3", "703.4", "704.1", "704.2", "704.3", "705.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(!flat.includes("**705.2**"));
   assert.ok(!/entries are numbered|entry number/i.test(flat));
   assert.ok(flat.includes("Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board."));
@@ -208,7 +218,7 @@ test("the rules that had text under their title now state it as clause 1, word f
 test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 and 504.2, 802 has 802.1, 705 has only 705.1", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(!flat.includes("you vote from the next day (104.2)"));
-  for (const gone of ["**102.5**", "**504.3**", "**701.4**", "**705.2**", "**802.2**"]) assert.ok(!flat.includes(gone), gone);
+  for (const gone of ["**102.5**", "**504.3**", "**705.2**", "**802.2**"]) assert.ok(!flat.includes(gone), gone);
   assert.ok(flat.includes("**504.1** When you move, every tile within 2 tiles of you is charted [setting: board.chart_radius], except the 4 corners of that square."));
   assert.ok(flat.includes("**504.2** You can only move onto a charted tile that no other piece stands on."));
   assert.ok(flat.includes("every tile that a move onto it would chart (rule 504.1) is already charted."));
