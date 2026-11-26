@@ -39,7 +39,7 @@ clause or a rule, or changing only a setting, is not refused.
 
 **103.8** A passed action is applied each night after the proposals that change rules, in proposal order (107.2). The history records its type and its details. An action whose type the rules no longer have, or whose details they no longer allow, is not applied (107.7).
 
-**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it.
+**103.9** Before you can lock a proposal in, Gremlin checks it against the rules. He names any other rule it would conflict with and which one prevails (108.3), and anything it relies on that no rule, catalog entry (701.1), entry an open commission makes (703.4) or record of the game provides. A proposal that relies on something the game doesn't have can't be locked in, and neither can one he couldn't check. He offers up to three changes that would fix it.
 
 ### 104 Voting [u]
 **104.1** A proposal passes if it gets the votes its mark asks for (rule 105), counted among the players who voted on it.
@@ -268,15 +268,19 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **701.3** An entry appears on the board only when a rule puts it there.
 
+**701.4** No two entries of one kind share a name. A commission can't make an entry with the name of one in the catalog, or of one an open commission makes (801). It can use that one instead.
+
 ### 702 Kinds [m]
 **702.1** Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board.
 
 ### 703 Attributes [m]
 **703.1** An attribute is a value an entry has, and it shows on the entry's card. An attribute does something only when a rule defines it: what it means and what values it can have.
 
-**703.2** Rules use attributes, not the names of entries.
+**703.2** Rules use attributes, or name an entry by its id or by the commission that makes it (703.4).
 
 **703.3** Only one rule can define an attribute.
+
+**703.4** A rule can name an entry an open commission makes (801) before it is built, by that commission: "the Flower (W4)". Until the entry is in the catalog, the rule has nothing to act on.
 
 ### 704 What each kind needs [m]
 **704.1** Some kinds need certain attributes. A creature needs hearts. An item needs the rule that gives it to you. A structure needs a size in tiles.
@@ -301,7 +305,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.5** You can reopen a refused or failed commission as a draft and confirm it again (103.1).
 
-**801.6** Each ticket has its own conversation with Gremlin, and what you say to him outside any ticket is one more. He knows only what was said in the conversation you're in, and you see only that one. Ask him for a commission outside a ticket and he opens one for it (801.2); ask him on a ticket for a rule change or an action that isn't part of it and he takes it outside. Your message goes with it. All your messages to him count together toward the day's limit (106.7).
+**801.6** Each ticket has its own conversation with Gremlin, and what you say to him outside any ticket is one more. He knows only what was said in the conversation you're in, and you see only that one. In every conversation he also knows the catalog and what each open commission makes. Ask him for a commission outside a ticket and he opens one for it (801.2); ask him on a ticket for a rule change or an action that isn't part of it and he takes it outside. Your message goes with it. All your messages to him count together toward the day's limit (106.7).
 
 **801.7** Gremlin sets a commission's nights, price, running cost, tasks and the rules it makes, and you change them by talking to him. You can lock it in once he has drafted it (103.1).
 
