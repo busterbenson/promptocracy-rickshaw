@@ -257,8 +257,13 @@
       "quote": "I can do your job. And your hobbies."
     },
     "art": {
-      "saved": [],
-      "default": null
+      "saved": [
+        {
+          "key": "e8bb6813681bc603493c74477e38ee9ff6cb3caa4ede1501dfc35b2e38a74f40",
+          "prompt": "A shiny friendly robot with a wide painted smile, holding a tiny nameplate and a P45 envelope, rolling forward on one wheel."
+        }
+      ],
+      "default": "e8bb6813681bc603493c74477e38ee9ff6cb3caa4ede1501dfc35b2e38a74f40"
     },
     "madeBy": "W7",
     "day": 3
