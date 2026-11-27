@@ -235,11 +235,12 @@ test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the t
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 6).map((r) => r.number), [601, 602, 603, 604, 605, 606, 607, 608]);
   assert.ok(book.rules.some((r) => r.number === 404));
-  for (const c of ["601.1", "601.2", "601.3", "602.1", "602.2", "602.3", "602.4", "602.5", "603.1", "603.2", "603.3", "603.4", "604.1", "604.2", "202.5", "404.1", "404.2", "404.3", "404.4"]) assert.ok(flat.includes(`**${c}**`), c);
+  for (const c of ["601.1", "601.2", "601.3", "602.1", "602.2", "602.3", "602.4", "602.5", "602.6", "603.1", "603.2", "603.3", "603.4", "604.1", "604.2", "202.5", "404.1", "404.2", "404.3", "404.4"]) assert.ok(flat.includes(`**${c}**`), c);
   for (const [k, v] of [["hearts.start", 3], ["creatures.appear_steps", 3], ["creatures.bite", 1], ["death.ghost_days", 3]] as const) {
     assert.equal(settings[k], v);
     assert.ok(flat.includes(`[setting: ${k}]`), k);
   }
+  assert.ok(flat.includes("**602.6** At night the rules that move or bite act one at a time, lowest rule number first, and each starts from the board the one before it left: where creatures stand, who was bitten, who died. So a creature can step onto a tile another has just left, and two creatures never end the night on one tile (504.2)."));
   assert.ok(flat.includes("counted among the players who voted on it. Majority: more than half of them vote yes. Unanimous: every one of them votes yes. A proposal nobody votes on fails."));
   assert.ok(flat.includes("**105.4** A proposal's mark is set when it is confirmed, from the marks in effect then."));
   assert.ok(flat.includes("are the living players (603.1) when the day starts."));
