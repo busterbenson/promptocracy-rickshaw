@@ -304,7 +304,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 801 Commissions [m]
 **801.1** A commission is a proposal like any other (103): the way a catalog entry comes in or changes (701.2), or a new rule that makes an entry do something.
 
-**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up. He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows.
+**801.2** A commission opens a ticket. Gremlin drafts it with you: what it is, what it makes, how many nights it takes, what it costs to run, and the tasks that make it up. He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows. If you keep none, the newest one is kept and shown.
 
 **801.3** A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason.
 
