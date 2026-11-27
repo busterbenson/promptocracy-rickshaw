@@ -27,5 +27,240 @@
     },
     "madeBy": "W1",
     "day": 3
+  },
+  {
+    "id": "C2",
+    "name": "The Thermostat of Doom",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "the planet quietly cooking",
+      "quote": "It's fine. Everything is fine."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "2c077249da9c14cf11dc18749f8fa6f63ab3487f1c6680cb9e148dbaa5b52dbc",
+          "prompt": "A sweating cartoon thermostat with tiny melting legs and a fixed grin, standing in a puddle with a small flame behind it."
+        }
+      ],
+      "default": "2c077249da9c14cf11dc18749f8fa6f63ab3487f1c6680cb9e148dbaa5b52dbc"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C3",
+    "name": "The Unread Inbox",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 2,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "drowning in obligations",
+      "quote": "Per my last email."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "a78d09afe925e850aa48213a227e2bebce00c40f2de07a274f6221245547184c",
+          "prompt": "A towering heap of envelopes and paper with a blank robotic face on top, shuffling forward on spindly legs."
+        }
+      ],
+      "default": "a78d09afe925e850aa48213a227e2bebce00c40f2de07a274f6221245547184c"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C4",
+    "name": "The Last Appointment",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 4,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "time running out",
+      "quote": "Sorry, we're running a little behind."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "8b163f2b5ad0750a72edc589a005b3be385c739447912fcc3d30b7c804a98022",
+          "prompt": "A tall grandfather clock in a tiny hooded robe, holding a clipboard, with a sand timer for a face."
+        }
+      ],
+      "default": "8b163f2b5ad0750a72edc589a005b3be385c739447912fcc3d30b7c804a98022"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C5",
+    "name": "The Empty Wallet",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 2,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "never having enough money",
+      "quote": "Your card was declined."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "3d6b5ce74dae8bb18f4af7696aaa41c48515d4879db45ab4e41c1541b20b1430",
+          "prompt": "A limp leather wallet with moths flying out of it, hollow eyes and a thin sad mouth, shuffling on tiny coin feet."
+        }
+      ],
+      "default": "3d6b5ce74dae8bb18f4af7696aaa41c48515d4879db45ab4e41c1541b20b1430"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C6",
+    "name": "The Quiet Phone",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 2,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "loneliness",
+      "quote": "Seen 3 days ago."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "112f4b8546fbcc3d38d1b751e11068da58e6e95329fa5b4cc9616561bee6f7fc",
+          "prompt": "A big smartphone with a blank dark screen and a single tear, hunched over with spindly arms hugging itself."
+        }
+      ],
+      "default": "112f4b8546fbcc3d38d1b751e11068da58e6e95329fa5b4cc9616561bee6f7fc"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C7",
+    "name": "The Faded Photograph",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 1,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "being forgotten",
+      "quote": "Remind me, who are you?"
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "364ebddb8729ed0919ef4697511325f12829439b506b14d8b22aa10d26b86275",
+          "prompt": "A curling old photograph in a cracked frame, the faces rubbed away to blank smudges, walking on frame corners like legs."
+        }
+      ],
+      "default": "364ebddb8729ed0919ef4697511325f12829439b506b14d8b22aa10d26b86275"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C8",
+    "name": "The Doomscroll",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "the endless bad news",
+      "quote": "Just one more headline."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "a1d93c7cb655a52664c7c527833ac79d1cf97229d52e60c101850cfc2e2df23f",
+          "prompt": "A long unrolling scroll of paper covered in tiny alarming scribbles, with wide red eyes and a tangle of ribbons trailing behind it."
+        }
+      ],
+      "default": "a1d93c7cb655a52664c7c527833ac79d1cf97229d52e60c101850cfc2e2df23f"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C9",
+    "name": "The Creaking Knee",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "getting old",
+      "quote": "I used to be able to do that."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "54e00009ca7cb55cdee6950602a1cb497eaf99590bc126dbd2d7d3d26cfc9567",
+          "prompt": "A giant grumpy knee joint with a wrinkled face and a small cane, hobbling along with a visible creak."
+        }
+      ],
+      "default": "54e00009ca7cb55cdee6950602a1cb497eaf99590bc126dbd2d7d3d26cfc9567"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C10",
+    "name": "The Void Under the Bed",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 4,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "the unknown",
+      "quote": "..."
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "a9e6e1474755ebb82cf24091242d49472b25ecd6ce043325aba2e43504fd026e",
+          "prompt": "A low black shapeless puddle of darkness with two small pale eyes, spilling out from under a tiny wooden bed."
+        }
+      ],
+      "default": "a9e6e1474755ebb82cf24091242d49472b25ecd6ce043325aba2e43504fd026e"
+    },
+    "madeBy": "W7",
+    "day": 3
+  },
+  {
+    "id": "C11",
+    "name": "The Helpful Robot",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "hostile"
+    },
+    "flavor": {
+      "fear": "being replaced by a machine",
+      "quote": "I can do your job. And your hobbies."
+    },
+    "art": {
+      "saved": [],
+      "default": null
+    },
+    "madeBy": "W7",
+    "day": 3
   }
 ]
