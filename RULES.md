@@ -88,6 +88,8 @@ the moderator tells the proposer what differs, so they can propose a fix.
 **106.7** Gremlin talks only with players, and only once the game has started (day 1, rule 203.1).
 He answers up to 100 of your messages a day [setting: gremlin.messages_per_day]. At the limit he tells you, and he's back at midnight. Each redraw counts as a message.
 
+**106.8** Gremlin can read every open proposal, every ticket and the discussion on them, from any conversation with a player, and uses them to advise on how proposals interact or build on one another. He doesn't share what a player said in a private conversation, and he doesn't reveal how anyone voted (104.4).
+
 ### 107 The night [u]
 **107.1** From midnight until the moderator has processed the day that just ended, the game is locked: nobody can
 move, vote, propose, post in a ticket's discussion, talk to Gremlin or end their turn, on the site or through an AI client
@@ -316,7 +318,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **801.9** You can put your Ready commission on hold, and take it off hold. While it's on hold it isn't paid and doesn't join the queue.
 
-**801.10** You can cancel your commission while it's Ready or on hold. Nothing is paid, and the ticket closes.
+**801.10** You can cancel your commission while it's Ready or on hold. Nothing is paid, and the ticket closes. Rule 801 gives way to rule 106.
 
 ### 802 Limits [m]
 **802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game.
