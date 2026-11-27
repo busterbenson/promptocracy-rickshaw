@@ -272,6 +272,9 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 607 Pancake asleep [m]
 **607.1** While Pancake is sleeping, the board shows her sleeping drawing instead of her awake one.
 
+### 608 Refuge [m]
+**608.1** A living player standing in a tile of a structure with the refuge attribute cannot be bitten by hostile creatures.
+
 ## 700. Making things
 
 ### 701 The catalog [m]

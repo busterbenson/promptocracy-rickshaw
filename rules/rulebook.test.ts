@@ -21,7 +21,10 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
   assert.deepEqual(rules.implementers("actionAllowed"), [202, 504, 604]);
   assert.deepEqual(rules.implementers("giveHeart"), [603]);
   assert.deepEqual(rules.implementers("giveItem"), [706]);
-  assert.deepEqual(rules.implementers("night"), [602, 603]);
+  assert.deepEqual(rules.implementers("night"), [602, 603, 606]);
+  assert.deepEqual(rules.implementers("placement"), [602, 607]);
+  assert.deepEqual(rules.implementers("creatureDrawing"), [607]);
+  assert.deepEqual(rules.implementers("biteAllowed"), [608]);
   assert.deepEqual(rules.implementers("ending"), [404]);
   assert.deepEqual(rules.implementers("actionType"), [901]);
   assert.deepEqual(rules.implementers("applyAction"), [901]);
@@ -230,7 +233,7 @@ test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 to 504
 test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the three endings, with the core edits for the dead (603.1, 202.5)", () => {
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
-  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 6).map((r) => r.number), [601, 602, 603, 604, 605]);
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 6).map((r) => r.number), [601, 602, 603, 604, 605, 606, 607, 608]);
   assert.ok(book.rules.some((r) => r.number === 404));
   for (const c of ["601.1", "601.2", "601.3", "602.1", "602.2", "602.3", "602.4", "602.5", "603.1", "603.2", "603.3", "603.4", "604.1", "604.2", "202.5", "404.1", "404.2", "404.3", "404.4"]) assert.ok(flat.includes(`**${c}**`), c);
   for (const [k, v] of [["hearts.start", 3], ["creatures.appear_steps", 3], ["creatures.bite", 1], ["death.ghost_days", 3]] as const) {
@@ -247,4 +250,15 @@ test("block 600 and rule 404: hearts, hostile creatures, death, Ghosts and the t
   assert.ok(flat.includes("**202.5** Only living players (603.1) can vote or make proposals. A dead player can't move, but a Ghost can (604.1)."));
   assert.ok(flat.includes("**604.1** A Ghost has a turn each day (202.1). Its moves chart tiles like anyone's (504.1)."));
   assert.ok(!flat.includes("Rules may add more things to do on a turn."));
+});
+
+test("606 to 608 and 701.5: Pancake, her sleeping drawing, the refuge, and where a built entry goes (the text the modules implement)", () => {
+  const flat = rulesMd.replace(/\s+/g, " ");
+  assert.ok(flat.includes("**606.1** Pancake moves toward its owner each turn, 1 to 3 steps, then sleeps the next turn and does not move."));
+  assert.ok(flat.includes("**607.1** While Pancake is sleeping, the board shows her sleeping drawing instead of her awake one."));
+  assert.ok(flat.includes("**608.1** A living player standing in a tile of a structure with the refuge attribute cannot be bitten by hostile creatures."));
+  assert.ok(flat.includes("**701.5** A creature or structure that is built is placed once, the night it is built, on a random unoccupied charted tile, like a creature that appears (602.3), unless a rule says where it goes or that it isn't placed. A structure needs every one of its tiles charted and unoccupied."));
+  assert.ok(flat.includes("Only hostile creatures hunt and bite."));
+  assert.ok(flat.includes("bites every living player next to it that no rule protects from its bite"));
+  assert.ok(flat.indexOf("**701.4**") < flat.indexOf("**701.5**") && flat.indexOf("**701.5**") < flat.indexOf("### 702"));
 });

@@ -336,5 +336,29 @@
     },
     "madeBy": "W2",
     "day": 4
+  },
+  {
+    "id": "S1",
+    "name": "House",
+    "kind": "structure",
+    "attrs": {
+      "size": {
+        "w": 2,
+        "h": 2
+      },
+      "refuge": true
+    },
+    "flavor": {},
+    "art": {
+      "saved": [
+        {
+          "key": "a30fd5f38c1323f8d5024699fe2271c71e1e888ad3a56f78f4a9e12fdea34efe",
+          "prompt": "A snug English country cottage with a thatched roof, a tall brick chimney curling smoke, a round wooden door, flowerboxes and a warmly lit window."
+        }
+      ],
+      "default": "a30fd5f38c1323f8d5024699fe2271c71e1e888ad3a56f78f4a9e12fdea34efe"
+    },
+    "madeBy": "W6",
+    "day": 4
   }
 ]
