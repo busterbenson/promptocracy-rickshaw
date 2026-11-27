@@ -5,7 +5,7 @@ import { attr, chartedAround, defineRule, effects } from "promptocracy/engine";
 
 /** The attribute this rule defines (703.1): a creature's temper. A creature with none is neutral (602.1). */
 export const attributes = [
-  { key: "temper", type: "choice", choices: ["hostile", "neutral"], kinds: ["creature"], missing: "Neutral", meaning: "Hostile creatures hunt living players. Neutral ones stay where they are." },
+  { key: "temper", type: "choice", choices: ["hostile", "neutral"], kinds: ["creature"], missing: "Neutral", meaning: "Hostile creatures hunt living players. Neutral ones don't hunt or bite." },
 ];
 
 type Pos = { x: number; y: number; z: number };

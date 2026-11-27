@@ -239,7 +239,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 **601.3** A player or creature that reaches 0 hearts dies (603).
 
 ### 602 Hostile creatures [m]
-**602.1** A creature's temper is hostile or neutral. A creature with no temper in the catalog is neutral. Only hostile creatures move and bite.
+**602.1** A creature's temper is hostile or neutral. A creature with no temper in the catalog is neutral. Only hostile creatures hunt and bite.
 
 **602.2** A creature on the board is a piece (504.2). A step is 1 tile in any direction, diagonals included. Next to means 1 step away.
 
@@ -247,7 +247,7 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **602.4** Each night, after 602.3, each hostile creature that isn't resting takes 1 step toward the nearest living player, onto an unoccupied charted tile that brings it closer. Creatures move one at a time, in the order they appeared. A creature already next to a living player, or with no such tile, stays where it is. Ties are broken at random.
 
-**602.5** Then each hostile creature that isn't resting bites every living player next to it, taking 1 heart from each. [setting: creatures.bite] Creatures bite in the order they appeared. A creature that bites rests the next night: it doesn't move or bite.
+**602.5** Then each hostile creature that isn't resting bites every living player next to it that no rule protects from its bite, taking 1 heart from each. [setting: creatures.bite] Creatures bite in the order they appeared. A creature that bites rests the next night: it doesn't move or bite.
 
 ### 603 Death [m]
 **603.1** A player who dies is dead. They stay on the player list with their points, and their piece stays where they died. Every player who isn't dead is living.
