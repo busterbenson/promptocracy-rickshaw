@@ -1,7 +1,8 @@
 // Rule 504, Moving and charting.
 //   actionAllowed: you move only on your own level, within the move distance, onto a charted tile no other
 //                  piece stands on (rule 202). A move with no destination is a question, and answers null.
-//   afterAction:   when you move, every tile within the chart radius of where you land is charted.
+//   afterAction:   when you move, every tile within the chart radius of where you land is charted (504.1); each newly charted
+//                  tile is a random tile entry of the catalog, or blank when the catalog has none (504.3).
 import { SHARED_TILES, chartedAround, defineRule, effects, refuse, withinSteps } from "promptocracy/engine";
 
 export default defineRule({
@@ -23,10 +24,16 @@ export default defineRule({
     }
     return null;
   },
-  /** @rule 504.1 */
+  /** @rule 504.1, 504.3 */
   afterAction(ctx, _actor, action) {
     if (action.kind !== "move" || !action.to) return [];
     const { x, y, z } = action.to;
-    return [effects.chart(chartedAround(x, y, ctx.settings["board.chart_radius"]).map(([tx, ty]) => ({ x: tx, y: ty, z })))];
+    const kinds = ctx.catalog.filter((e) => e.kind === "tile");
+    const tiles = chartedAround(x, y, ctx.settings["board.chart_radius"]).map(([tx, ty]) => {
+      const t: any = { x: tx, y: ty, z };
+      if (kinds.length && !ctx.tiles.has(tx, ty, z)) t.entry = kinds[Math.floor(ctx.rng() * kinds.length)].id;
+      return t;
+    });
+    return [effects.chart(tiles)];
   },
 });

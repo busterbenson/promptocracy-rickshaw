@@ -215,12 +215,13 @@ test("the rules that had text under their title now state it as clause 1, word f
   assert.ok(flat.includes("**503.1** The game starts with an 8x8 charted island"), "503");
   assert.ok(flat.includes("**505.1** A new player's piece starts on a random unoccupied charted tile"), "505");
 });
-test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 and 504.2, 802 has 802.1, 705 has only 705.1", () => {
+test("repeals and closed gaps: 102 ends at 102.4 (sign-in), 504 has 504.1 to 504.3, 802 has 802.1, 705 has only 705.1", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(!flat.includes("you vote from the next day (104.2)"));
-  for (const gone of ["**102.5**", "**504.3**", "**705.2**", "**802.2**"]) assert.ok(!flat.includes(gone), gone);
+  for (const gone of ["**102.5**", "**504.4**", "**705.2**", "**802.2**"]) assert.ok(!flat.includes(gone), gone);
   assert.ok(flat.includes("**504.1** When you move, every tile within 2 tiles of you is charted [setting: board.chart_radius], except the 4 corners of that square."));
   assert.ok(flat.includes("**504.2** You can only move onto a charted tile that no other piece stands on."));
+  assert.ok(flat.includes("**504.3** A tile charted by a move (504.1) is a tile entry picked at random from the tile entries in the catalog (701.1). If the catalog has no tile entry, the tile is a blank default tile."));
   assert.ok(flat.includes("every tile that a move onto it would chart (rule 504.1) is already charted."));
 });
 

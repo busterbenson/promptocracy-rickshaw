@@ -87,3 +87,31 @@ test("504: a Ghost's move charts tiles like anyone's (504.1)", () => {
   const fx = rule.afterAction!(ctx, { ref: "g" }, { kind: "move", to: { x: 1, y: 0, z: 0 } });
   assert.equal(fx[0].type, "chart");
 });
+
+const tileCatalog = (...ids: string[]) => [{ id: "C1", kind: "creature" }, ...ids.map((id) => ({ id, kind: "tile" }))] as any[];
+const charted = (o: any = {}) => (rule.afterAction!(makeCtx({ players, ...o }), { ref: "a" }, { kind: "move", to: { x: 10, y: 10, z: 0 } }) as any[])[0].tiles as any[];
+test("504.3: no tile entries -> every charted tile is blank", () => {
+  const tiles = charted({ catalog: tileCatalog() });
+  assert.equal(tiles.length, 21);
+  assert.ok(tiles.every((t) => !("entry" in t)));
+});
+test("504.3: one tile entry -> every newly charted tile is it", () => {
+  const tiles = charted({ catalog: tileCatalog("T1") });
+  assert.equal(tiles.length, 21);
+  assert.ok(tiles.every((t) => t.entry === "T1"));
+});
+test("504.3: two tile entries -> each new tile is one of them, the same under the same seed", () => {
+  const a = charted({ catalog: tileCatalog("T1", "T2"), seed: "test" }), b = charted({ catalog: tileCatalog("T1", "T2"), seed: "test" });
+  assert.deepEqual(a, b);
+  assert.ok(a.every((t) => t.entry === "T1" || t.entry === "T2"));
+  assert.ok(new Set(a.map((t) => t.entry)).size === 2, "21 draws from a fixed seed use both");
+});
+test("504.3: an already charted tile gets no entry", () => {
+  const tiles = (rule.afterAction!(makeCtx({ players, catalog: tileCatalog("T1") }), { ref: "a" }, { kind: "move", to: { x: 3, y: 3, z: 0 } }) as any[])[0].tiles as any[];
+  const island = tiles.filter((t) => t.x <= 3 && t.y <= 3);
+  assert.ok(island.length > 0 && island.every((t) => !("entry" in t)));
+  assert.ok(tiles.filter((t) => t.x > 3 || t.y > 3).every((t) => t.entry === "T1"));
+});
+test("504.3: a creature entry is never picked", () => {
+  assert.ok(charted({ catalog: tileCatalog("T1") }).every((t) => t.entry !== "C1"));
+});

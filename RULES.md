@@ -223,6 +223,8 @@ centered on the origin. [setting: board.island]
 
 **504.2** You can only move onto a charted tile that no other piece stands on.
 
+**504.3** A tile charted by a move (504.1) is a tile entry picked at random from the tile entries in the catalog (701.1). If the catalog has no tile entry, the tile is a blank default tile.
+
 ### 505 New players [m]
 **505.1** A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.1) is already charted.
