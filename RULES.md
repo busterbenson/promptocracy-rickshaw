@@ -277,6 +277,8 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **701.4** No two entries of one kind share a name. A commission can't make an entry with the name of one in the catalog, or of one an open commission makes (801). It can use that one instead.
 
+**701.5** A creature or structure that is built is placed once, the night it is built, on a random unoccupied charted tile, like a creature that appears (602.3), unless a rule says where it goes or that it isn't placed. A structure needs every one of its tiles charted and unoccupied.
+
 ### 702 Kinds [m]
 **702.1** Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board.
 

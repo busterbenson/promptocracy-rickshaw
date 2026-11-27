@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { makeCtx, island } from "promptocracy/engine/testing";
 import rule from "./602.ts";
+import rule608 from "./608.ts";
 
 const catalog = [{ id: "C1", kind: "creature", attrs: { temper: "hostile", hearts: 3 } }, { id: "C2", kind: "creature", attrs: { temper: "neutral", hearts: 3 } }];
 const at = (ref: string, x: number, y: number, state = "living") => ({ ref, x, y, state });
@@ -65,4 +66,18 @@ test("602: two creatures next to a one-heart player: the second bites nobody and
   const cs = [{ id: 1, entry: "C1", x: 1, y: 1, z: 0, hearts: 3, resting: false }, { id: 2, entry: "C1", x: 1, y: 2, z: 0, hearts: 3, resting: false }];
   const e = night({ players: [at("a", 0, 1)].map((p) => ({ ...p, hearts: 1 })), creatures: cs }, [1]);
   assert.deepEqual(e.map((x) => x.type + (x.creature ?? "")), ["bite", "rest1"]);
+});
+test("602.5: a player a rule protects from its bite is not bitten, and a creature that bit nobody does not rest", () => {
+  const catalogS = [...catalog, { id: "S1", kind: "structure", name: "House", attrs: { size: { w: 2, h: 2 }, refuge: true } }];
+  const c = { id: 1, entry: "C1", x: 2, y: 0, z: 0, hearts: 3, resting: false };
+  const o = { catalog: catalogS, modules: [rule608], creatures: [c], structures: [{ id: 1, entry: "S1", x: 0, y: 0, w: 2, h: 2 }] };
+  assert.deepEqual(night({ ...o, players: [at("a", 1, 0)] }, [1]), []);
+  const e = night({ ...o, players: [at("a", 1, 0), at("b", 3, 0)] }, [1]);
+  assert.deepEqual(e.filter((x) => x.type === "bite").map((x) => x.target.player), ["b"]);
+  assert.deepEqual(e.map((x) => x.type), ["bite", "rest"]);
+});
+test("701.5: a hostile creature that is built is not placed (602.3 says where hostile ones appear); other entries are not this rule's to say", () => {
+  const ctx = makeCtx({ day: 4, catalog });
+  assert.equal(rule.placement!(ctx, ctx.catalog[0]), null);
+  assert.equal(rule.placement!(ctx, ctx.catalog[1]), undefined);
 });

@@ -14,6 +14,10 @@ const dist = (a: Pos, b: Pos) => Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.
 
 export default defineRule({
   rule: 602,
+  /** A hostile creature that is built is not placed by 701.5: 602.3 says where hostile ones appear. @rule 701.5 */
+  placement(ctx, entry) {
+    return entry.kind === "creature" && attr(entry, "temper") === "hostile" ? null : undefined;
+  },
   /** @rule 602.3, 602.4, 602.5 */
   night(ctx, { applied }) {
     const out: any[] = [];
@@ -56,7 +60,7 @@ export default defineRule({
     // just killed is not bitten again, and a creature that bit nobody does not rest.
     const left = new Map(living.map((p) => [p.ref, p.hearts]));
     for (const c of mobile()) {
-      const next = living.filter((p) => (left.get(p.ref) ?? 0) > 0 && p.z === c.z && dist(p, c) <= 1);
+      const next = living.filter((p) => (left.get(p.ref) ?? 0) > 0 && p.z === c.z && dist(p, c) <= 1 && ctx.mayBite(c, p));   // a player some rule protects from its bite is not bitten (602.5)
       if (!next.length) continue;
       for (const p of next) {
         out.push(effects.bite({ player: p.ref }, ctx.settings["creatures.bite"]));
