@@ -266,6 +266,12 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 605 Defeating creatures [m]
 **605.1** A creature can be defeated only while two living players stand on opposite sides of it, one in front and one behind, in a straight line through the creature, each next to it (602.2).
 
+### 606 Pancake [m]
+**606.1** Pancake moves toward its owner each turn, 1 to 3 steps, then sleeps the next turn and does not move.
+
+### 607 Pancake asleep [m]
+**607.1** While Pancake is sleeping, the board shows her sleeping drawing instead of her awake one.
+
 ## 700. Making things
 
 ### 701 The catalog [m]

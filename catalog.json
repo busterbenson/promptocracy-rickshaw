@@ -289,5 +289,52 @@
     },
     "madeBy": "W4",
     "day": 3
+  },
+  {
+    "id": "C12",
+    "name": "Pancake",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "neutral"
+    },
+    "flavor": {
+      "species": "small bengal cat"
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "34c04596a146c12ae0fb244aecdd954a9affd3617cc9789efa92e987f8787b54",
+          "prompt": "A small bengal cat with a dark brown coat, bold black rosette spots, yellow eyes and no white patch on her chest, sitting alert."
+        }
+      ],
+      "default": "34c04596a146c12ae0fb244aecdd954a9affd3617cc9789efa92e987f8787b54"
+    },
+    "madeBy": "W2",
+    "day": 4
+  },
+  {
+    "id": "C13",
+    "name": "Pancake asleep",
+    "kind": "creature",
+    "attrs": {
+      "hearts": 3,
+      "temper": "neutral"
+    },
+    "flavor": {
+      "species": "small bengal cat",
+      "pose": "sleeping"
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "6f75a4269d1b6b6cd8a87fed1dc76c6aafe610d0d30118f7f53981275e11d394",
+          "prompt": "A small bengal cat with a dark brown coat, bold black rosette spots and no white patch on her chest, curled up asleep with her eyes shut."
+        }
+      ],
+      "default": "6f75a4269d1b6b6cd8a87fed1dc76c6aafe610d0d30118f7f53981275e11d394"
+    },
+    "madeBy": "W2",
+    "day": 4
   }
 ]
