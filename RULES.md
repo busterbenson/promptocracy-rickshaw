@@ -259,6 +259,9 @@ that a move onto it would chart (rule 504.1) is already charted.
 
 **604.2** A Ghost's piece replaces the player's piece, and the player can't change it.
 
+### 605 Defeating creatures [m]
+**605.1** A creature can be defeated only while two living players stand on opposite sides of it, one in front and one behind, in a straight line through the creature, each next to it (602.2).
+
 ## 700. Making things
 
 ### 701 The catalog [m]
