@@ -20,6 +20,7 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
   assert.deepEqual(rules.implementers("championChange"), [402]);
   assert.deepEqual(rules.implementers("actionAllowed"), [202, 504, 604]);
   assert.deepEqual(rules.implementers("giveHeart"), [603]);
+  assert.deepEqual(rules.implementers("giveItem"), [706]);
   assert.deepEqual(rules.implementers("night"), [602, 603]);
   assert.deepEqual(rules.implementers("ending"), [404]);
   assert.deepEqual(rules.implementers("actionType"), [901]);
@@ -27,7 +28,8 @@ test("the modules assemble: exactly one spawn rule and one order rule", () => {
 });
 test("the text still has the rules the modules belong to", () => {
   const nums = parseRulesMd(rulesMd).rules.map((r) => r.number);
-  for (const n of [107, 202, 401, 402, 504, 505, 704, 901]) assert.ok(nums.includes(n));
+  for (const n of [107, 202, 401, 402, 504, 505, 704, 706, 901]) assert.ok(nums.includes(n));
+  assert.ok(rulesMd.replace(/\s+/g, " ").includes("**706.1** Once a day, a living player can give a Flower to another player, and it shows on that player's card."));
 });
 test("102 says who the host is and who can invite, with no proposal; 203.1 says the host starts day 1 (the site enforces both)", () => {
   const flat = rulesMd.replace(/\s+/g, " ");
@@ -172,9 +174,9 @@ test("block 700 is making things: majority, with the clauses the catalog impleme
   const book = parseRulesMd(rulesMd);
   const flat = rulesMd.replace(/\s+/g, " ");
   assert.ok(flat.includes("## 700. Making things"));
-  for (const n of ["701", "702", "703", "704", "705"]) assert.equal(marks(rulesMd)[n], "majority", n);
-  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705]);
-  for (const clause of ["701.1", "701.2", "701.3", "701.4", "702.1", "703.1", "703.2", "703.3", "703.4", "704.1", "704.2", "704.3", "705.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  for (const n of ["701", "702", "703", "704", "705", "706"]) assert.equal(marks(rulesMd)[n], "majority", n);
+  assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 7).map((r) => r.number), [701, 702, 703, 704, 705, 706]);
+  for (const clause of ["701.1", "701.2", "701.3", "701.4", "702.1", "703.1", "703.2", "703.3", "703.4", "704.1", "704.2", "704.3", "705.1", "706.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(!flat.includes("**705.2**"));
   assert.ok(!/entries are numbered|entry number/i.test(flat));
   assert.ok(flat.includes("Every entry is one kind: an item (I), a creature (C), a tile (T), a structure (S), or a feature (F). A feature is part of the site, not the board."));

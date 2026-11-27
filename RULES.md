@@ -299,6 +299,9 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 705 Flavor [m]
 **705.1** An entry can have attributes no rule defines and its kind doesn't need (704.1). They are flavor.
 
+### 706 Flowers [m]
+**706.1** Once a day, a living player can give a Flower to another player, and it shows on that player's card.
+
 ## 800. The workshop
 
 ### 801 Commissions [m]

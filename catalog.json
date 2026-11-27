@@ -267,5 +267,27 @@
     },
     "madeBy": "W7",
     "day": 3
+  },
+  {
+    "id": "I1",
+    "name": "Flower",
+    "kind": "item",
+    "attrs": {
+      "acquired": "706"
+    },
+    "flavor": {
+      "meaning": "a gift, just because"
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "e02578618ba92f4d8df0abdaf43bee952088a4dd0ebe59a453fafcaa0544f565",
+          "prompt": "A single small wildflower with soft petals and a green stem."
+        }
+      ],
+      "default": "e02578618ba92f4d8df0abdaf43bee952088a4dd0ebe59a453fafcaa0544f565"
+    },
+    "madeBy": "W4",
+    "day": 3
   }
 ]
