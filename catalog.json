@@ -7,5 +7,25 @@
       "hearts": 3,
       "temper": "hostile"
     }
+  },
+  {
+    "id": "T1",
+    "name": "Grass",
+    "kind": "tile",
+    "attrs": {},
+    "flavor": {
+      "look": "soft green grass"
+    },
+    "art": {
+      "saved": [
+        {
+          "key": "d090dc7a55389d209599f98ade6d012c977567920a562dc05558b9220b484c94",
+          "prompt": "A square patch of soft, even green grass, seen from above."
+        }
+      ],
+      "default": "d090dc7a55389d209599f98ade6d012c977567920a562dc05558b9220b484c94"
+    },
+    "madeBy": "W1",
+    "day": 3
   }
 ]
