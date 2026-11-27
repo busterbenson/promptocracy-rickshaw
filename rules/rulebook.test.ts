@@ -68,7 +68,7 @@ test("block 800 is the workshop: majority, with exactly the clauses the platform
   assert.ok(flat.includes("## 800. The workshop"));
   for (const n of ["801", "802", "803", "804"]) assert.equal(marks(rulesMd)[n], "majority", n);
   assert.deepEqual(book.rules.filter((r) => Math.floor(r.number / 100) === 8).map((r) => r.number), [801, 802, 803, 804]);
-  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "801.7", "801.8", "801.9", "801.10", "802.1", "803.1", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
+  for (const clause of ["801.1", "801.2", "801.3", "801.4", "801.5", "801.7", "801.8", "801.9", "801.10", "802.1", "803.1", "803.2", "803.3", "803.4", "804.1"]) assert.ok(flat.includes(`**${clause}**`), clause);
   assert.ok(flat.includes("A commission is a proposal like any other (103): the way a catalog entry comes in or changes (701.2), or a new rule that makes an entry do something."));
   assert.ok(flat.includes("He draws each new entry while you draft it. You can keep any drawing he makes and pick the one the entry shows."));
   assert.ok(flat.includes("A commission that names nothing to make, or that would do something the workshop's limits rule out (802.1), is refused when it's drafted, with the reason."));
@@ -103,9 +103,9 @@ test("Gremlin's rules: 106.1 to 106.4 and 106.7, the settings the site reads (th
   assert.equal(settings["workshop.price_ceiling"], 25);
   assert.ok(flat.includes("**802.1** Nothing the workshop builds can share players' private information, weaken the site's security, break the law, or reach outside this game."));
 });
-test("the workshop's text says nothing the site doesn't do yet: no building, no budgets or nightly limits, no creature (805)", () => {
+test("the workshop's text says nothing the site doesn't do yet: building only in 803.2-803.4 (the night builder), no budgets or nightly limits, no creature (805)", () => {
   const block = rulesMd.slice(rulesMd.indexOf("## 800."));
-  assert.ok(!/builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace(/\*\*802\.1\*\*[^\n]*/, "")));
+  assert.ok(!/builds?\b|\bbuilt\b|C1|creature \(/i.test(block.replace(/\*\*(802\.1|803\.[234])\*\*[^\n]*/g, "")));
   assert.ok(!/\*\*802\.2\*\*|\*\*805\.|### 805/.test(block));
 });
 test("402 is Eras: reaching the number of points wins an Era, ties by night order, points reset, the Champion names the next Era and has one change (the site enforces it)", () => {

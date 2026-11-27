@@ -328,6 +328,12 @@ that a move onto it would chart (rule 504.1) is already charted.
 ### 803 The queue [m]
 **803.1** A commission joins the workshop's queue when it is paid for, in the order paid.
 
+**803.2** Each night, after the proposals that change rules (107.2), the moderator builds the commissions in the queue, in queue order, as far as the night's time allows. Its nights (801.7) are an estimate: a commission can be done sooner, and one the night has no time for waits for the next night.
+
+**803.3** Building a commission adds the entries it makes to the catalog, with the drawing its requester picked, and writes the rules it makes, with their code and tests (107.4). An entry it only uses adds nothing. They go live together, with the night's other changes (107.8), and the commission is Done.
+
+**803.4** A build that fails is tried again the next night. One the night has no time for, or that waits on the site, is tried the next night and isn't a failure. After 3 failed nights the commission is Failed and goes back to its requester with the reason (107.7).
+
 ### 804 Discussion [m]
 **804.1** Anyone in the game can post in a ticket's discussion. Gremlin answers up to 20 of your posts a day [setting: gremlin.thread_replies_per_day].
 
