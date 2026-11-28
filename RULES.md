@@ -171,6 +171,9 @@ midnight in the old zone.
 ### 204 AI clients [m]
 **204.1** A player may connect an AI client to this game and take their own turns through it. [setting: mcp_enabled]
 
+### 205 The moon [m]
+**205.1** Each day has a moon, which is full, new or neither: the real moon phase on that day's date in the game's time zone (203.1), calculated from the 29.53-day lunar cycle. Other rules can use it as a condition. By itself it changes nothing in play.
+
 ## 300. Proposals and rulings
 
 ### 301 Overruling the moderator [m]
