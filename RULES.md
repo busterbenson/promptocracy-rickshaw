@@ -55,6 +55,8 @@ on a proposal, and how many have. After midnight every vote is shown.
 
 **104.5** Votes are counted by code, not by the moderator.
 
+**104.6** A proposal is also accepted when at least 2 players other than its proposer vote yes on it and no other player votes on it.
+
 ### 105 Votes needed [u]
 **105.1** Every rule is marked [unanimous] or [majority]; [u] and [m] are short for them. The mark sets the votes needed to change or repeal that rule. The Champion's change is counted by 402.4 instead, here and in 103.4, 105.3 and 105.4.
 
