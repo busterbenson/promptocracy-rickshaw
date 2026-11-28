@@ -231,6 +231,9 @@ centered on the origin. [setting: board.island]
 **505.1** A new player's piece starts on a random unoccupied charted tile where a move would chart nothing new: every tile
 that a move onto it would chart (rule 504.1) is already charted.
 
+### 506 Seeing creatures [m]
+**506.1** Every creature on the board is visible to every player, along with the tile it stands on.
+
 ## 600. Hearts and creatures
 
 ### 601 Hearts [m]
